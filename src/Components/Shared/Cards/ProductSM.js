@@ -28,7 +28,7 @@ const ProductSM = () => {
             <div className="ml-1">
               <Star />
             </div>
-            <span className="ml-2">(16)</span>
+            <span className="ml-2">(26)</span>
           </div>
         </div>
       </div>
