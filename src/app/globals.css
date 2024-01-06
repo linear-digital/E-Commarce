@@ -1,27 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: "Lato", sans-serif;
+}
+
+.btn-primary{
+  color: white !important;
+}
+
+.bar-left{
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+.bar-right{
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+}
+
+.swiper-pagination-bullets.swiper-pagination-horizontal{
+  bottom: -20px !important;
+}
+.swiper-pagination-bullet-active{
+  background-color: #FF7020 !important;
+  width: 25px !important;
+  border-radius: 4px !important;
 }
