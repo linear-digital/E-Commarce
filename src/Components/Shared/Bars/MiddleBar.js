@@ -1,46 +1,12 @@
 import React from "react";
 import Logo from "../Logo";
-import { Avater, Cart, Fire, MenuIcon } from "@/assets/icons";
-import Link from "next/link";
+import { Avater, Cart, MenuIcon } from "@/assets/icons";
+import Manubar from "./Manubar";
 
-const MiddleBar = () => {
-  const navigations = [
-    {
-      name: "All Categories",
-      href: "/categories",
-    },
-    {
-      name: "Accessories",
-      href: "/accessories",
-    },
-    {
-      name: "Smartphones",
-      href: "/smartphones",
-    },
-    {
-      name: "Computers",
-      href: "/computers",
-    },
-    {
-      name: "Gaming Equipments",
-      href: "/gaming-equipments",
-    },
-    {
-      name: "TV & Monitor",
-      href: "/tv-monitor",
-    },
-    {
-      name: "Headphones",
-      href: "/headphones",
-    },
-    {
-      name: "Speakers",
-      href: "/speakers",
-    },
-  ];
+const MiddleBar = ({ isSticky, setShow }) => {
   return (
     <main className="shadow shadow-gray-100 bg-white">
-      <section className="container mx-auto h-[110px] flex items-center justify-between">
+      <section className="container mx-auto h-[100px] flex items-center justify-between">
         <Logo />
         {/* Searchbar  */}
         <div className="max-w-[796px] w-full h-[60px] overflow-hidden rounded-lg relative">
@@ -66,7 +32,10 @@ const MiddleBar = () => {
         </div>
         {/* right Side  */}
         <div>
-          <button className="">
+          <button
+            className={`${!isSticky && "hidden"}`}
+            onClick={() => setShow(true)}
+          >
             <MenuIcon />
           </button>
           <button className="ml-14 ">
@@ -78,22 +47,7 @@ const MiddleBar = () => {
           </button>
         </div>
       </section>
-      <nav className="flex items-start mt-3 container mx-auto h-[50px]">
-        <ul className="flex items-center ">
-          {navigations.map((navigation, index) => {
-            return (
-              <li className="px-5 font-normal capitalize" key={index}>
-                <Link href={navigation.href}>{navigation.name}</Link>
-              </li>
-            );
-          })}
-        </ul>
-
-        <button className="flex items-center ml-10">
-          <Fire />
-          <span className="ml-3 font-semibold">HOT DEALS</span>
-        </button>
-      </nav>
+      {!isSticky && <Manubar />}
     </main>
   );
 };

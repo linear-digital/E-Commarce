@@ -10,8 +10,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 const TopProducts = () => {
   const swiperParams = {
     navigation: {
-      nextEl: ".custom-next-button",
-      prevEl: ".custom-prev-button",
+      nextEl: ".custom-next-button-top",
+      prevEl: ".custom-prev-button-top",
     },
     pagination: {
       el: ".swiper-pagination",
@@ -24,18 +24,18 @@ const TopProducts = () => {
   };
   return (
     <div className="bg-[#F6F6F6] w-full h-[630px] flex items-center mt-32">
-      <section className="container mx-auto flex items-center">
+      <section className="container mx-auto flex items-center overflow-hidden">
         <div>
           <h1 className="w-[238px] text-black text-3xl font-semibold">
             Top 10 Selected Products On the Week
           </h1>
           <div className="flex mt-10 items-center">
-            <button className="origin-top-left rotate-180 w-12 h-12 relative custom-prev-button">
+            <button className="origin-top-left rotate-180 w-12 h-12 relative custom-prev-button-top">
               <div className="w-12 h-12 left-0 top-0 absolute origin-top-left rotate-180 bg-white bg-opacity-0 rounded-full border border-black   flex justify-center items-center">
                 <ChevronLeft w={"w-6"} h={"w-6"} opacity={20} />
               </div>
             </button>
-            <button className="origin-top-left opacity-80 ml-5 rotate-180 w-12 h-12 relative custom-next-button">
+            <button className="origin-top-left opacity-80 ml-5 rotate-180 w-12 h-12 relative custom-next-button-top">
               <div className="w-12 h-12 left-0 top-0 absolute origin-top-left rotate-180 bg-white bg-opacity-0 rounded-full border border-black   flex justify-center items-center">
                 <ChevronRight w={"w-6"} h={"w-6"} />
               </div>
@@ -47,6 +47,7 @@ const TopProducts = () => {
           <Swiper
             freeMode={true}
             slidesPerView={4}
+            loop={true}
             spaceBetween={30}
             {...swiperParams}
             centeredSlides={false}

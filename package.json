@@ -11,6 +11,7 @@
   "dependencies": {
     "@coreui/coreui": "^4.3.0",
     "@coreui/react": "^4.11.1",
+    "animate.css": "^4.1.1",
     "framer-motion": "^10.17.9",
     "next": "^14.0.4",
     "postcss": "^8",

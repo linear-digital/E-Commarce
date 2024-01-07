@@ -12,11 +12,11 @@ body {
   color: white !important;
 }
 
-.bar-left{
+.bar-left-banner{
   border-top-right-radius: 40px;
   border-bottom-right-radius: 40px;
 }
-.bar-right{
+.bar-right-banner{
   border-top-left-radius: 40px;
   border-bottom-left-radius: 40px;
 }
@@ -32,4 +32,17 @@ body {
 
 .swiper-button-disabled{
   opacity: 30% !important;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #ccc; /* Set the background color of the progress bar */
+}
+
+progress::-webkit-progress-value {
+  background-color: #FF7020; /* Set the color of the filled progress */
+}
+
+progress::-moz-progress-bar {
+  background-color: #FF7020; 
+
 }

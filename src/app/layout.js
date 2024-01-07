@@ -1,7 +1,5 @@
-
-import MiddleBar from "@/Components/Shared/Bars/MiddleBar";
+import 'animate.css';
 import "./globals.css";
-import Topbar from "@/Components/Shared/Bars/Topbar";
 import StoreProvider from "@/redux/StoreProvider";
 
 // Import Swiper styles
@@ -9,6 +7,9 @@ import 'swiper/css';
 import 'swiper/css/effect-flip';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import Footer from "@/Components/Shared/Footer/Footer";
+import Navbar from "@/Components/Shared/Bars/Navbar";
+import Topbar from "@/Components/Shared/Bars/Topbar";
 
 export const metadata = {
   title: "E-Store",
@@ -21,8 +22,9 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body >
           <Topbar />
-          <MiddleBar />
+          <Navbar />
           {children}
+          <Footer />
         </body>
       </html>
     </StoreProvider>
