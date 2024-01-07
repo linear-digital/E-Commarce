@@ -3,6 +3,7 @@ import Banner from './Home/Banner'
 import BestDeals from './Home/BestDeals'
 import TopProducts from './Home/TopProducts'
 import PopolarSearch from './Home/PopolarSearch'
+import Features from './Home/Features'
 
 const MainPage = () => {
   return (
@@ -11,6 +12,7 @@ const MainPage = () => {
       <BestDeals />
       <TopProducts />
       <PopolarSearch />
+      <Features />
     </div>
   )
 }
