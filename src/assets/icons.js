@@ -1,8 +1,44 @@
-export const Star = () => {
+export const ChevronLeft = ({ w, h }) => {
   return (
     <svg
-      height="20px"
-      width="20px"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="3"
+      stroke="currentColor"
+      className={`${w} ${h}`}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.75 19.5 8.25 12l7.5-7.5"
+      />
+    </svg>
+  );
+};
+export const ChevronRight = ({ w, h }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="3"
+      stroke="currentColor"
+      className={`${w} ${h} `}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m8.25 4.5 7.5 7.5-7.5 7.5"
+      />
+    </svg>
+  );
+};
+export const Star = ({ w, h }) => {
+  return (
+    <svg
+      height={`${h ? h : "15px"}`}
+      width={`${w ? w : "15px"}`}
       version="1.1"
       id="Capa_1"
       xmlns="http://www.w3.org/2000/svg"
