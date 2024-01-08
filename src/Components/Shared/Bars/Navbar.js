@@ -35,12 +35,12 @@ const Navbar = () => {
       variants={container}
       initial="hidden"
       animate="visible"
-      className={`z-[237] animate__animated animate__delay-0.5s top-0 left-0 right-0 ${
+      className={`z-[237] top-0 left-0 right-0 ${
         isSticky ? "fixed animate__fadeInDown" : ""
       }`}
     >
       <MiddleBar isSticky={isSticky} setShow={setShow} />
-      {isSticky && <Sidebar setShow={setShow} show={show} />}
+      <Sidebar setShow={setShow} show={show} />
     </motion.div>
   );
 };

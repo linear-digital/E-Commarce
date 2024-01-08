@@ -3,8 +3,8 @@ import React from "react";
 
 const Newsletter = () => {
   return (
-    <div className="mt-32 h-[265px] w-full bg-primary flex flex-col justify-center">
-      <div className="container relative mx-auto flex justify-between">
+    <div className="lg:mt-32 mt-10 h-[265px] w-full bg-primary flex flex-col justify-center">
+      <div className="container lg:p-0 p-5 relative mx-auto lg:flex justify-between">
         <div className="absolute left-[-107px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -24,24 +24,23 @@ const Newsletter = () => {
         <div className="absolute right-[-30px] bottom-[0px]">
           <Shape00 />
         </div>
-
         <div>
-          <h1 className="text-white text-3xl font-bold">
+          <h1 className="text-white lg:text-3xl text-xl text-center lg:text-start font-bold">
             Sign Up for Newsletter
           </h1>
-          <p className="w-[603px] mt-4 text-white text-lg font-normal leading-relaxed">
+          <p className="lg:w-[603px] lg:mt-4 mt-2 text-white text-sm text-center lg:text-start lg:text-lg font-normal leading-relaxed">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
         <div>
-          <div className="w-[653px] relative h-20 bg-white rounded-xl overflow-hidden">
+          <div className="lg:w-[653px] w-full relative lg:h-20 h-[60px] mt-5 lg:mt-0 bg-white rounded-xl overflow-hidden">
             <input
               type="text"
               placeholder="Enter your email here"
-              className="h-full w-[450px] outline-none border-none pl-4 text-base font-normal"
+              className="h-full lg:w-[450px] outline-none border-none pl-4 text-base font-normal"
             />
-            <button className="btn w-[187px] bg-[#565656]  text-white btn-neutral text-[15px] h-[60px] absolute right-3 top-[10px] font-normal">
+            <button className="btn lg:w-[187px] w-[100px] bg-[#565656]  text-white btn-neutral lg:text-[15px] text-[12px] lg:h-[60px] absolute right-3 lg:top-[10px] top-[6px] font-normal">
               SUBSCRIBE
             </button>
           </div>

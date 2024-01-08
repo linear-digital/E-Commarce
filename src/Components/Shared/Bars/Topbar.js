@@ -3,7 +3,7 @@ import "./Bars.css";
 import Image from "next/image";
 const Topbar = () => {
   return (
-    <div className="h-[53px] w-full bg-primary">
+    <div className="h-[53px] w-full bg-primary hidden lg:block">
       <section className="container mx-auto h-full flex items-center justify-between">
         <div className="flex items-center">
           <button className="flex items-center">

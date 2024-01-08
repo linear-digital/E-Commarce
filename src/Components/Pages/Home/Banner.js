@@ -22,10 +22,10 @@ const Banner = () => {
   };
 
   return (
-    <section className="relative">
-      <div className="flex h-[634px] items-center w-full relative mt-[30px]">
+    <section className="relative lg:px-0 px-4">
+      <div className="flex max-h-[634px] items-center w-full relative mt-[30px]">
        
-        <div className="absolute left-0 top-0 h-full opacity-70 hover:opacity-90 w-[50px] flex items-center">
+        <div className="absolute left-0 top-0 h-full opacity-70 hover:opacity-90 w-[50px] lg:flex hidden items-center">
           <div className="h-[500px] custom-prev-button-banner  bar-left-banner w-full bg-[#BFBEFF]"></div>
         </div>
         <section className="container mx-auto rounded-xl">
@@ -72,7 +72,7 @@ const Banner = () => {
           </Swiper>
         </section>
 
-        <div className="absolute right-0 top-0 opacity-70 hover:opacity-90 h-full w-[50px] flex items-center">
+        <div className="absolute right-0 top-0 opacity-70 hover:opacity-90 h-full w-[50px] lg:flex hidden items-center">
           <div className="h-[500px] custom-next-button-banner bar-right-banner w-full bg-[#FFD6BE]"></div>
         </div>
       </div>

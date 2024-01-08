@@ -10,6 +10,8 @@ import 'swiper/css/navigation';
 import Footer from "@/Components/Shared/Footer/Footer";
 import Navbar from "@/Components/Shared/Bars/Navbar";
 import Topbar from "@/Components/Shared/Bars/Topbar";
+import BottomNavigation from '@/Components/Shared/Bars/BottomNavigation';
+import DefaultFatch from '@/Components/Shared/DefaultFatch';
 
 export const metadata = {
   title: "E-Store",
@@ -20,12 +22,13 @@ export default function RootLayout({ children }) {
   return (
     <StoreProvider>
       <html lang="en">
-        <body >
+        <body className='relative bg-white pb-20'>
+          <DefaultFatch />
           <Topbar />
           <Navbar />
           {children}
-          <Footer />
-          <script src="https://cdn.tailwindcss.com"></script>
+          <BottomNavigation />
+          {/* <Footer /> */}
         </body>
       </html>
     </StoreProvider>

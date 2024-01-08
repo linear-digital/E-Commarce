@@ -1,28 +1,31 @@
-'use client'
+"use client";
 
 import HotSaleCard from "@/Components/Shared/Cards/HotSaleCard";
+import { topProducts } from "@/Components/Shared/breackpoints";
 import { ChevronLeft, ChevronRight, Fire } from "@/assets/icons";
 import React from "react";
+import { useSelector } from "react-redux";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const HotSale = () => {
-    const swiperParams = {
-        navigation: {
-          nextEl: ".custom-next-button-hot",
-          prevEl: ".custom-prev-button-hot",
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true, // Enable clickable pagination bullets
-          renderBullet: function (index, className) {
-            // Custom pagination bullet content
-            return `<span class="${className}"></span>`;
-          },
-        },
-      };
+  const { deviceType } = useSelector((state) => state.Tools);
+  const swiperParams = {
+    navigation: {
+      nextEl: ".custom-next-button-hot",
+      prevEl: ".custom-prev-button-hot",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true, // Enable clickable pagination bullets
+      renderBullet: function (index, className) {
+        // Custom pagination bullet content
+        return `<span class="${className}"></span>`;
+      },
+    },
+  };
   return (
-    <div className="container mx-auto mt-32">
+    <div className="container mx-auto lg:mt-32 mt-10 lg:px-0 px-4 ">
       <div className="flex justify-between">
         <div className="flex items-center">
           <Fire w={22} h={23} />
@@ -42,9 +45,10 @@ const HotSale = () => {
 
       <div className="mt-10 w-full">
         <Swiper
+          breakpoints={topProducts}
           slidesPerView={5}
           loop={true}
-          spaceBetween={30}
+          spaceBetween={deviceType === "mobile" ? 10 : 30}
           {...swiperParams}
           centeredSlides={false}
           autoplay={{
@@ -52,7 +56,7 @@ const HotSale = () => {
             disableOnInteraction: false,
           }}
           modules={[Navigation, Autoplay, FreeMode]}
-          className="w-full min-h-[650px]"
+          className="w-full lg:min-h-[650px]"
         >
           <SwiperSlide>
             <HotSaleCard />

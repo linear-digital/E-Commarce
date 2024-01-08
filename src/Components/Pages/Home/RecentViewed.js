@@ -2,6 +2,7 @@
 
 import HotSaleCard from "@/Components/Shared/Cards/HotSaleCard";
 import ProductSM from "@/Components/Shared/Cards/ProductSM";
+import { topProducts } from "@/Components/Shared/breackpoints";
 import { ChevronLeft, ChevronRight, Fire } from "@/assets/icons";
 import React from "react";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
@@ -23,10 +24,10 @@ const RecentViewed = () => {
     },
   };
   return (
-    <div className="container mx-auto mt-32">
+    <div className="container mx-auto lg:mt-32 mt-14 p-4 lg:p-0">
       <div className="flex justify-between">
         <div className="flex items-center">
-          <div className="ml-2 text-black text-3xl font-semibold ">
+          <div className="ml-2 text-black lg:text-3xl text-2xl font-semibold ">
             Recently viewed
           </div>
         </div>
@@ -42,6 +43,7 @@ const RecentViewed = () => {
 
       <div className="mt-10 w-full">
         <Swiper
+          breakpoints={topProducts}
           slidesPerView={5}
           loop={true}
           spaceBetween={30}

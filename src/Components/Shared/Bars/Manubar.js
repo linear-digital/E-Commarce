@@ -6,7 +6,7 @@ import { navigations } from "./data";
 const Manubar = () => {
     
   return (
-    <nav className="flex items-start mt-3 container mx-auto h-[50px]">
+    <nav className="lg:flex hidden items-start mt-3 container mx-auto h-[50px]">
       <ul className="flex items-center ">
         {navigations.map((navigation, index) => {
           return (

@@ -1,6 +1,7 @@
 "use client";
 
 import StarProvider from "@/Components/Shared/StarProvider";
+import { topProducts } from "@/Components/Shared/breackpoints";
 import { ChevronLeft, ChevronRight } from "@/assets/icons";
 import Image from "next/image";
 import React from "react";
@@ -23,13 +24,13 @@ const TopProducts = () => {
     },
   };
   return (
-    <div className="bg-[#F6F6F6] w-full h-[630px] flex items-center mt-32">
-      <section className="container mx-auto flex items-center overflow-hidden">
-        <div>
-          <h1 className="w-[238px] text-black text-3xl font-semibold">
+    <div className="bg-[#F6F6F6] w-full h-auto lg:py-0 py-5 lg:h-[630px] flex items-center lg:mt-32 mt-10">
+      <section className="container mx-auto flex flex-col lg:flex-row items-center overflow-hidden">
+        <div className="px-5">
+          <h1 className="lg:w-[238px] text-black text-2xl lg:text-3xl font-semibold">
             Top 10 Selected Products On the Week
           </h1>
-          <div className="flex mt-10 items-center">
+          <div className="flex lg:mt-10 mt-5 items-center">
             <button className="origin-top-left rotate-180 w-12 h-12 relative custom-prev-button-top">
               <div className="w-12 h-12 left-0 top-0 absolute origin-top-left rotate-180 bg-white bg-opacity-0 rounded-full border border-black   flex justify-center items-center">
                 <ChevronLeft w={"w-6"} h={"w-6"} opacity={20} />
@@ -43,9 +44,10 @@ const TopProducts = () => {
           </div>
         </div>
         {/* Slider Side  */}
-        <div className="w-full h-full ml-10">
+        <div className="w-full h-full lg:ml-10 mt-5 lg:p-0 p-4">
           <Swiper
             freeMode={true}
+            breakpoints={topProducts}
             slidesPerView={4}
             loop={true}
             spaceBetween={30}
@@ -56,7 +58,7 @@ const TopProducts = () => {
               disableOnInteraction: false,
             }}
             modules={[Navigation, Autoplay, FreeMode]}
-            className="h-[500px]"
+            className="lg:h-[500px]"
           >
             <SwiperSlide>
               <TopProductCard />
@@ -99,10 +101,10 @@ export default TopProducts;
 
 export const TopProductCard = () => {
   return (
-    <div className="w-full h-full max-h-[486px] max-w-[348px] bg-white rounded-[30px] overflow-hidden shadow-xl shadow-stone-100">
+    <div className="w-full h-full lg:max-h-[520px] max-h-[340px] lg:max-w-[348px] bg-white rounded-[30px] overflow-hidden shadow-xl shadow-stone-100">
       <div className="max-h-[314px] w-full rounded-[30px] bg-stone-300 shadow-md shadow-stone-100 overflow-hidden">
         <Image
-          className="w-[348px] h-[314px] bg-stone-300"
+          className="lg:w-[348px] w-[200px] lg:h-[314px] bg-stone-300"
           src={
             "https://www.bdshop.com/pub/media/catalog/product/cache/eaf695a7c2edd83636a0242f7ce59484/7/1/baseus-3-in-1-universal-multi-usb-cable-camlt-su01.jpg"
           }
@@ -111,25 +113,25 @@ export const TopProductCard = () => {
         />
       </div>
 
-      <div className="flex flex-col p-7">
-        <h1 className="text-black text-2xl font-semibold">
-          {"Baseus 3 In 1 Universal Multi USB Cable (CAMLT-SU01)".slice(0, 20) +
+      <div className="flex flex-col-reverse lg:flex-col lg:p-7 p-4">
+        <h1 className="text-black text-sm lg:text-2xl font-semibold">
+          {"Baseus 3 In 1 Universal Multi USB Cable (CAMLT-SU01)".slice(0, 30) +
             " " +
             "..."}
         </h1>
-        <h4 className="text-neutral-400 mt-1 text-lg font-medium ">
+        <h4 className="text-neutral-400 mt-1 text-[14px] lg:text-lg font-medium ">
           4.3m sold
         </h4>
-        <div className="flex items-center mt-6 justify-between">
+        <div className="flex lg:flex-row flex-col-reverse lg:items-center items-start mt-3 lg:mt-6 justify-between">
           <div className="flex items-center">
-            <div className="text-orange-500 text-xl font-semibold">
+            <div className="text-orange-500 text-sm lg:text-xl font-semibold">
               $ 300.98
             </div>
-            <div className="text-neutral-400 ml-3 text-base font-normal">
+            <div className="text-neutral-400 ml-3 lg:text-base text-xs font-normal">
               $350.99
             </div>
           </div>
-          <div className="ml-2">
+          <div className="lg:ml-2 ml-0 lg:mb-0 mb-2">
             <StarProvider number={5} />
           </div>
         </div>

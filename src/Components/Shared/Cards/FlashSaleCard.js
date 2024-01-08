@@ -2,9 +2,9 @@ import React from "react";
 
 const FlashSaleCard = () => {
   return (
-    <div className="max-w-[448px] min-w-[448px] h-[168px] bg-white rounded-[15px] shadow-xl flex items-center px-5">
+    <div className="lg:max-w-[448px] max-w-[350px]  lg:min-w-[448px] w-full h-[168px] bg-white rounded-[15px] shadow-xl flex items-center px-5">
       <div
-        className="h-full min-w-[117px] max-w-[120px] max-h-[139px] bg-gray-300 rounded-xl"
+        className="h-full lg:min-w-[117px] min-w-[90px] max-w-[100px] lg:max-w-[120px] max-h-[139px] bg-gray-300 rounded-xl"
         style={{
           backgroundImage:
             "url('https://www.bdshop.com/pub/media/catalog/product/cache/eaf695a7c2edd83636a0242f7ce59484/6/4/6447411cv17d.jpg')",

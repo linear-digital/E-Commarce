@@ -10,11 +10,11 @@ const Sidebar = ({ setShow, show }) => {
     <div
       className={
         show
-          ? "h-screen bg-[#00000083] animate__animated animate__fadeInRight absolute  w-screen right-0 z-[444] top-0"
-          : "animate__fadeOutRight animate__animated"
+          ? "bg-[#00000083] animate__animated animate__fadeInRight absolute animate__delay-0.5s w-screen shadow-xl right-0 z-[444] top-0"
+          : "animate__fadeOutRight animate__animated hidden"
       }
     >
-      <div className="h-full w-[350px] bg-white  absolute right-0">
+      <div className="lg:w-[350px] w-[300px] bg-white  absolute right-0">
         <button
           className="absolute left-3 top-3"
           onClick={() => {
@@ -54,7 +54,6 @@ const Sidebar = ({ setShow, show }) => {
           </button>
         </div>
       </div>
-      <div className="w-full h-full" onClick={() => setShow(false)}></div>
     </div>
   );
 };
