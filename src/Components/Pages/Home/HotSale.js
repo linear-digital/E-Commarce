@@ -1,7 +1,7 @@
 "use client";
 
 import HotSaleCard from "@/Components/Shared/Cards/HotSaleCard";
-import { topProducts } from "@/Components/Shared/breackpoints";
+import { hotSale, topProducts } from "@/Components/Shared/breackpoints";
 import { ChevronLeft, ChevronRight, Fire } from "@/assets/icons";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -45,7 +45,7 @@ const HotSale = () => {
 
       <div className="mt-10 w-full">
         <Swiper
-          breakpoints={topProducts}
+          breakpoints={hotSale}
           slidesPerView={5}
           loop={true}
           spaceBetween={deviceType === "mobile" ? 10 : 30}

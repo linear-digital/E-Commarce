@@ -3,9 +3,9 @@ import React from "react";
 
 const Newsletter = () => {
   return (
-    <div className="lg:mt-32 mt-10 h-[265px] w-full bg-primary flex flex-col justify-center">
+    <div className="lg:mt-32 mt-10 h-[265px] w-full bg-primary flex flex-col justify-center overflow-hidden">
       <div className="container lg:p-0 p-5 relative mx-auto lg:flex justify-between">
-        <div className="absolute left-[-107px]">
+        <div className="absolute lg:left-[-107px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width={100}
@@ -34,7 +34,7 @@ const Newsletter = () => {
           </p>
         </div>
         <div>
-          <div className="lg:w-[653px] w-full relative lg:h-20 h-[60px] mt-5 lg:mt-0 bg-white rounded-xl overflow-hidden">
+          <div className="lg:w-[653px]  w-full relative lg:h-20 h-[60px] mt-5 lg:mt-0 bg-white rounded-xl overflow-hidden">
             <input
               type="text"
               placeholder="Enter your email here"

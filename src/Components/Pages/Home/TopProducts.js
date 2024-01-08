@@ -113,7 +113,7 @@ export const TopProductCard = () => {
         />
       </div>
 
-      <div className="flex flex-col-reverse lg:flex-col lg:p-7 p-4">
+      <div className="flex lg:flex-col flex-col-reverse lg:p-7 p-4">
         <h1 className="text-black text-sm lg:text-2xl font-semibold">
           {"Baseus 3 In 1 Universal Multi USB Cable (CAMLT-SU01)".slice(0, 30) +
             " " +
@@ -122,7 +122,7 @@ export const TopProductCard = () => {
         <h4 className="text-neutral-400 mt-1 text-[14px] lg:text-lg font-medium ">
           4.3m sold
         </h4>
-        <div className="flex lg:flex-row flex-col-reverse lg:items-center items-start mt-3 lg:mt-6 justify-between">
+        <div className="flex lg:flex-row flex-col-reverse lg:items-center items-start mt-3 lg:mt-4 justify-between">
           <div className="flex items-center">
             <div className="text-orange-500 text-sm lg:text-xl font-semibold">
               $ 300.98

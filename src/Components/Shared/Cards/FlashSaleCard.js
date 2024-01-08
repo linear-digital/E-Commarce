@@ -2,7 +2,7 @@ import React from "react";
 
 const FlashSaleCard = () => {
   return (
-    <div className="lg:max-w-[448px] max-w-[350px]  lg:min-w-[448px] w-full h-[168px] bg-white rounded-[15px] shadow-xl flex items-center px-5">
+    <div className="lg:max-w-[448px] max-w-[400px]  lg:min-w-[448px] w-full h-[168px] bg-white rounded-[15px] shadow-xl flex items-center px-5">
       <div
         className="h-full lg:min-w-[117px] min-w-[90px] max-w-[100px] lg:max-w-[120px] max-h-[139px] bg-gray-300 rounded-xl"
         style={{

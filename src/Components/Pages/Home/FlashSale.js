@@ -60,7 +60,7 @@ const FlashSale = () => {
                   delay: 7500,
                   disableOnInteraction: false,
                 }}
-                modules={[Navigation, Autoplay, Pagination]}
+                modules={[Navigation,  Pagination]}
                 className="w-full"
               >
                 <SwiperSlide className="max-w-[450px] lg:min-w-[448px]">

@@ -14,6 +14,22 @@ export const topProducts = {
   },
 };
 
+export const hotSale = {
+  320: {
+    slidesPerView: 2,
+    spaceBetween: 20,
+  },
+  480: {
+    slidesPerView: 2,
+  },
+  768: {
+    slidesPerView: 3,
+  },
+  1024: {
+    slidesPerView: 5,
+  },
+};
+
 export const flashSale = {
   320: {
     slidesPerView: 2,

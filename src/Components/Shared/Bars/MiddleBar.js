@@ -15,7 +15,7 @@ const MiddleBar = ({ isSticky, setShow }) => {
         </span>
         <div className="flex lg:hidden justify-between items-center w-full px-5">
           <Logo />
-          <div>
+          <div className="">
             {show ? (
               <span onClick={() => setShow1(!show)}>
                 <Cross />
@@ -38,8 +38,8 @@ const MiddleBar = ({ isSticky, setShow }) => {
           </div>
         </div>
         {show && (
-          <div className="w-full absolute top-[50px] p-2 left-0 bg-gray-200 rounded-md z-[543]">
-            <div className="max-w-[796px] w-full lg:h-[60px] h-[40px] overflow-hidden rounded-lg relative">
+          <div className="w-full absolute top-[50px] p-2 left-0 right-0 bg-gray-200 rounded-md z-[543] max-w-screen">
+            <div className="w-full lg:h-[60px] h-[40px] overflow-hidden rounded-lg relative">
               <input
                 className="lg:text-[17px] text-[14px] outline-none border-none w-full h-full bg-white px-5 text-gray-700 font-light"
                 type="text"
