@@ -53,6 +53,7 @@ const FlashSale = () => {
                 breackPoint={flashSale}
                 freeMode={true}
                 spaceBetween={30}
+                
                 loop={true}
                 {...swiperParams}
                 centeredSlides={deviceType === "mobile" ? false : false}

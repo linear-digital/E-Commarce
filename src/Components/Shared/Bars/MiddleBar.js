@@ -5,15 +5,21 @@ import Logo from "../Logo";
 import { Avater, Cart, Cross, MenuIcon } from "@/assets/icons";
 import Manubar from "./Manubar";
 
-const MiddleBar = ({ isSticky, setShow }) => {
+const MiddleBar = ({ isSticky, setShow, active }) => {
   const [show, setShow1] = useState(false);
   return (
     <main className="shadow shadow-gray-100 bg-white lg:px-0 px-2 pb-2 lg:pb-0">
-      <section className="container mx-auto lg:h-[100px] h-[50px] flex items-center justify-between pt-2">
+      <section className="container mx-auto lg:h-[90px] h-[50px] flex items-center justify-between pt-2">
         <span className="lg:block hidden">
           <Logo />
         </span>
         <div className="flex lg:hidden justify-between items-center w-full px-5">
+          <button
+            onClick={() => setShow(true)}
+          >
+            <MenuIcon active={active}/>
+          </button>
+
           <Logo />
           <div className="">
             {show ? (
@@ -63,13 +69,13 @@ const MiddleBar = ({ isSticky, setShow }) => {
           </div>
         )}
         {/* Searchbar  */}
-        <div className="max-w-[796px] w-full lg:h-[60px] h-[40px] overflow-hidden rounded-lg relative mx-2 lg:block hidden">
+        <div className="max-w-[796px] w-full lg:h-[55px] h-[40px] overflow-hidden rounded-lg relative mx-2 lg:block hidden">
           <input
             className="lg:text-[17px] text-[14px] outline-none border-none w-full h-full bg-[#F1F1F1] px-5 text-gray-700 font-light"
             type="text"
             placeholder="Search here"
           />
-          <div className="absolute z-50 lg:top-[20px] top-[10px] right-7">
+          <div className="absolute z-50 lg:top-[18px] top-[10px] right-7">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

@@ -6,43 +6,101 @@
 
 body {
   font-family: "Lato", sans-serif;
+  scroll-behavior: smooth;
 }
 
-.btn-primary{
+.btn-primary {
   color: white !important;
+  background-color: #FF7020 !important;
+  background-color: #FF7020 !important;
+  border-color: #FF7020 !important;
 }
 
-.bar-left-banner{
+.border-primary {
+  border-color: #FF7020 !important;
+}
+
+.bg-primary {
+  background-color: #FF7020 !important;
+}
+
+.text-primary {
+  color: #FF7020 !important;
+}
+
+.bar-left-banner {
   border-top-right-radius: 40px;
   border-bottom-right-radius: 40px;
 }
-.bar-right-banner{
+
+.bar-right-banner {
   border-top-left-radius: 40px;
   border-bottom-left-radius: 40px;
 }
 
-.swiper-pagination-bullets.swiper-pagination-horizontal{
+.swiper-pagination-bullets.swiper-pagination-horizontal {
   bottom: -20px !important;
 }
-.swiper-pagination-bullet-active{
+
+.swiper-pagination-bullet-active {
   background-color: #FF7020 !important;
   width: 25px !important;
   border-radius: 4px !important;
 }
 
-.swiper-button-disabled{
+.swiper-button-disabled {
   opacity: 30% !important;
 }
 
 progress::-webkit-progress-bar {
-  background-color: #ccc; /* Set the background color of the progress bar */
+  background-color: #ccc;
+  /* Set the background color of the progress bar */
 }
 
 progress::-webkit-progress-value {
-  background-color: #FF7020; /* Set the color of the filled progress */
+  background-color: #FF7020;
+  /* Set the color of the filled progress */
 }
 
 progress::-moz-progress-bar {
-  background-color: #FF7020; 
+  background-color: #FF7020;
 
+}
+.review-progress::-webkit-progress-bar {
+  background-color: #ccc;
+  /* Set the background color of the progress bar */
+}
+
+.review-progress::-webkit-progress-value {
+  background-color: white;
+  /* Set the color of the filled progress */
+}
+
+.review-progress::-moz-progress-bar {
+  background-color: white;
+
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF7020;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-container.zoomed img {
+  transform-origin: top left;
 }

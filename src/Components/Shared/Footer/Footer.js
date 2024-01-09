@@ -65,11 +65,11 @@ const Footer = () => {
           <header className="footer-title">
             <h2 className="text-black text-xl font-bold">CONTACT</h2>
           </header>
-          <div className="w-[390px] text-black text-base font-normal  leading-normal  capitalize">
+          <div className="lg:w-[390px] text-black text-base font-normal  leading-normal  capitalize">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut
           </div>
-          <div className="mt-7 flex lg:flex flex-col items-center">
+          <div className="mt-7 flex lg:flex flex-col lg:flex-row items-center">
             <div className="flex items-center">
               <HeadPhone />
               <div className="ml-5">
@@ -84,14 +84,14 @@ const Footer = () => {
             </button>
           </div>
           <div className="flex lg:flex-row flex-col items-center mt-5 w-full lg:w-auto">
-                <button className="btn bg-black lg:w-[231px] w-full h-[76px] flex items-center hover:bg-black">
+                <button className="btn bg-black lg:w-[231px] w-[300px] h-[76px] flex items-center hover:bg-black">
                     <Apple />
                     <div className="ml-5">
                     <h5 className="text-white text-xs font-normal leading-normal">Download on the</h5>
                     <h3 className="text-white text-xl font-black leading-normal">App Store</h3>
                     </div>
                 </button>
-                <button className="btn bg-black lg:w-[231px] w-full h-[76px] flex items-center hover:bg-black lg:ml-5 mt-5 lg:mt-0">
+                <button className="btn bg-black lg:w-[231px] w-[300px] h-[76px] flex items-center hover:bg-black lg:ml-5 mt-5 lg:mt-0">
                     <PlayStore />
                     <div className="ml-5">
                     <h5 className="text-white text-xs font-normal leading-normal">Download on the</h5>

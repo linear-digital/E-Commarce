@@ -10,11 +10,11 @@ const Sidebar = ({ setShow, show }) => {
     <div
       className={
         show
-          ? "bg-[#00000083] animate__animated animate__fadeInRight absolute animate__delay-0.5s w-screen shadow-xl right-0 z-[444] top-0"
+          ? "bg-[#00000083] animate__animated absolute  w-screen  shadow-xl right-0 z-[444] top-0"
           : "animate__fadeOutRight animate__animated hidden"
       }
     >
-      <div className="lg:w-[350px] w-[300px] bg-white  absolute right-0">
+      <div className="lg:w-[350px]  h-screen w-[300px] bg-white  absolute right-0">
         <button
           className="absolute left-3 top-3"
           onClick={() => {
@@ -23,7 +23,7 @@ const Sidebar = ({ setShow, show }) => {
         >
           <Cross />
         </button>
-        <div className="mt-14">
+        <div className="mt-14 px-2">
           <div className="flex justify-center">
             <Logo />
           </div>

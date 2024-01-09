@@ -12,6 +12,7 @@ const HotSaleCard = () => {
           }
           width={348}
           height={314}
+          alt={""}
         />
       </div>
 

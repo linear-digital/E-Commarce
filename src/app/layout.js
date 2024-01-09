@@ -21,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <StoreProvider>
-      <html lang="en">
+      <html lang="en" data-theme="light">
         <body className='relative bg-white pb-20'>
           <DefaultFatch />
           <Topbar />
