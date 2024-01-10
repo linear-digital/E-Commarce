@@ -1,6 +1,10 @@
-import { DEVICETYPE } from "./constants";
+import {CARTITEMS, CHECKOUT} from "./constants";
 
-export const setDeviceType = (type) => ({
-  type: DEVICETYPE,
+export const setCartItems = (type) => ({
+  type: CARTITEMS,
+  payload: type,
+});
+export const setCheckOut = (type) => ({
+  type: CHECKOUT,
   payload: type,
 });

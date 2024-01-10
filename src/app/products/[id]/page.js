@@ -169,7 +169,7 @@ const page = () => {
                             <div className={"py-2"}>
                                 <a href={"#specification"} className={" btn-link text-primary "}>More Specification</a>
                             </div>
-                            <div className={"flex items-center mt-8"}>
+                            <div className={"flex items-center mt-8"} id={"specification"} >
                             <h1 className={"text-xl-center font-semibold"}>Variants : </h1>
                                 <div className={"ml-4"}>
                                     <button className={"btn bg-black text-white"}>Black</button>
@@ -188,7 +188,7 @@ const page = () => {
                     </div>
                 </div>
             </section>
-            <section className={'container mx-auto mt-20'} id={"specification"}>
+            <section className={'container mx-auto mt-20'} >
                 <div className={"flex items-start"}>
                     <div className="w-[375px] min-w-[375px] h-[824px] bg-orange-500 rounded-xl">
                     <ReviewsStatictic />

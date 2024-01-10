@@ -1,2 +1,2 @@
-export const DEVICETYPE = "DEVICETYPE"; 
-export const CATEGORY = "CATEGORY"; 
+export const CARTITEMS = "CARTITEMS";
+export const CHECKOUT = "CHECKOUT";

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Logo from "../Logo";
 import { Avater, Cart, Cross, MenuIcon } from "@/assets/icons";
 import Manubar from "./Manubar";
+import Link from "next/link";
 
 const MiddleBar = ({ isSticky, setShow, active }) => {
   const [show, setShow1] = useState(false);
@@ -91,16 +92,16 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
           </div>
         </div>
         {/* right Side  */}
-        <div className="hidden lg:flex">
+        <div className="hidden lg:flex items-center">
           <button
             className={`${!isSticky && "hidden"}`}
             onClick={() => setShow(true)}
           >
             <MenuIcon />
           </button>
-          <button className="ml-14 ">
+          <Link href={'/cart'} className="ml-14 ">
             <Cart />
-          </button>
+          </Link>
           <button className="btn btn-primary shadow-md  shadow-orange-500 ml-14">
             <Avater />
             <span> My Account</span>
