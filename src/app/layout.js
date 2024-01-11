@@ -15,8 +15,8 @@ import DefaultFatch from '@/Components/Shared/DefaultFatch';
 import {Toaster} from "react-hot-toast";
 
 export const metadata = {
-  title: "E-Store",
-  description: "E-Store",
+  title: "Linear Hub",
+  description: "Linear Hub Gradget & Electronics Shop",
 };
 
 export default function RootLayout({ children }) {
