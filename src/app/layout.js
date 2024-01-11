@@ -2,6 +2,7 @@ import 'animate.css';
 import "./globals.css";
 import StoreProvider from "@/redux/StoreProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-flip';
@@ -12,7 +13,7 @@ import Navbar from "@/Components/Shared/Bars/Navbar";
 import Topbar from "@/Components/Shared/Bars/Topbar";
 import BottomNavigation from '@/Components/Shared/Bars/BottomNavigation';
 import DefaultFatch from '@/Components/Shared/DefaultFatch';
-import {Toaster} from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "Linear Hub",
@@ -24,7 +25,7 @@ export default function RootLayout({ children }) {
     <StoreProvider>
       <html lang="en" data-theme="light">
         <body className='relative bg-white pb-20'>
-        <SpeedInsights />
+          <SpeedInsights />
           <DefaultFatch />
           <Toaster />
           <Topbar />
@@ -32,6 +33,10 @@ export default function RootLayout({ children }) {
           {children}
           <BottomNavigation />
           <Footer />
+          <script
+            type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUDmkMGZD5mIPpiGRVQov8aPztKKB5B2c&libraries=places"
+          />
         </body>
       </html>
     </StoreProvider>

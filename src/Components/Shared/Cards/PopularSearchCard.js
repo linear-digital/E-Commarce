@@ -11,6 +11,7 @@ export const PopularSearchCard = () => {
           }
           width={348}
           height={314}
+          alt=""
         />
       </div>
 

@@ -110,6 +110,7 @@ export const TopProductCard = () => {
           }
           width={348}
           height={314}
+          alt=""
         />
       </div>
 

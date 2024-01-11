@@ -68,7 +68,7 @@ const page = () => {
                                 onMouseMove={handleMouseMove}
                                 onMouseLeave={handleMouseLeave}
 
-                                src={currentImage} alt="image" width={1280} height={729} />
+                                src={currentImage} alt="" width={1280} height={729} />
                         </div>
                         <div className='h-[529px] w-[92px] ml-3 flex items-center justify-center flex-col'>
                             <button className="mb-5 custom-prev-button-details">
@@ -224,7 +224,7 @@ const Thumb = ({setCurremtImage}) => {
     return (
         <div onClick={() => setCurremtImage(link)}
              className="w-full cursor-pointer h-[92px] bg-stone-100 rounded-md mb-3">
-            <Image src={link} alt="image" width={92} height={92}/>
+            <Image src={link} alt="" width={92} height={92} />
         </div>
     )
 }

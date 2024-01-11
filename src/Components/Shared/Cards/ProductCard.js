@@ -27,6 +27,7 @@ const ProductCard = ({ type }) => {
                                 }
                                 width={548}
                                 height={314}
+                                alt=""
                             />
                         </div>
 
@@ -60,6 +61,7 @@ const ProductCard = ({ type }) => {
                                 }
                                 width={548}
                                 height={314}
+                                alt=""
                             />
                         </div>
 

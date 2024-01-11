@@ -19,7 +19,6 @@ const page = () => {
         const gender = e.target.gender.value
 
         const data = {name  , phone , date_of_birth, gender}
-        console.log(data)
         try {
             const response = await api.patch('/api/users/update', {updateType: "full", data: data, email: currentUser?.email})
             dispatch(setRepatch(response))
@@ -69,9 +68,8 @@ const page = () => {
                             Date of Birth
                         </span>
                     </div>
-                    <input defaultValue={currentUser?.date_of_birth} name={"date_of_birth"}
-                           onChange={(e)=> console.log(e.target.value)
-                           }
+                    <input 
+                    defaultValue={currentUser?.date_of_birth} name={"date_of_birth"}
                            type="date"
                            className="input input-sm text-sm input-bordered w-full"
                     />
@@ -83,12 +81,12 @@ const page = () => {
                         </span>
                     </div>
                     <select  className="select select-sm select-bordered w-full " name={"gender"}>
-                        <option>
+                        <option value={""}>
                             Select Your Gender
                         </option>
                         {
                             genders.map((g)=> (
-                                <option selected={currentUser?.gender === g.value} value={g.value}>{g.name}</option>
+                                <option key={g.name} selected={currentUser?.gender === g.value} value={g.value}>{g.name}</option>
                             ))
                         }
 

@@ -4,10 +4,9 @@
 'use client'
 import React, {useEffect} from 'react'
 import {useRouter} from "next/navigation";
-import {ArrowRight} from "@/assets/icons";
+
 import Cookies from "js-cookie";
 import {useSelector} from "react-redux";
-import LeftSide from "@/Components/Pages/Profile/LeftSide";
 
 const Page = () => {
     const {currentUser} = useSelector(state => state.User)

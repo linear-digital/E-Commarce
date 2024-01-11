@@ -46,6 +46,7 @@ const Banner = () => {
                 src={"/images/banner/18899194.png"}
                 width={1920}
                 height={634}
+                alt=""
               />
             </SwiperSlide>
             <SwiperSlide>
@@ -53,6 +54,7 @@ const Banner = () => {
                 src={"/images/banner/banner-2.jpeg"}
                 width={1920}
                 height={634}
+                alt=""
               />
             </SwiperSlide>
             <SwiperSlide>
@@ -60,6 +62,7 @@ const Banner = () => {
                 src={"/images/banner/banner-1.jpeg"}
                 width={1920}
                 height={634}
+                alt=""
               />
             </SwiperSlide>
             <SwiperSlide>
@@ -67,6 +70,7 @@ const Banner = () => {
                 src={"/images/banner/banner-2.jpeg"}
                 width={1920}
                 height={634}
+                alt=""
               />
             </SwiperSlide>
           </Swiper>

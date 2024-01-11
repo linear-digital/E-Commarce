@@ -35,6 +35,7 @@ const Features = () => {
           src={'/images/credit-card.png'}
           width={60}
           height={40}
+          alt=""
           />} />
         </div>
       </section>

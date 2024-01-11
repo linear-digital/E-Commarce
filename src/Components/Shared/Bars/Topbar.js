@@ -21,11 +21,11 @@ const Topbar = () => {
         {/* Topbar Right Side start Here  */}
         <div className="flex items-center">
           <button className="flex items-center ml-[65px]">
-            <Image src={"/images/localtion.svg"} width={17} height={21} />
+            <Image src={"/images/localtion.svg"} width={17} height={21} alt=""/>
             <span className="text-white ml-2 text-[15px]">Store Location</span>
           </button>
           <button className="flex items-center ml-[55px]">
-            <Image src={"/images/track.svg"} width={20} height={20} />
+            <Image src={"/images/track.svg"} width={20} height={20} alt=""/>
             <span className="text-white ml-2 text-[15px]">
               Track Your Order
             </span>
@@ -34,13 +34,13 @@ const Topbar = () => {
           <div className="flex items-center ml-10">
             {/* Currencyes */}
             <select className="select select-primary bg-transparent text-white font-semibold w-[100px]">
-              <option>৳ BDT</option>
+              <option value={"bdt"}>৳ BDT</option>
             </select>
           </div>
           <div className="flex items-center ml-5">
             {/* Currencyes */}
             <select className="select select-primary bg-transparent text-white font-semibold w-[100px]">
-              <option>EN</option>
+              <option value={"en"}>EN</option>
             </select>
           </div>
         </div>

@@ -60,7 +60,7 @@ const Section_1 = ({ name }) => {
           <div className="text-neutral-400 text-base font-normal ml-10">Show by</div>
           <div className="ml-5">
             <select className="select select-ghost w-[190px]" onChange={(e) => setShortBy(e.target.value)}>
-              <option value={"Default"}>Default</option>
+              <option value={""}>Default</option>
               <option value={"h2l"}>(Price - High to Low)</option>
               <option value={"l2h"}>(Price - Low to High)</option>
             </select>
