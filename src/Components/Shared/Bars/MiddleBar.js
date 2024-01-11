@@ -5,9 +5,11 @@ import Logo from "../Logo";
 import { Avater, Cart, Cross, MenuIcon } from "@/assets/icons";
 import Manubar from "./Manubar";
 import Link from "next/link";
+import {useSelector} from "react-redux";
 
 const MiddleBar = ({ isSticky, setShow, active }) => {
   const [show, setShow1] = useState(false);
+  const {currentUser} = useSelector(state=> state.User)
   return (
     <main className="shadow shadow-gray-100 bg-white lg:px-0 px-2 pb-2 lg:pb-0">
       <section className="container mx-auto lg:h-[90px] h-[50px] flex items-center justify-between pt-2">
@@ -102,10 +104,17 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
           <Link href={'/cart'} className="ml-14 ">
             <Cart />
           </Link>
-          <button className="btn btn-primary shadow-md  shadow-orange-500 ml-14">
+          <Link href={'/me'} className="btn btn-primary shadow-md  shadow-orange-500 ml-14">
             <Avater />
-            <span> My Account</span>
-          </button>
+            <span>
+              {
+                currentUser ?
+                    currentUser?.name
+                    :
+                    " My Account"
+              }
+             </span>
+          </Link>
         </div>
       </section>
       {!isSticky && <Manubar />}

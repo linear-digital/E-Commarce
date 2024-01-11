@@ -5,7 +5,7 @@ import React from 'react'
 const Logo = () => {
   return (
     <Link className='w-[100px] lg:w-auto' href={'/'}>
-        <Image src={'/images/logo/Logo.svg'} width={170} height={30}/>
+        <h1 className={"text-3xl font-bold text-primary"}>Linear Hub</h1>
     </Link>
   )
 }

@@ -1,3 +1,21 @@
+export const ArrowRight = () => {
+  return <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="2"
+      stroke="currentColor"
+      className="w-4 h-4"
+  >
+    <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+    />
+  </svg>
+
+}
+
 export const RightCH = () => {
   return <svg xmlns="http://www.w3.org/2000/svg" width="8" height="15" viewBox="0 0 8 15" fill="none">
     <path d="M0.0961914 14.2886V7.19238V0.0961917L7.19238 7.19238L0.0961914 14.2886Z" fill="#FF7020"/>

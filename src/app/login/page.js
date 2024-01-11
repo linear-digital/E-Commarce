@@ -7,7 +7,7 @@ import React from 'react'
 import {useRouter} from "next/navigation";
 import {ArrowRight} from "@/assets/icons";
 import Link from "next/link";
-import Social from "@/app/me/Social";
+import Social from "@/Components/Pages/Social";
 import { api } from '@/Components/instance/api';
 import toast from 'react-hot-toast';
 import Cookies from 'js-cookie'
@@ -39,7 +39,7 @@ const Page = () => {
                         <h1 className={"text-2xl font-semibold  text-primary"}>Welcome Back</h1>
                         <div
                             onClick={() => {
-                                router.push('/me/signup')
+                                router.push('/signup')
                             }}
                             className={"flex items-center btn-link text-primary cursor-pointer"}>
                             Signup <span className={"ml-2"}>

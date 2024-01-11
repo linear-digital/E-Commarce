@@ -1,4 +1,4 @@
-import { CATEGORY, DEVICETYPE } from "./constants";
+import {CATEGORY, DEVICETYPE, REPATCH} from "./constants";
 
 
 const initialState = {
@@ -347,6 +347,11 @@ const Tools = (state = initialState, action) => {
       return {
         ...state,
         category: action.payload
+      }
+    case REPATCH:
+      return {
+        ...state,
+        repatch: action.payload
       }
     default:
       return { ...state };

@@ -6,7 +6,7 @@
 import React from 'react'
 import {useRouter} from "next/navigation";
 import {ArrowRight} from "@/assets/icons";
-import Social from "@/app/me/Social";
+import Social from "@/Components/Pages/Social";
 import {api} from "@/Components/instance/api";
 import toast from "react-hot-toast";
 
@@ -24,7 +24,7 @@ const Page = () => {
         try {
          const res =  await api.post("/api/users", newUser)
            if (res.status === 200){
-               router.push('/me/login')
+               router.push('/login')
            }
 
         }catch (err) {
@@ -41,7 +41,7 @@ const Page = () => {
                         <h1 className={"text-2xl font-semibold  text-primary"}>Create a account</h1>
                         <div
                             onClick={() => {
-                                router.push('/me/login')
+                                router.push('/login')
                             }}
                             className={"flex items-center btn-link text-primary cursor-pointer"}>
                             Login <span className={"ml-2"}>

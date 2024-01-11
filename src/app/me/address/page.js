@@ -1,8 +1,14 @@
+/*
+ * Copyright (c) jan.24.Tamiz
+ */
+
 import React from 'react'
 
 const page = () => {
     return (
-        <div></div>
+        <div>
+            Address
+        </div>
     )
 }
 export default page

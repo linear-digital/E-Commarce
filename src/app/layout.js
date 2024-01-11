@@ -12,6 +12,7 @@ import Navbar from "@/Components/Shared/Bars/Navbar";
 import Topbar from "@/Components/Shared/Bars/Topbar";
 import BottomNavigation from '@/Components/Shared/Bars/BottomNavigation';
 import DefaultFatch from '@/Components/Shared/DefaultFatch';
+import {Toaster} from "react-hot-toast";
 
 export const metadata = {
   title: "E-Store",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       <html lang="en" data-theme="light">
         <body className='relative bg-white pb-20'>
           <DefaultFatch />
+          <Toaster />
           <Topbar />
           <Navbar />
           {children}

@@ -2,14 +2,19 @@
 
 import { setDeviceType } from "@/redux/Tools/action";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import Cookies from "js-cookie";
+import {decodeToken} from "react-jwt";
+import {api} from "@/Components/instance/api";
+import {setCurrentUser} from "@/redux/User/action";
 
 const DefaultFatch = () => {
+  const {repatch} = useSelector(state => state.Tools
+  )
   const dispatch = useDispatch();
 
   useEffect(() => {
     // Update device width on window resize
-
     const handleResize = () => {
       if (window.innerWidth <= 768) {
         dispatch(setDeviceType("mobile"));
@@ -28,7 +33,32 @@ const DefaultFatch = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  
+  const token = Cookies.get('auth_token')
+
+  useEffect(() => {
+    (
+        async () => {
+          if (token){
+            const decoded = decodeToken(token)
+            if (decoded){
+              try {
+                const user = await  api.get(`/api/users/${decoded.email}`)
+                dispatch(setCurrentUser(user.data))
+              }
+              catch (error) {
+                dispatch(setCurrentUser(null))
+              }
+            }
+
+          }
+        }
+    )() 
+  }, [token , repatch]);
+  
+  
   return;
 };
 
 export default DefaultFatch;
+
