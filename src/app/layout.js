@@ -1,7 +1,7 @@
 import 'animate.css';
 import "./globals.css";
 import StoreProvider from "@/redux/StoreProvider";
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-flip';
@@ -24,6 +24,7 @@ export default function RootLayout({ children }) {
     <StoreProvider>
       <html lang="en" data-theme="light">
         <body className='relative bg-white pb-20'>
+        <SpeedInsights />
           <DefaultFatch />
           <Toaster />
           <Topbar />
