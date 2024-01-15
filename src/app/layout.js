@@ -14,30 +14,29 @@ import Topbar from "@/Components/Shared/Bars/Topbar";
 import BottomNavigation from '@/Components/Shared/Bars/BottomNavigation';
 import DefaultFatch from '@/Components/Shared/DefaultFatch';
 import { Toaster } from "react-hot-toast";
-
+import 'react-loading-skeleton/dist/skeleton.css'
 export const metadata = {
   title: "Linear Hub",
-  description: "Linear Hub Gradget & Electronics Shop",
+  description: "Linear Hub Gadget & Electronics Shop",
 };
 
 export default function RootLayout({ children }) {
+  
   return (
     <StoreProvider>
       <html lang="en" data-theme="light">
-        <body className='relative bg-white pb-20'>
-          <SpeedInsights />
-          <DefaultFatch />
-          <Toaster />
-          <Topbar />
-          <Navbar />
-          {children}
-          <BottomNavigation />
-          <Footer />
-          <script
-            type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUDmkMGZD5mIPpiGRVQov8aPztKKB5B2c&libraries=places"
-          />
-        </body>
+      <body className='relative bg-white pb-20'>
+      <Toaster />
+      <SpeedInsights/>
+      <DefaultFatch/>
+      {children}
+      <script
+          type="text/javascript"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUDmkMGZD5mIPpiGRVQov8aPztKKB5B2c&libraries=places"
+      />
+      <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"/>
+      </body>
       </html>
     </StoreProvider>
   );

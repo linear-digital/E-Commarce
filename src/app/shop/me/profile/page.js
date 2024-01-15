@@ -38,7 +38,7 @@ const page = () => {
                     </div>
                     <input name={"name"} type="text" placeholder="Full Name"
                            defaultValue={currentUser?.name}
-                           className="input input-sm text-sm input-bordered w-full"/>
+                           className="input  text-sm input-bordered w-full"/>
                 </label>
                 <label className="form-control w-full">
                     <div className="label">
@@ -50,7 +50,7 @@ const page = () => {
                         disabled={true}
                         defaultValue={currentUser?.email}
                         name={"email"} type="email" placeholder="Email Address"
-                           className="input input-sm text-sm input-bordered w-full"/>
+                           className="input  text-sm input-bordered w-full"/>
                 </label>
                 <label className="form-control w-full">
                     <div className="label">
@@ -60,7 +60,7 @@ const page = () => {
                     </div>
                     <input name={"phone"} type="text" placeholder="+8801"
                            defaultValue={currentUser?.phone ? currentUser?.phone : "+880"}
-                           className="input input-sm text-sm input-bordered w-full"/>
+                           className="input  text-sm input-bordered w-full"/>
                 </label>
                 <label className="form-control w-full">
                     <div className="label">
@@ -71,16 +71,16 @@ const page = () => {
                     <input 
                     defaultValue={currentUser?.date_of_birth} name={"date_of_birth"}
                            type="date"
-                           className="input input-sm text-sm input-bordered w-full"
+                           className="input  text-sm input-bordered w-full"
                     />
                 </label>
-                <label className="form-control w-full">
+                <label className="form-control w-full ">
                     <div className="label">
                         <span className="label-text text-xs">
                             Gender
                         </span>
                     </div>
-                    <select  className="select select-sm select-bordered w-full " name={"gender"}>
+                    <select  className="select  select-bordered w-full " name={"gender"}>
                         <option value={""}>
                             Select Your Gender
                         </option>

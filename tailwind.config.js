@@ -6,20 +6,18 @@
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/*.{js,ts,jsx,tsx,mdx}",
   ],
-
-  plugins: [require("daisyui")],
+    daisyui: {
+      themes: [
+        {
+          mytheme: {
+            primary: "#FF7020",
+            secondary: "#f6d860",
+            accent: "#37cdbe",
+            neutral: "#3d4451"
+          },
+        },
+        "light"
+      ],
+    },
+  plugins: [require("daisyui"), require('flowbite/plugin')],
 };
-//
-// daisyui: {
-//   themes: [
-//     {
-//       mytheme: {
-//         primary: "#FF7020",
-//         secondary: "#f6d860",
-//         accent: "#37cdbe",
-//         neutral: "#3d4451"
-//       },
-//     },
-//     "light"
-//   ],
-// },

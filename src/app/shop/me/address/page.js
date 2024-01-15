@@ -24,7 +24,7 @@ const page = () => {
         <div>
             <div className='flex justify-between'>
             <h1 className="text-2xl font-semibold">Address</h1>
-            <Link href={`/me/address/add`} className='btn btn-sm btn-primary text-sm'>Add</Link>
+            <Link href={`/shop/me/address/add`} className='btn btn-sm btn-primary text-sm'>Add</Link>
             </div>
             <div className="grid grid-cols-2 gap-10 mt-5">
             {

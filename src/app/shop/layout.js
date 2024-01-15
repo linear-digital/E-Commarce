@@ -2,6 +2,7 @@ import Footer from "@/Components/Shared/Footer/Footer";
 import Navbar from "@/Components/Shared/Bars/Navbar";
 import Topbar from "@/Components/Shared/Bars/Topbar";
 import BottomNavigation from "@/Components/Shared/Bars/BottomNavigation";
+import ChaildLayout from "@/Components/Pages/ChaildLayout";
 
 export const metadata = {
   title: "Linear Hub Shop",
@@ -10,12 +11,12 @@ export const metadata = {
 
 export default function layout({ children }) {
   return (
-    <div>
+    <ChaildLayout>
       <Topbar />
       <Navbar />
       {children}
       <BottomNavigation />
       <Footer />
-    </div>
+    </ChaildLayout>
   );
 }

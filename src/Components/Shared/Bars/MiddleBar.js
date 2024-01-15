@@ -10,6 +10,8 @@ import {useSelector} from "react-redux";
 const MiddleBar = ({ isSticky, setShow, active }) => {
   const [show, setShow1] = useState(false);
   const {currentUser} = useSelector(state=> state.User)
+  const {cartItems} = useSelector(state=> state.Cart)
+  console.log(typeof cartItems);
   return (
     <main className="shadow shadow-gray-100 bg-white lg:px-0 px-2 pb-2 lg:pb-0">
       <section className="container mx-auto lg:h-[90px] h-[50px] flex items-center justify-between pt-2">
@@ -101,10 +103,13 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
           >
             <MenuIcon />
           </button>
-          <Link href={'/cart'} className="ml-14 ">
-            <Cart />
+          <Link href={'/shop/cart'} className="ml-14 relative">
+            <Cart /> 
+            <div className="w-[25px] h-[25px] bg-orange-500 rounded-full border-2 border-white absolute top-[-13px] right-[-10px] flex items-center justify-center text-sm font-semibold text-white" >
+            {cartItems?.length}
+            </div>
           </Link>
-          <Link href={'/me'} className="btn btn-primary shadow-md  shadow-orange-500 ml-14">
+          <Link href={'/shop/me'} className="btn btn-primary shadow-md  shadow-orange-500 ml-14">
             <Avater />
             <span>
               {

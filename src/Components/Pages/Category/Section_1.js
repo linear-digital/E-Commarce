@@ -3,6 +3,8 @@
 import ProductCard from "@/Components/Shared/Cards/ProductCard";
 import { Grid, List } from "@/assets/icons";
 import React, { useEffect, useState } from "react";
+import {api} from "@/Components/instance/api";
+import CategoryLoader from "@/Components/Pages/Category/CategoryLoader";
 
 const Section_1 = ({ name }) => {
   const [shortBy, setShortBy] = useState("Default");
@@ -15,6 +17,7 @@ const Section_1 = ({ name }) => {
     setPriceRange({ min, max })
     setShowFilter(false)
   }
+  const [products , setProducts] = useState([])
   const [activePage, setActivePage] = useState(1)
   const [totalPages, setTotalPages] = useState(10)
   const [pages, setPages] = useState([])
@@ -26,8 +29,7 @@ const Section_1 = ({ name }) => {
 
   const renderPaginationLinks = () => {
     const links = [];
-
-    for (let i = 1; i <= totalPages; i++) {
+    for (let i = 1; i <= products?.length; i++) {
       links.push(
         <button key={i} onClick={() => { handlePageClick(i) }} className={`btn mr-1 ${activePage === i ? "btn-primary" : "btn-ghost bg-[#FFEFE7] text-gray-700"} btn-sm w-[30px] h-[27px]`}>
           {i}
@@ -37,6 +39,18 @@ const Section_1 = ({ name }) => {
 
     return links;
   };
+const [loading , setLoading] = useState(true)
+
+  useEffect(() => {
+    (
+      async ()=> {
+        setLoading(true)
+        const res = await  api.get('/api/products')
+        setProducts(res.data)
+        setLoading(false)
+      }
+    )()
+  }, []);
 
 
 
@@ -52,7 +66,7 @@ const Section_1 = ({ name }) => {
         </h1>
         <div className="flex items-center">
           <button onClick={() => setViewType("grid")}>
-            <Grid active={viewType === "grid"}/>
+             <Grid active={viewType === "grid"}/>
           </button>
           <button onClick={() => setViewType("list")} className="ml-8">
             <List active={viewType === "list"}/>
@@ -83,47 +97,43 @@ const Section_1 = ({ name }) => {
         </div>
       </div>
       {
-        viewType === "list" ?
-          <section className="grid grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
-            <ProductCard type={'list'}/>
-            <ProductCard type={'list'}/>
-            <ProductCard type={'list'}/>
-            <ProductCard type={'list'}/>
-            <ProductCard type={'list'}/>
-            <ProductCard type={'list'}/>
-            <ProductCard type={'list'}/>
-            <ProductCard type={'list'}/>
-            <ProductCard type={'list'}/>
-            <ProductCard type={'list'}/>
-            <ProductCard type={'list'}/>
-            <ProductCard type={'list'}/>
-            <ProductCard type={'list'}/>
-            <ProductCard type={'list'}/>
-            <ProductCard type={'list'}/>
-          </section>
-          :
-          <section className="grid grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-          </section>
+        loading ?
+            <div>
+              <CategoryLoader />
+            </div>
+            :
+
+            <section>
+
+              {
+                viewType === "list" ?
+                    <section className="grid grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+                      {
+                        products?.map((product) => (
+                            <ProductCard key={product._id} type={'list'} data={product}/>
+                        ))
+                      }
+
+                    </section>
+                    :
+                    <section className="grid grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
+                      {
+                        products?.map((product) => (
+                            <ProductCard key={product._id} data={product}/>
+                        ))
+                      }
+                    </section>
+              }
+            </section>
       }
 
       <div className="flex justify-between items-center mt-10 px-3">
-        <div className="text-neutral-400 text-base font-normal ">Showing 12 of 120 result</div>
+        <div
+            className="text-neutral-400 text-base font-normal ">Showing {products?.length} of {products?.length} result
+        </div>
 
         <div className="flex items-center">
           {renderPaginationLinks()}
-
         </div>
       </div>
     </div>

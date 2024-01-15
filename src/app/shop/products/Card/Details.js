@@ -4,36 +4,19 @@
 
 import React from 'react'
 
-const Description = () => {
+const Description = ({data}) => {
     return (
         <div className={"w-full shadow-xl p-5"}>
-            <h1 className={"text-2xl font-semibold"}>Specification</h1>
+            <h1 className={"text-2xl font-semibold"}>Description</h1>
 
             <div className={"p-2 mt-5"}>
-                <Card  title={"Gamdias HADES M2 Optical Gaming Mouse"} desc={"The HADES M2 optical wired/wireless gaming mouse has" +
-                    " every feature of a high-end device. Built with integrated RGB lights, tough switches, a gaming-grade optical sensor, and a 500mAh" +
-                    " battery with energy-saving technology for long-lasting battles."}/>
-                <Card  title={"Gamdias HADES M2 Optical Gaming Mouse"} desc={"The HADES M2 optical wired/wireless gaming mouse has" +
-                    " every feature of a high-end device. Built with integrated RGB lights, tough switches, a gaming-grade optical sensor, and a 500mAh" +
-                    " battery with energy-saving technology for long-lasting battles."}/>
-                <Card  title={"Gamdias HADES M2 Optical Gaming Mouse"} desc={"The HADES M2 optical wired/wireless gaming mouse has" +
-                    " every feature of a high-end device. Built with integrated RGB lights, tough switches, a gaming-grade optical sensor, and a 500mAh" +
-                    " battery with energy-saving technology for long-lasting battles."}/>
-                <Card  title={"Gamdias HADES M2 Optical Gaming Mouse"} desc={"The HADES M2 optical wired/wireless gaming mouse has" +
-                    " every feature of a high-end device. Built with integrated RGB lights, tough switches, a gaming-grade optical sensor, and a 500mAh" +
-                    " battery with energy-saving technology for long-lasting battles."}/>
-                <Card  title={"Gamdias HADES M2 Optical Gaming Mouse"} desc={"The HADES M2 optical wired/wireless gaming mouse has" +
-                    " every feature of a high-end device. Built with integrated RGB lights, tough switches, a gaming-grade optical sensor, and a 500mAh" +
-                    " battery with energy-saving technology for long-lasting battles."}/>
-                <Card  title={"Gamdias HADES M2 Optical Gaming Mouse"} desc={"The HADES M2 optical wired/wireless gaming mouse has" +
-                    " every feature of a high-end device. Built with integrated RGB lights, tough switches, a gaming-grade optical sensor, and a 500mAh" +
-                    " battery with energy-saving technology for long-lasting battles."}/>
-                <Card  title={"Gamdias HADES M2 Optical Gaming Mouse"} desc={"The HADES M2 optical wired/wireless gaming mouse has" +
-                    " every feature of a high-end device. Built with integrated RGB lights, tough switches, a gaming-grade optical sensor, and a 500mAh" +
-                    " battery with energy-saving technology for long-lasting battles."}/>
-                <Card  title={"Gamdias HADES M2 Optical Gaming Mouse"} desc={"The HADES M2 optical wired/wireless gaming mouse has" +
-                    " every feature of a high-end device. Built with integrated RGB lights, tough switches, a gaming-grade optical sensor, and a 500mAh" +
-                    " battery with energy-saving technology for long-lasting battles."}/>
+                {
+                   data?.map((dt , index) => (
+                       <Card key={index} title={dt.key} desc={dt.value}/>
+                   ))
+                }
+
+
             </div>
         </div>
     )
@@ -45,7 +28,7 @@ const Card = ({title , desc}) => {
         <h1 className={"text-xl font-semibold"}>
             {title}
         </h1>
-        <p className={"mt-1 text-sm"}>
+        <p className={"mt-1 text-[15px]"}>
             {desc}
         </p>
     </div>

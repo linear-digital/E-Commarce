@@ -49,7 +49,7 @@ const page = ({ params }) => {
             const res = await api.put(`/api/address/${params.id}`, data)
             if (res.status === 200) {
                 toast.success("Address Updated Done")
-                router.push('/me/address')
+                router.push('/shop/me/address')
             }
         } catch (error) {
             toast.error(error.response.data.message)
@@ -62,10 +62,21 @@ const page = ({ params }) => {
             const res = await api.get(`/api/address/${params.id}`)
             setOldAddress(res.data)
             if (!res.data) {
-                router.push('/me/address')
+                router.push('/shop/me/address')
             }
         })()
     }, [])
+    const deleteHandler = async (id) => {
+        try {
+            const res = await api.delete(`/api/address/${params.id}`)
+            if (res.status === 200) {
+                toast.success("Address Deleted")
+                router.push('/shop/me/address')
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return (
         <div>
             <form onSubmit={formHandler} className=''>
@@ -156,7 +167,8 @@ const page = ({ params }) => {
                         </label>
                     </div>
                 </div>
-                <button className='btn btn-primary w-[200px] mt-5'>Add Address</button>
+                <button className='btn btn-primary w-[200px] mt-5'>Update Address</button> 
+                <div onClick={deleteHandler} className='btn btn-error text-white w-[200px] mt-5 ml-5'>Delete Address</div>
             </form>
 
         </div>

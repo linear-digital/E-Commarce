@@ -6,14 +6,13 @@
 import React, { useEffect, useState } from "react";
 import { Delete, Love, Minus, Plus, Taka } from "@/assets/icons";
 import Image from "next/image";
-import { api, localURL } from "@/Components/instance/api";
+import {api, localURL} from "@/Components/instance/api";
 import { useDispatch, useSelector } from "react-redux";
-import { setCheckOut } from "@/redux/Cart/action";
-import { toast } from "react-hot-toast";
-import { setRepatch } from "@/redux/Tools/action";
-import Link from "next/link";
+import {setCheckOut} from "@/redux/Cart/action";
+import {toast} from "react-hot-toast";
+import {setRepatch} from "@/redux/Tools/action";
 
-const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, totalPrice }) => {
+const CartCard = ({ markAll, cart, marked, setMarked , setMark,setTotalPrice,totalPrice }) => {
   const dispatch = useDispatch();
   const { checkOut } = useSelector((state) => state.Cart);
   const [number, setNumber] = useState(1);
@@ -31,35 +30,35 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
   };
   const [checked, setChecked] = useState(false);
   const setCheckOutHandler = (type) => {
-    const order = cart
-    const isExist = checkOut?.filter(item => item._id === order._id).length < 0
-    if (type && !isExist) {
-      dispatch(setCheckOut([...checkOut, order]))
+    const order = {
+      product_id: cart?.product?._id,
+      price: cart.price,
+      product_name: cart?.product?.name,
+      image: cart?.product?.cover,
+      quantity: 1,
+      price_total: cart.price
     }
-    else {
-      const newData = checkOut?.filter(item => item._id !== order._id)
+    const isExist = checkOut?.filter(item=> item.product_id === order.product_id).length < 0
+
+    if (type && !isExist){
+        dispatch(setCheckOut([...checkOut, order]))
+    }
+    else{
+      const newData = checkOut?.filter(item=> item.product_id !== order.product_id)
       dispatch(setCheckOut(newData))
     }
 
   };
   const deleteCart = async () => {
-    try {
-      const agree = window.confirm("Are you sure?")
-      if (agree) {
+      try {
         const res = await api.delete(`/api/cart/${cart._id}`)
         toast.success("Item Delete Success")
         dispatch(setRepatch(res))
       }
-    }
-    catch (e) {
-      toast.error('Something went wrong')
-    }
+      catch (e) {
+        toast.error('Something went wrong')
+      }
   }
-  useEffect(() => {
-    const exist = checkOut?.filter(item => item.product_id === cart?.product_id && item.variant === cart?.variant).length > 0
-    setChecked(exist)
-  }, [checkOut])
-
   return (
     <tr className={"flex items-center py-5 w-full"}>
       <th>
@@ -68,6 +67,7 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
             type="checkbox"
             onChange={(e) => {
               setCheckOutHandler(e.target.checked)
+              setChecked(e.target.checked)
             }}
             checked={checked}
             className="checkbox"
@@ -75,21 +75,21 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
         </label>
       </th>
       <td className={"flex items-center w-full"} >
-        <Link href={`/shop/products/${cart?.product?._id}`} className="min-w-[132px] max-w-[142px] max-h-[153px] border bg-stone-300 rounded-[14px] bordered overflow-hidden">
+        <div className="min-w-[132px] max-w-[142px] max-h-[153px] border bg-stone-300 rounded-[14px] bordered overflow-hidden">
           <Image
-            src={localURL + cart?.image}
+            src={localURL + cart?.product?.cover}
             alt={"product Image"}
             width={480}
             height={320}
           />
-        </Link>
+        </div>
         <div className={"ml-5 w-full"}>
           <div className={"flex justify-between items-center w-full"}>
             <h1 className="text-black text-base font-semibold ">
-              {cart?.product_name}
+              {cart?.product?.name}
             </h1>
             <h5 className="text-neutral-600 text-sm font-normal ">
-              SKU {cart?.product_code}
+              SKU {cart?.product?.code}
             </h5>
           </div>
           <div className={"flex justify-between items-center mt-3"}>
@@ -106,7 +106,7 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
 
               <div className={"flex ml-3"}>
                 <button
-                  onClick={deleteCart}
+                    onClick={deleteCart}
                   className={"text-red-500 btn btn-ghost min-h-[56px] mr-3"}
                 >
                   <Delete />

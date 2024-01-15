@@ -1,8 +1,10 @@
-import {CARTITEMS, CHECKOUT,} from "./constants";
+import {CARTITEMS, CHECKOUT, CONFIRM, TOTAL_PRICE,} from "./constants";
 
 
 const initialState = {
-
+  checkOut: [],
+  cartItems: [],
+  total_price: 0,
 };
 
 const Cart = (state = initialState, action) => {
@@ -16,6 +18,16 @@ const Cart = (state = initialState, action) => {
       return {
         ...state,
         checkOut: action.payload
+      }
+    case TOTAL_PRICE:
+      return {
+        ...state,
+        total_price: action.payload
+      }
+    case CONFIRM:
+      return {
+        ...state,
+        confirm_order: action.payload
       }
     default:
       return { ...state };

@@ -5,7 +5,8 @@ const nextConfig = {
       "www.ryanscomputers.com",
       "www.newsshooter.com",
       "dropshop.com.bd",
-        "sg-test-11.slatic.net"
+        "sg-test-11.slatic.net",
+        "localhost"
     ],
   },
 };

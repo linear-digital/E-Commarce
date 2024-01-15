@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { usePlacesWidget } from "react-google-autocomplete";
 import { api } from '@/Components/instance/api';
@@ -11,14 +11,8 @@ import { useRouter } from 'next/navigation';
 const page = () => {
   const { currentUser } = useSelector(state => state.User)
   const [address, setAddress] = useState(null)
-  const [value, setValue] = useState(null)
-  const apiKey = "AIzaSyBUDmkMGZD5mIPpiGRVQov8aPztKKB5B2c"
-  const { ref, autocompleteRef } = usePlacesWidget({
-    apiKey: apiKey,
-    onPlaceSelected: (place) => {
-      setAddress(place)
-    }
-  });
+  
+ 
   const router = useRouter()
   const formHandler = async (e) => {
     e.preventDefault()
@@ -46,16 +40,50 @@ const page = () => {
     try {
       const res = await api.post('/api/address', data)
       if (res.status === 200) {
-          toast.success("Address Added")
-          router.push('/me/address')
+        toast.success("Address Added")
+        router.push('/shop/me/address')
       }
     } catch (error) {
       toast.error(error.response.data.message)
     }
 
   }
+  const useCurrentAddress = () => {
+    const apiKey = "AIzaSyBUDmkMGZD5mIPpiGRVQov8aPztKKB5B2c"
+    if ("geolocation" in navigator) {
+      // Get the current location
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          console.log(position);
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          
+          console.log("Latitude: " + latitude + ", Longitude: " + longitude);
+          const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
+          fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+              // Extract the relevant location information from the response
+              const address = data.results[0]
+              setAddress(address)
+            })
+            .catch(error => console.error('Error fetching location data:', error));
+
+          // You can use the latitude and longitude values as needed
+        },
+        function (error) {
+          console.error("Error getting location: ", error.message);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by your browser");
+    }
+  }
+
+  console.log(address);
   return (
     <div>
+      <button className='btn btn-primary' onClick={useCurrentAddress}>Use Your Current Location</button>
       <form onSubmit={formHandler} className=''>
         <div className='grid grid-cols-3 gap-5'>
           <TextInput label={"Full Name"} name={"name"} value={currentUser?.name} />
@@ -75,9 +103,31 @@ const page = () => {
                 type="text"
                 name='country'
                 autoComplete='off'
-                defaultValue={address?.address_components[3]?.long_name || "Bangladesh"}
+                defaultValue={"Bangladesh"}
                 className="input input-bordered w-full text-sm"
               />
+            </label>
+          </div>
+          <div className={"w-full"}>
+            <label className="form-control w-full">
+              <div className="label">
+                <span className="label-text">Division</span>
+              </div>
+              <select name='division' value={address?.address_components[4]?.long_name} className='select select-bordered'>
+                <option value=''>Select</option>
+                {
+                  [
+                    "Dhaka Division",
+                    "Chittagong Division",
+                    "Rajshahi Division",
+                    "Khulna Division",
+                    "Barisal Division",
+                    "Sylhet Division",
+                    "Rangpur Division",
+                    "Mymensingh Division"
+                  ].map((d, index) => <option key={index} value={d}>{d}</option>)
+                }
+              </select>
             </label>
           </div>
           <div className={"w-full"}>
@@ -86,7 +136,7 @@ const page = () => {
                 <span className="label-text">City/Town</span>
               </div>
               <input
-                ref={ref} {...autocompleteRef}
+              defaultValue={address?.address_components[2]?.long_name || ""}
                 placeholder='City/Town'
                 name='district'
                 type="text"
@@ -96,22 +146,7 @@ const page = () => {
               />
             </label>
           </div>
-          {
-            address && <div className={"w-full"}>
-              <label className="form-control w-full">
-                <div className="label">
-                  <span className="label-text">Division</span>
-                </div>
-                <input
-                  name='division'
-                  type="text"
-                  autoComplete='off'
-                  defaultValue={address?.address_components[2]?.long_name}
-                  className="input input-bordered w-full text-sm"
-                />
-              </label>
-            </div>
-          }
+
           <div className={"w-full"}>
             <label className="form-control w-full">
               <div className="label">
@@ -132,6 +167,7 @@ const page = () => {
                 <span className="label-text">Address</span>
               </div>
               <input
+              defaultValue={address ? address?.formatted_address : ""}
                 type="text"
                 autoComplete='off'
                 name='home_address'

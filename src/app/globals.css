@@ -85,7 +85,16 @@ progress::-moz-progress-bar {
   width: 4px;
   border-radius: 5px;
 }
-
+.bg-red{
+  background-color: red;
+}
+.bg-silver{
+  background-color: rgba(192, 192, 192, 0.89);
+  color: #FF7020 !important;
+}
+.bg-green{
+  background-color: green;
+}
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }

@@ -16,10 +16,10 @@ const Page = () => {
     const token = Cookies.get("auth_token")
     useEffect(()=> {
         if (!token){
-            router.push('/login')
+            router.push('/shop/login')
         }
         else{
-            router.push('/me/profile')
+            router.push('/shop/me/profile')
         }
     },[token])
     return (
