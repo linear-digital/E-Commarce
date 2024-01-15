@@ -1,0 +1,1 @@
+/* * Copyright (c) jan.24.Tamiz */import React from 'react'const page = () => {    return (        <div></div>    )}export default page
