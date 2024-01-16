@@ -78,30 +78,6 @@ const Page = () => {
             <div className={"container mx-auto "}>
                 <div className={"grid grid-cols-10 w-full mt-10 gap-10"}>
                     <div className={"col-span-6"}>
-                        <div className={"flex justify-between  border px-4 h-[80px] items-center rounded-lg"}>
-                            <div className={"flex items-center"} >
-                                <input
-                                    type="checkbox" checked={checkOut.length === carts.length}
-                                    onChange={(e) => {
-                                        setMark(e.target.checked)
-                                        if (e.target.checked) {
-                                            dispatch(setCheckOut(carts))
-                                        }
-                                        else{
-                                            dispatch(setCheckOut([]))
-                                        }
-                                    }}
-                                    className="checkbox" />
-                                <h3 className={"ml-4"}>
-                                    Select All
-                                </h3>
-                            </div>
-                            <div className={"flex items-center"}>
-                                <button className={"uppercase text-primary text-[16px]"}>Update Cart</button>
-                                <div className="w-0.5 h-7 mx-4 bg-gray-200 rounded-lg" />
-                                <button className={"uppercase text-red-600 text-[16px]"}>Remove</button>
-                            </div>
-                        </div>
                         {/*Cart Box */}
                         <div className="overflow-x-auto">
                             {

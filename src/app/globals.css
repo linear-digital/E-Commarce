@@ -113,4 +113,20 @@ progress::-moz-progress-bar {
 .image-container.zoomed img {
   transform-origin: top left;
 }
-
+.btn-pending{
+  background-color: #d39f11 !important;
+  color: #ffffff;
+}
+.btn-processing{
+  background-color: #FF7020 !important;
+  color: white;
+}.btn-shipped{
+  background-color: greenyellow !important;
+  color: black;
+}.btn-delivered{
+  background-color: green !important;
+  color: white;
+}
+.steps .step-primary + .step-primary:before, .steps .step-primary:after{
+  background-color: #FF7020 !important;
+}

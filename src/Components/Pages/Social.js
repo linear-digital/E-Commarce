@@ -22,6 +22,7 @@ const Social = () => {
             if (res.data.token) {
                 Cookies.set('auth_token', res.data.token)
                 router.push('/shop/me')
+                window.location.reload()
             }
         } catch (error) {
             toast.error(error.response.data.message)

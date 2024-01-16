@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
+import { BarLoader } from 'react-spinners';
 
 const ChaildLayout = ({ children }) => {
     const [loading, setLoading] = useState(true)
@@ -9,12 +10,8 @@ const ChaildLayout = ({ children }) => {
         setLoading(false)
     }, 2000)
     if (loading) {
-        return <div>
-            <Skeleton height={50} />
-            <Skeleton height={150} />
-            <div className=''>
-                <Skeleton height={800} />
-            </div>
+        return <div className='h-screen w-full flex justify-center items-center'>
+            <BarLoader width={250} color="#FF7020" />
         </div>
     }
     return children

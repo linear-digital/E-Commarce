@@ -25,6 +25,7 @@ const Page = () => {
                 toast.success(res.data.message)
                 router.push('/')
                 Cookies.set('auth_token' , res.data.token)
+                window.location.reload()
             }
         } catch (error) {
             toast.error(error.response?.data?.message)

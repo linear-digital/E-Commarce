@@ -7,12 +7,13 @@ import React, { useEffect, useState } from 'react'
 import RecentViewed from "@/Components/Pages/Home/RecentViewed";
 import Newsletter from "@/Components/Pages/Home/Newsletter";
 import OrderCard from "@/app/shop/checkout/OrderCard";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { api } from '@/Components/instance/api';
 import { Spinner, Taka } from '@/assets/icons';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
+import { setRepatch } from '@/redux/Tools/action';
 
 const Page = () => {
     const router = useRouter()
@@ -69,11 +70,11 @@ const Page = () => {
         for (let i = 0; i < length; i++) {
             result += characters.charAt(Math.floor(Math.random() * charactersLength)).toUpperCase();
         }
-        return result;
+        return "#" + result;
     }
 
     const sixDigitRandomText = generateRandomCode(10);
-
+    const dispatch = useDispatch()
     const confirmOrder = () => {
         const submitOrder = async (data) => {
             try {
@@ -84,6 +85,7 @@ const Page = () => {
                         const id = checkOut[i]._id
                         try {
                             await api.delete(`/api/cart/${id}`)
+                            dispatch(setRepatch(res))
                             router.push('/shop/me/orders')
                         } catch (error) {
                             console.log(error);
@@ -117,7 +119,7 @@ const Page = () => {
         }
 
     }
-    const [loading , setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
     const useCurrentAddress = () => {
         const apiKey = "AIzaSyBUDmkMGZD5mIPpiGRVQov8aPztKKB5B2c"
         if ("geolocation" in navigator) {
@@ -161,7 +163,7 @@ const Page = () => {
             setShipping(60)
         }
         else {
-            setShipping(100)
+            setShipping(120)
         }
     }, [address])
     useEffect(() => {
@@ -177,7 +179,7 @@ const Page = () => {
         }
         setAddress(newAddress)
     }, [myaddress])
-    
+
     return (
         <section>
             <div className={"container mx-auto grid grid-cols-11 mt-10 gap-10"}>

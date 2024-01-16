@@ -9,6 +9,9 @@ const nextConfig = {
         "localhost"
     ],
   },
+  experimental: {
+    taint: true,
+  },
 };
 
 module.exports = nextConfig;
