@@ -1,34 +1,34 @@
 export const navigations = [
     {
       name: "All Categories",
-      href: "/shop/categories",
+      href: "/categories",
     },
     {
       name: "Accessories",
-      href: "/shop/accessories",
+      href: "/accessories",
     },
     {
       name: "Smartphones",
-      href: "/shop/smartphones",
+      href: "/smartphones",
     },
     {
       name: "Computers",
-      href: "/shop/computers",
+      href: "/computers",
     },
     {
       name: "Gaming Equipments",
-      href: "/shop/gaming-equipments",
+      href: "/gaming-equipments",
     },
     {
       name: "TV & Monitor",
-      href: "/shop/tv-monitor",
+      href: "/tv-monitor",
     },
     {
       name: "Headphones",
-      href: "/shop/headphones",
+      href: "/headphones",
     },
     {
       name: "Speakers",
-      href: "/shop/speakers",
+      href: "/speakers",
     },
   ];

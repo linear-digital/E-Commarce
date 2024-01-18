@@ -1,6 +1,7 @@
 import React from "react";
 import "./Bars.css";
 import Image from "next/image";
+import Link from "next/link";
 const Topbar = () => {
   return (
     <div className="h-[53px] w-full bg-primary hidden lg:block">
@@ -20,16 +21,20 @@ const Topbar = () => {
         {/* Topbar Left Side end here   */}
         {/* Topbar Right Side start Here  */}
         <div className="flex items-center">
-          <button className="flex items-center ml-[65px]">
-            <Image src={"/images/localtion.svg"} width={17} height={21} alt=""/>
+          <a
+            href="https://maps.app.goo.gl/Zzzd7gRq7zjBfm3W6"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center ml-[65px]">
+            <Image src={"/images/localtion.svg"} width={17} height={21} alt="" />
             <span className="text-white ml-2 text-[15px]">Store Location</span>
-          </button>
-          <button className="flex items-center ml-[55px]">
-            <Image src={"/images/track.svg"} width={20} height={20} alt=""/>
+          </a>
+          <Link href={"/track-order"} className="flex items-center ml-[55px]">
+            <Image src={"/images/track.svg"} width={20} height={20} alt="" />
             <span className="text-white ml-2 text-[15px]">
               Track Your Order
             </span>
-          </button>
+          </Link>
           <div className="h-[30px] w-[2px] shadow-xl rounded-lg bg-gray-300 ml-10" />
           <div className="flex items-center ml-10">
             {/* Currencyes */}

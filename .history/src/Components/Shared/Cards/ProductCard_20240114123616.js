@@ -13,7 +13,7 @@ const ProductCard = ({ type , data }) => {
     const router = useRouter()
     const [price , setPrice] = useState(0)
     const handleClick = () => {
-        router.push(`/shop/products/${data._id}`)
+        router.push(`/products/${data._id}`)
     }
     useEffect(() => {
         setPrice(
@@ -40,16 +40,16 @@ const ProductCard = ({ type , data }) => {
             if (old) {
                 const new_cart = [...old_cart, cartItem];
                 localStorage.setItem("cart", JSON.stringify(new_cart));
-                router.push('/shop/cart')
+                router.push('/cart')
             } else {
                 const new_cart = [cartItem];
                 localStorage.setItem("cart", JSON.stringify(new_cart));
-                router.push('/shop/cart')
+                router.push('/cart')
             }
         }
         else{
             toast.error("This Product Already Added On Cart")
-            router.push('/shop/cart')
+            router.push('/cart')
 
         }
     };

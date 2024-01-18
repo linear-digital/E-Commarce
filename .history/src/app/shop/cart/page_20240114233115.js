@@ -3,7 +3,7 @@
  */
 'use client'
 import React, {useEffect, useState} from 'react'
-import CartCard from "@/app/shop/cart/CartCard";
+import CartCard from "@/app/cart/CartCard";
 import {Plus, RightCH, Taka, Wallet} from "@/assets/icons";
 import RecentViewed from "@/Components/Pages/Home/RecentViewed";
 import Newsletter from "@/Components/Pages/Home/Newsletter";
@@ -164,7 +164,7 @@ const Page = () => {
                                     className="text-right text-orange-500 text-[28px] font-semibold"><Taka /> {totalPrice}
                                 </div>
                             </div>
-                            <Link href={'/shop/checkout'} className={"btn btn-primary w-full mt-10"}>Checkout</Link>
+                            <Link href={'/checkout'} className={"btn btn-primary w-full mt-10"}>Checkout</Link>
                             <Link href={"/categories"} className="text-orange-500 text-center flex justify-center w-full mt-5 text-base font-bold">Back to Shopping</Link>
                         </div>
                     </div>

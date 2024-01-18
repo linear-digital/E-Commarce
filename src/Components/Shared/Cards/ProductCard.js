@@ -13,7 +13,7 @@ const ProductCard = ({ type , data }) => {
     const router = useRouter()
     const [price , setPrice] = useState(0)
     const handleClick = () => {
-        router.push(`/shop/products/${data._id}`)
+        router.push(`/products/${data._id}`)
     }
     useEffect(() => {
         setPrice(
@@ -30,7 +30,7 @@ const ProductCard = ({ type , data }) => {
                         <div onClick={handleClick} className="w-[200px] h-full shadow-xl shadow-stone-50 overflow-hidden flex justify-center items-center p-5"
                         >
                             <Image
-                                className="w-[170px] h-[150px]"
+                                className="w-full h-[150px]"
                                 src={localURL+data?.cover}
                                 width={548}
                                 height={314}
@@ -48,7 +48,7 @@ const ProductCard = ({ type , data }) => {
                             <div onClick={handleClick} className="mt-1 text-center text-black text-sm lg:text-[13px] font-semibold ">
                                 {data?.name}
                             </div>
-                            <Link href={`/shop/products/${data._id}`} className="btn border-primary btn-sm text-sm text-primary lg:mt-2 mt-3 border-2 w-full">
+                            <Link href={`/products/${data._id}`} className="btn border-primary btn-sm text-sm text-primary lg:mt-2 mt-3 border-2 w-full">
                                 Add To Cart
                             </Link>
                         </div>
@@ -59,7 +59,7 @@ const ProductCard = ({ type , data }) => {
                         <div onClick={handleClick} className="max-w-[273px] max-h-[250px] min-w-[243px] min-h-[180px] shadow-xl shadow-stone-50 rounded-md overflow-hidden flex justify-center items-center p-5"
                         >
                             <Image
-                                className="w-full h-[full] rounded-md"
+                                className="max-w-[273px] min-w-[243px] h-[full] rounded-md"
                                 src={localURL+data?.cover}
                                 width={428}
                                 height={240}
@@ -78,7 +78,7 @@ const ProductCard = ({ type , data }) => {
                             <div onClick={handleClick} className="lg:mt-5 mt-2 text-center text-black text-sm lg:text-base font-semibold ">
                                 {data?.name}
                             </div>
-                            <Link href={`/shop/products/${data._id}`} className="btn border-primary text-sm text-primary lg:mt-4 mt-3 border-2 w-full">
+                            <Link href={`/products/${data._id}`} className="btn border-primary text-sm text-primary lg:mt-4 mt-3 border-2 w-full">
                                 Add To Cart
                             </Link>
                         </div>

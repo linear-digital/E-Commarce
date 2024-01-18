@@ -21,7 +21,7 @@ const Social = () => {
             
             if (res.data.token) {
                 Cookies.set('auth_token', res.data.token)
-                router.push('/shop/me')
+                router.push('/me')
                 window.location.reload()
             }
         } catch (error) {

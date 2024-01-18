@@ -28,26 +28,26 @@ const LeftSide = ({ user }) => {
                 </h1>
                 <ul className={"mt-2 pl-3"}>
                     <li>
-                        <Link href={"/shop/me/profile"}
+                        <Link href={"/me/profile"}
                             className="text-neutral-500 text-sm font-normal">My
                             Profile
                         </Link>
                     </li>
                     <li>
-                        <Link href={"/shop/me/address"}
+                        <Link href={"/me/address"}
                             className="text-neutral-500 text-sm font-normal">
                             Address Book
                         </Link>
                     </li>
                     <li>
-                        <Link href={'/shop/me/orders'}>
+                        <Link href={'/me/orders'}>
                             <h1
                                 className=" text-neutral-700 text-base font-normal leading-normal mt-3">My Orders
                             </h1>
                         </Link>
                     </li>
                     <li>
-                        <Link href={'/shop/me/review'}>
+                        <Link href={'/me/review'}>
                             <h1
                                 className=" text-neutral-700 text-base font-normal leading-normal mt-3">Reviews
                             </h1>
