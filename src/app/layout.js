@@ -19,7 +19,6 @@ import 'react-loading-skeleton/dist/skeleton.css'
 export const metadata = {
   title: "Linear Hub | Online Shopping BD",
   description: "Linear Hub is the Best Laptop, Computer, Gaming PC, Component, Accessories, and Gadget retail &amp; Online shop in Bangladesh. Star Tech offers the Latest Tech products with the most competitive price in BD.",
-  viewport: "width=device-width, initial-scale=1",
 };
 
 export default function RootLayout({ children }) {
