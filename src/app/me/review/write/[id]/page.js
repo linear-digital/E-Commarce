@@ -46,7 +46,7 @@ const page = ({ params }) => {
                 formData.append('images', files[i])
             }
             try {
-                const res = await axios.post('http://localhost:4000/upload-review', formData)
+                const res = await axios.post('https://server.linearhub.com/upload-review', formData)
                 setImages([...images, ...res.data.images])
             } catch (error) {
                 console.log(error)
@@ -72,7 +72,7 @@ const page = ({ params }) => {
             })
     }, [order, repatch])
     if (!order) {
-        return <h1>Loading...</h1>
+        return <h2>Loading...</h2>
 
     }
     return (
@@ -80,10 +80,10 @@ const page = ({ params }) => {
             {
                 alrady ?
                     <>
-                        <h1 className='text-3xl font-bold'>Thanks For Your Review</h1>
+                        <h2 className='text-3xl font-bold'>Thanks For Your Review</h2>
                         <div>
                             <div className='flex items-center'>
-                                <h1 className='text-base font-bold mr-3 mt-2'>Product Ratings:</h1>
+                                <h2 className='text-base font-bold mr-3 mt-2'>Product Ratings:</h2>
                                 <Rating
                                     className='mt-2'
                                     name="simple-controlled"
@@ -94,7 +94,7 @@ const page = ({ params }) => {
                                 />
                             </div>
                             <div className='flex items-center'>
-                                <h1 className='text-base font-bold mr-3 mt-2'>Delivery Ratings:</h1>
+                                <h2 className='text-base font-bold mr-3 mt-2'>Delivery Ratings:</h2>
                                 <Rating
                                     className='mt-2'
                                     name="simple-controlled"
@@ -104,7 +104,7 @@ const page = ({ params }) => {
                                     }}
                                 />
                             </div>
-                            <h1 className='text-base mt-2'>Message: {review?.message}</h1>
+                            <h2 className='text-base mt-2'>Message: {review?.message}</h2>
                             <div className='flex items-center mt-5'>
                                 {
                                     review?.images?.map((img, index) => <Image
@@ -120,16 +120,16 @@ const page = ({ params }) => {
                     </>
                     :
                     <>
-                        <h1 className='text-3xl font-bold'>Write Review For</h1>
+                        <h2 className='text-3xl font-bold'>Write Review For</h2>
                         <div className='mt-4'>
                             <Image
                                 className='rounded-lg'
                                 src={localURL + order?.order[0]?.image} alt={""} width={100} height={100} />
-                            <h1 className='text-base mt-3 font-bold'>Product Name: {order?.order[0]?.product_name}</h1>
+                            <h2 className='text-base mt-3 font-bold'>Product Name: {order?.order[0]?.product_name}</h2>
                         </div>
                         <form onSubmit={writeReview} className='max-w-[500px] flex flex-col'>
                             <div className='flex items-center'>
-                                <h1 className='text-base font-bold mr-3 mt-2'>Product Ratings:</h1>
+                                <h2 className='text-base font-bold mr-3 mt-2'>Product Ratings:</h2>
                                 <Rating
                                     className='mt-2'
                                     name="simple-controlled"
@@ -140,7 +140,7 @@ const page = ({ params }) => {
                                 />
                             </div>
                             <div className='flex items-center'>
-                                <h1 className='text-base font-bold mr-3 mt-2'>Delivery Ratings:</h1>
+                                <h2 className='text-base font-bold mr-3 mt-2'>Delivery Ratings:</h2>
                                 <Rating
                                     className='mt-2'
                                     name="simple-controlled"

@@ -46,12 +46,12 @@ const page = async ({ params, data }) => {
                             {
                                 review ?
                                     <>
-                                    <h1 className='lg:text-2xl text-xl text-primary'>Thanks For  Your Review</h1>
+                                    <h2 className='lg:text-2xl text-xl text-primary'>Thanks For  Your Review</h2>
                                     <Link href={`/me/review/${params.id}`} className='btn btn-primary lg:mt-5 mt-2'>View</Link>
                                     </>
                                     :
                                     order?.status === "delivered" && <>
-                                        <h1 className='text-2xl text-primary'>Thanks For Order</h1>
+                                        <h2 className='text-2xl text-primary'>Thanks For Order</h2>
                                         <Link className='btn btn-primary mt-5'
                                             href={`/me/review/write/${order?.order_id}`}>Write A Review</Link>
                                     </>
@@ -59,7 +59,7 @@ const page = async ({ params, data }) => {
                         </div>
                     </div>
                     <div className='card my-5 shadow-lg max-w-[400px] p-4'>
-                        <h1 className='font-semibold'>Shipping Address</h1>
+                        <h2 className='font-semibold'>Shipping Address</h2>
                         <div className='mt-2'>
                             <p>{order?.address?.name}</p>
                             <p>{order?.address?.phone}</p>

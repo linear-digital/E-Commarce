@@ -5,7 +5,7 @@ const Specification = ({data}) => {
 
     return (
         <div className={"mt-10 shadow-xl px-5 pt-5 pb-10 w-full rounded"}>
-            <h1 className={"text-2xl font-semibold"}>Specification</h1>
+            <h2 className={"text-2xl font-semibold"}>Specification</h2>
 
             <div className={"mt-5 p-2 rounded bg-stone-50"}>
                 <h2 className={"text-base text-primary"}>Features</h2>

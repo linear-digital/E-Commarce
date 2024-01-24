@@ -29,7 +29,8 @@ const Page = () => {
                 dispatch(setRepatch(res))
                 toast.success(res.data.message)
                 router.push('/me/profile')
-                Cookies.set('auth_token', res.data.token)
+                await Cookies.set('auth_token', res.data.token)
+                window.location.reload()
             }
         } catch (error) {
             toast.error(error.response?.data?.message)
@@ -39,13 +40,13 @@ const Page = () => {
         if (token) {
             router.push('/me/profile')
         }
-    }, [])
+    }, [token])
     return (
         <div className={"container mx-auto flex justify-center mt-10 px-5 lg:px-0"}>
             <div className={"lg:w-[450px] lg:h-[480px] w-full h-auto  border rounded lg:p-5 "}>
                 <form className={"w-full"} onSubmit={formHandler}>
                     <div className="flex items-center justify-between mb-5">
-                        <h1 className={"text-2xl font-semibold  text-primary"}>Welcome Back</h1>
+                        <h2 className={"text-2xl font-semibold  text-primary"}>Welcome Back</h2>
                         <div
                             onClick={() => {
                                 router.push('/signup')

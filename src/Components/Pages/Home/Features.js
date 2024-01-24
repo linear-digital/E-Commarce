@@ -9,7 +9,7 @@ const Features = () => {
         <div className="flex flex-wrap lg:gap-y-10 gap-y-5 lg:gap-x-10 gap-x-5 justify-center">
           <FeaturesCard
             title={"Free Delivery"}
-            desc={"From $40"}
+            desc={"From ৳ *****"}
             Icon={<Track />}
           />
           <FeaturesCard

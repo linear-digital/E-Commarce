@@ -13,11 +13,11 @@ const page = async ({ params }) => {
     return (
         <div>
             <>
-                <h1 className='text-3xl font-bold'>Thanks For Your Review</h1>
-                <h1 className='text-xl font-bold'>{review?.order_id}</h1>
+                <h2 className='text-3xl font-bold'>Thanks For Your Review</h2>
+                <h2 className='text-xl font-bold'>{review?.order_id}</h2>
                 <div>
                     <div className='flex items-center'>
-                        <h1 className='text-base font-bold mr-3 mt-2'>Product Ratings:</h1>
+                        <h2 className='text-base font-bold mr-3 mt-2'>Product Ratings:</h2>
                         <Rating
                             className='mt-2'
                             name="simple-controlled"
@@ -25,14 +25,14 @@ const page = async ({ params }) => {
                         />
                     </div>
                     <div className='flex items-center'>
-                        <h1 className='text-base font-bold mr-3 mt-2'>Delivery Ratings:</h1>
+                        <h2 className='text-base font-bold mr-3 mt-2'>Delivery Ratings:</h2>
                         <Rating
                             className='mt-2'
                             name="simple-controlled"
                             value={review?.deliveryRatings}
                         />
                     </div>
-                    <h1 className='text-base mt-2'>Message: {review?.message}</h1>
+                    <h2 className='text-base mt-2'>Message: {review?.message}</h2>
                     <div className='flex items-center mt-5'>
                         {
                             review?.images?.map((img, index) => <Image

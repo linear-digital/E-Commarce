@@ -5,7 +5,7 @@ const AddressCard = ({ address, index }) => {
     return (
         <div className="border p-5 rounded">
             <div className='flex justify-between'>
-                <h1 className="text-xl font-semibold text-primary">Address Card {index + 1}</h1>
+                <h2 className="text-xl font-semibold text-primary">Address Card {index + 1}</h2>
                 <Link href={`/me/address/edit/${address?._id}`} className='btn btn-sm btn-primary text-sm'>Edit</Link>
             </div>
             <h3 className="text-base font-semibold">

@@ -175,7 +175,7 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
       {
         showResult && searchResult && search && <div className="absolute lg:top-[130px] top[100px] w-full h-[800px]  bg-white z-[3435] flex flex-col items-center left-0 right-0">
           <div className="lg:w-[800px] w-full flex justify-between items-center px-3">
-            <h1 className="text-xl font-semibold">Products</h1>
+            <h2 className="text-xl font-semibold">Products</h2>
             <button
               onClick={() => {
                 setShowResult(false)
@@ -199,7 +199,7 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
                   <Image
                     className="max-h-[50px] max-w-[50px] rounded"
                     width={50} height={50} src={localURL + data?.cover} alt="" />
-                  <h1 className="ml-5 text-xs"> {data.name}</h1>
+                  <h2 className="ml-5 text-xs"> {data.name}</h2>
                 </Link>
               ))
             }

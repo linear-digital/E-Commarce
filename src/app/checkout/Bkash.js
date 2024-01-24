@@ -10,7 +10,7 @@ const Bkash = () => {
     }
     return (
         <div className='text-stone-900 p-2 mt-2 flex flex-col items-start'>
-            <h1 className='text-primary font-semibold underline'>Bkash personal</h1>
+            <h2 className='text-primary font-semibold underline'>Bkash personal</h2>
             <h2
                 className='mt-2'
                 onClick={copyNumber}>

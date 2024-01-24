@@ -2,20 +2,25 @@
 
 const nextConfig = {
   images: {
-    domains: ["www.bdshop.com",
-      "www.ryanscomputers.com",
-      "www.newsshooter.com",
-      "dropshop.com.bd",
-      "sg-test-11.slatic.net",
-      "localhost",
-      "192.168.10.186",
-      "server.linearhub.com"
-    ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "server.linearhub.com",
+      },
+      {
+        protocol: "http",
+        hostname: "192.168.10.186",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+    ]
   },
   experimental: {
     taint: true,
   },
-  
+
 };
 
 module.exports = nextConfig;

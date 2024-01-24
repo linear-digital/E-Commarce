@@ -92,13 +92,13 @@ const Section_1 = ({ name }) => {
     <div className="w-full">
       <div className="lg:flex justify-between items-center py-2 w-full">
         <div className="flex items-center justify-between w-full mb-3 lg:mb-0">
-          <h1 className="text-xl font-semibold capitalize">
+          <h2 className="text-xl font-semibold capitalize">
             {
               name?.split("-").map((item, index) => {
                 return <span key={index}>{item} </span>
               })
             }
-          </h1>
+          </h2>
           <div className="flex items-center">
             <button onClick={() => setViewType("grid")}>
               <Grid active={viewType === "grid"} />

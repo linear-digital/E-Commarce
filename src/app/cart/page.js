@@ -8,10 +8,11 @@ import { Minus, Plus, RightCH, Taka, Wallet } from "@/assets/icons";
 import RecentViewed from "@/Components/Pages/Home/RecentViewed";
 import Newsletter from "@/Components/Pages/Home/Newsletter";
 import Link from "next/link";
-import { api } from "@/Components/instance/api";
 import { useDispatch, useSelector } from "react-redux";
 import { setCheckOut } from "@/redux/Cart/action";
 import Skeleton from 'react-loading-skeleton';
+import Head from 'next/head';
+import MetaTags from '@/Components/MetaTags';
 
 const Page = () => {
     const dispatch = useDispatch()
@@ -74,6 +75,10 @@ const Page = () => {
     }
     return (
         <section>
+            <MetaTags
+                title={"Linear Hub | Online Shopping BD | Cart Page"}
+                description={'Cart Page Temp'}
+            />
             <div className={"container mx-auto px-5"}>
                 <div className={"lg:grid grid-cols-10 w-full lg:mt-10 mt-2 lg:gap-10"}>
                     <div className={"col-span-6"}>
@@ -135,7 +140,7 @@ const Page = () => {
                             }
                         </div>
                         <div className="w-full lg:mt-10 mt-5 min-h-[314px] bg-white rounded-xl lg:p-10 p-5 border border-neutral-300">
-                            <h1 className="text-black text-xl font-semibold ">Shopping Summary</h1>
+                            <h2 className="text-black text-xl font-semibold ">Shopping Summary</h2>
                             <div className={"mt-3"}>
                                 {
                                     checkOut.map((item, index) => (
@@ -152,9 +157,9 @@ const Page = () => {
                                                     <h3 className={" text-primary flex items-center w-[120px] lg:ml-3"}>
                                                         <strong>
                                                             Total :
-                                                        </strong>  
+                                                        </strong>
                                                         <span className='ml-1'>
-                                                        {item.price_total}  <Taka />
+                                                            {item.price_total}  <Taka />
                                                         </span>
                                                     </h3>
                                                 </div>

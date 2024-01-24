@@ -59,10 +59,10 @@ const FlashSale = () => {
                 breackpoint={flashSale}
                 freeMode={true}
                 spaceBetween={30}
-          
+                slidesPerView={3}
                 loop={true}
                 {...swiperParams}
-                centeredSlides={deviceType === "mobile" ? false : false}
+                centeredSlides={deviceType === "mobile" ? false : true}
                 autoplay={{
                   delay: 7500,
                   disableOnInteraction: false,
@@ -72,7 +72,7 @@ const FlashSale = () => {
               >
                 {
                   products?.map(product => (
-                    <SwiperSlide key={product?._id} className="max-w-[450px] lg:min-w-[448px]">
+                    <SwiperSlide key={product?._id} className="">
                       <FlashSaleCard data={product} />
                     </SwiperSlide>
                   ))

@@ -193,9 +193,9 @@ const page = ({ params }) => {
           </div>
 
           <div className="p-5 w-full">
-            <h1 className="text-black text-[26px] font-semibold ">
+            <h2 className="text-black text-[26px] font-semibold ">
               {product?.name}
-            </h1>
+            </h2>
             <div className="mt-4 flex item-center">
               <h5 className="text-orange-500 text-lg font-extrabold">4.0</h5>
               <span className="ml-3 mt-[5px]">
@@ -227,9 +227,9 @@ const page = ({ params }) => {
             </div>
             <div className="flex justify-between mt-10">
               <div className=" flex item-center">
-                <h1 className="text-orange-500 text-4xl font-semibold ">
+                <h2 className="text-orange-500 text-4xl font-semibold ">
                   {price}
-                </h1>
+                </h2>
                 <div className="text-neutral-400 text-xl font-normal ml-4 mt-3">
                   <del>${product?.price}</del>
                 </div>
@@ -249,7 +249,7 @@ const page = ({ params }) => {
             <div className="w-[100%] h-px bg-gray-200 mt-10" />
 
             <div className={"mt-5"}>
-              <h1 className={"mt-3 text-xl"}>Key Features</h1>
+              <h2 className={"mt-3 text-xl"}>Key Features</h2>
               <ul className={"list-disc mt-2 ml-5"}>
                 {product?.spacification?.map((sp, key) => (
                   <li key={key}>{sp.value}</li>
@@ -264,7 +264,7 @@ const page = ({ params }) => {
                 </a>
               </div>
               <div className={"flex items-center mt-8"} id={"specification"}>
-                <h1 className={"text-xl-center font-semibold"}>Variants : </h1>
+                <h2 className={"text-xl-center font-semibold"}>Variants : </h2>
                 <div className={"ml-4"}>
                   {product?.variant?.map((vari, key) => (
                     <button

@@ -25,17 +25,14 @@ const HotSaleCard = ({ data }) => {
           <del><Taka /> {data?.price}</del>
         </div>
         <div className="lg:mt-5 mt-2 text-center text-black text-sm lg:text-xl font-semibold ">
-          {data?.name?.slice(0, 30) + " " + "..."}
+          {data?.name?.slice(0, 25) + " " + "..."}
         </div>
         <progress
           title={`Avaiable 24 From 100`}
           value={24}
           max={100}
-          className="bg-primary text-primary w-full h-3 rounded-md overflow-hidden lg:mt-5 mt-3"
+          className="bg-primary text-primary w-full h-3 rounded-md overflow-hidden lg:mt-5 mt-3 hidden"
         />
-        <div className="text-neutral-400 text-base font-normal mt-4">
-          56 Left Stock
-        </div>
         <button className="btn border-primary text-primary lg:mt-6 mt-3 border-2 w-full">
           Add To Cart
         </button>

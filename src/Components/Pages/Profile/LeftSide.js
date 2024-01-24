@@ -23,10 +23,10 @@ const LeftSide = ({ user }) => {
                 }
             </button>
             <div className={"lg:mt-5 mt-2"}>
-                <h1
+                <h2
                     className=" text-neutral-700 text-base font-normal leading-normal">Manage
                     My Account
-                </h1>
+                </h2>
                 <ul className={"mt-2 pl-3"}>
                     <li>
                         <Link href={"/me/profile"}
@@ -42,16 +42,16 @@ const LeftSide = ({ user }) => {
                     </li>
                     <li>
                         <Link href={'/me/orders'}>
-                            <h1
+                            <h2
                                 className=" text-neutral-700 text-base font-normal leading-normal lg:mt-3 mt-1">My Orders
-                            </h1>
+                            </h2>
                         </Link>
                     </li>
                     <li>
                         <Link href={'/me/review'}>
-                            <h1
+                            <h2
                                 className=" text-neutral-700 text-base font-normal leading-normal lg:mt-3 mt-1">Reviews
-                            </h1>
+                            </h2>
                         </Link>
                     </li>
                 </ul>

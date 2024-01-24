@@ -25,9 +25,9 @@ const Newsletter = () => {
           <Shape00 />
         </div>
         <div>
-          <h1 className="text-white lg:text-3xl text-xl text-center lg:text-start font-bold">
+          <h2 className="text-white lg:text-3xl text-xl text-center lg:text-start font-bold">
             Sign Up for Newsletter
-          </h1>
+          </h2>
           <p className="lg:w-[603px] lg:mt-4 mt-2 text-white text-sm text-center lg:text-start lg:text-lg font-normal leading-relaxed">
           Join our community and be the first to receive exciting updates, exclusive offers, and valuable insights directly to your inbox. By subscribing to our newsletter, you'll get:
           </p>

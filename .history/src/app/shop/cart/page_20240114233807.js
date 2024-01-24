@@ -132,7 +132,7 @@ const Page = () => {
                             }
                         </div>
                         <div className="w-[100%] mt-10 min-h-[314px] bg-white rounded-xl p-10 border border-neutral-300">
-                            <h1 className="text-black text-xl font-semibold ">Shopping Summary</h1>
+                            <h3 className="text-black text-xl font-semibold ">Shopping Summary</h3>
                             <div className={"mt-3"}>
                                 {
                                     checkOut.map((item , index) => (
@@ -151,7 +151,7 @@ const Page = () => {
                                                 </h3>
                                             </div>
                                             <div className="text-primary ">
-                                                <h2><Plus /></h1>
+                                                <h2><Plus /></h2>
                                                 
                                                 
                                             </div>

@@ -36,9 +36,9 @@ const TopProducts = () => {
     <div className="bg-[#F6F6F6] w-full h-auto lg:py-0 py-5 lg:h-[630px] flex items-center lg:mt-32 mt-10">
       <section className="container mx-auto flex flex-col lg:flex-row items-center overflow-hidden">
         <div className="px-5">
-          <h1 className="lg:w-[238px] text-black text-2xl lg:text-3xl font-semibold">
+          <h2 className="lg:w-[238px] text-black text-2xl lg:text-3xl font-semibold">
             Top 10 Selected Products On the Week
-          </h1>
+          </h2>
           <div className="flex lg:mt-10 mt-5 items-center">
             <button className="origin-top-left rotate-180 w-12 h-12 relative custom-prev-button-top">
               <div className="w-12 h-12 left-0 top-0 absolute origin-top-left rotate-180 bg-white bg-opacity-0 rounded-full border border-black   flex justify-center items-center">
@@ -90,25 +90,22 @@ export const TopProductCard = ({ data }) => {
     <Link href={`/products/${data?._id}`} className="w-full h-full lg:max-h-[520px] max-h-[340px] lg:max-w-[330px] bg-white rounded-[30px] overflow-hidden shadow-xl shadow-stone-100">
       <div className="max-h-[314px] w-full rounded-[30px] bg-stone-300 shadow-md shadow-stone-100 overflow-hidden">
         <Image
-          className="lg:w-[348px] w-[250px] lg:h-[364px] bg-stone-300"
+          className="w-full h-full"
           src={
             localURL + data?.cover
           }
-          width={340}
-          height={314}
+          width={500}
+          height={400}
           alt=""
         />
       </div>
 
       <div className="flex lg:flex-col flex-col-reverse lg:p-7 p-4">
-        <h1 className="text-black text-sm lg:text-2xl font-semibold">
+        <h2 className="text-black text-sm lg:text-2xl font-semibold">
           {data?.name?.slice(0, 30) +
             " " +
             "..."}
-        </h1>
-        <h4 className="text-neutral-400 mt-1 text-[14px] lg:text-lg font-medium ">
-          4.3m sold
-        </h4>
+        </h2>
         <div className="flex lg:flex-row flex-col-reverse lg:items-center items-start mt-3 lg:mt-4 justify-between">
           <div className="flex items-center">
             <div className="text-orange-500 text-sm lg:text-xl font-semibold">

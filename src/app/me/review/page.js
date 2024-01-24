@@ -16,7 +16,7 @@ const page = () => {
     }, [currentUser])
     return (
         <div >
-            <h1 className='text-2xl font-semibold mb-5'>My Reviews</h1>
+            <h2 className='text-2xl font-semibold mb-5'>My Reviews</h2>
             <div className='lg:grid grid-cols-3 mt-5'>
                 {
                     reviews.map((r, index) => <ReviewCard key={index} review={r} />)
@@ -34,9 +34,9 @@ const ReviewCard = ({ review }) => {
         <div
             onClick={() => router.push(`/me/review/${review.order_id}`)}
             className='card bg-base-100 shadow-lg p-5' >
-            <h1 className='text-base font-semibold mb-2'>
+            <h2 className='text-base font-semibold mb-2'>
                 <strong>Order Id: </strong>
-                {review.order_id}</h1>
+                {review.order_id}</h2>
             <div className='flex items-center'>
                 <span className='mr-3'> Product Rating</span>   <StarProvider number={review.ratings} size={13} />
             </div>
@@ -44,7 +44,7 @@ const ReviewCard = ({ review }) => {
                 <span className='mr-3'>Delivery Rating  </span>
                 <StarProvider number={review.deliveryRatings} size={13} />
             </div>
-            <h1 className='text-base mt-2'>Message: {review.message}</h1>
+            <h2 className='text-base mt-2'>Message: {review.message}</h2>
             <div className='flex items-center flex-wrap mt-5'>
                 {
                     review?.images?.map((img, index) => <Image

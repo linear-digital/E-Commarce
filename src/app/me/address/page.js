@@ -23,7 +23,7 @@ const page = () => {
     return (
         <div>
             <div className='flex justify-between'>
-            <h1 className="text-2xl font-semibold">Address</h1>
+            <h2 className="text-2xl font-semibold">Address</h2>
             <Link href={`/me/address/add`} className='btn btn-sm btn-primary text-sm'>Add</Link>
             </div>
             <div className="grid lg:grid-cols-2 grid-cols-1 lg:gap-10 gap-5 mt-5">

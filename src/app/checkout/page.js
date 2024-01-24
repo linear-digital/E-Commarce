@@ -222,7 +222,7 @@ const Page = () => {
 
                 <DialogContent>
                     <DialogContentText id="alert-dialog-slide-description">
-                        <h1 className='lg:text-2xl text-base text-center'>Select Payment Method</h1>
+                        <h2 className='lg:text-2xl text-base text-center'>Select Payment Method</h2>
                         <div className=''>
                             <button
                                 onClick={() => setPaymentDetails({ ...paymentDetails, paymentType: "bkash" })}
@@ -361,22 +361,22 @@ const Page = () => {
                 </div>
                 <div className={"col-span-4 mt-7 lg:mt-0"}>
                     <div className="w-full h-auto bg-white rounded-xl border border-neutral-300 px-5 py-10">
-                        <h1 className="text-black text-xl font-semibold mb-8">My Orders</h1>
+                        <h2 className="text-black text-xl font-semibold mb-8">My Orders</h2>
                         {
                             checkOut?.map((item, index) => <OrderCard key={index} details={item} />)
                         }
                         <hr className={"lg:mt-7 mt-3"} />
                         <div className={"flex items-center lg:mt-8 mt-2 justify-between w-full"}>
-                            <h1
+                            <h2
                                 className="w-[263px] text-neutral-500 text-[16px] font-normal  leading-relaxed">Subtotal
-                            </h1>
+                            </h2>
                             <p className="text- text-stone-900 lg:text-lg text-sm font-semibold flex items-center"> {subtotal} &#2547;
                             </p>
                         </div>
                         <div className={"flex items-center mt-3 justify-between"}>
-                            <h1
+                            <h2
                                 className="text-neutral-500 text-[16px] font-normal  leading-relaxed">Shipping
-                            </h1>
+                            </h2>
                             <div className={"flex items-center"}>
                                 <div className="text-right text-neutral-400 text-sm font-normal mr-2">
                                 </div>
@@ -387,9 +387,9 @@ const Page = () => {
                         <hr className={"lg:mt-7 mt-3"} />
                         <div className={"flex justify-between items-center lg:mt-5 mt-3"}>
                             <div className="text-black lg:text-lg text-base font-medium ">Order Total</div>
-                            <h1
+                            <h2
                                 className="text-right text-orange-500 lg:text-[28px] text-[24px] font-semibold "> <Taka /> {total}
-                            </h1>
+                            </h2>
                         </div>
                         <hr className={"lg:mt-7 mt-3"} />
                         <div className="text-black lg:text-xl text-base font-semibold lg:mt-7 mt-3">Payment</div>

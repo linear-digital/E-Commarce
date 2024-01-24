@@ -54,9 +54,9 @@ const CartCard = ({markAll , cart , marked , setMarked}) => {
                 </div>
                 <div className={"ml-5 w-full"}>
                     <div className={"flex justify-between items-center w-full"}>
-                        <h1 className="text-black text-base font-semibold ">
+                        <h2 className="text-black text-base font-semibold ">
                             {cart?.product?.name}
-                        </h1>
+                        </h2>
                         <h5 className="text-neutral-600 text-sm font-normal ">
                             SKU {cart?.product?.code}
                         </h5>

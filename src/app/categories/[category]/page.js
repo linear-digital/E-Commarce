@@ -1,6 +1,9 @@
 import Section_1 from '@/Components/Pages/Category/Section_1'
 import React from 'react'
 
+export const metadata = {
+  title: 'Linear Hub | Online Shopping BD | All Categories',
+}
 const page = ({params}) => {
   return (
     <div>

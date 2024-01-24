@@ -46,15 +46,11 @@ const Sidebar = ({ setShow, show }) => {
             <Fire />
             <span className="ml-3 font-semibold">HOT DEALS</span>
           </button>
-          <button className="btn  btn-primary text-base shadow-md w-full justify-start item-center flex mt-3">
-            <Mappin />
-            <span className="ml-2">Store Location</span>
-          </button>
-          <button className="btn  btn-primary text-base shadow-md w-full justify-start item-center flex mt-3">
+          <Link href={'/track-order'} className="btn  btn-primary text-base shadow-md w-full justify-start item-center flex mt-3">
             {/* <Track w={24} h={20} /> */}
             <Image src={"/images/tracking.png"} width={24} height={20} alt="" />
             <span className="ml-2">Track Your Order</span>
-          </button>
+          </Link>
         </div>
       </div>
     </div>

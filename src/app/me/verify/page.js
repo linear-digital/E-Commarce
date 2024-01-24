@@ -60,7 +60,7 @@ const Page = () => {
 
     return (
         <div className={"w-full flex flex-col justify-center items-start mt-5"}>
-            <h1 className={"text-xl font-semibold"}>Please Check your mail</h1>
+            <h2 className={"text-xl font-semibold"}>Please Check your mail</h2>
             <button onClick={sendCode} className={"btn btn-outline btn-sm mt-5"}>Resend Mail</button>
                 <input
                     className={"w-[200px] h-[50px] border mt-5 outline-none py-2 rounded text-xl tracking-[0.7em] text-center"}

@@ -7,11 +7,11 @@ import { localURL } from '@/Components/instance/api';
 const Reviews = ({ reviews }) => {
     return (
         <div className={"p-5"}>
-            <h1 className={"py-5 text-xl"}>
+            <h2 className={"py-5 text-xl"}>
                 {
                     reviews.length > 1 ? `${reviews.length} Reviews` : `No Review`
                 }
-            </h1>
+            </h2>
             {
                 reviews.map((d, index) => {
                     return <Card data={d} key={index} />

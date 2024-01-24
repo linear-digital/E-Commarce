@@ -20,14 +20,14 @@ const page = () => {
         }
     }
     return (
-        <div className='container mx-auto py-10'>
-            <h1 className='text-3xl font-semibold text-center'>Orders Tracking</h1>
+        <div className='container mx-auto py-10 px-3'>
+            <h2 className='text-3xl font-semibold text-center'>Orders Tracking</h2>
             <p className='max-w-[500px] mt-5 mx-auto text-center'>
                 To track your order please enter your Order ID in the box below and press the "Track" button. This was given to you on your receipt and in the confirmation email you should have received.
             </p>
-            <form onSubmit={trackOrder} className='flex flex-col items-center'>
-                <div className='mx-auto flex justify-center w-full gap-10 mt-5'>
-                    <label className="form-control w-full max-w-xs">
+            <form onSubmit={trackOrder} className='flex flex-col items-center w-full'>
+                <div className='mx-auto flex flex-col lg:flex-row justify-center w-full lg:gap-10 gap-4 mt-5'>
+                    <label className="form-control w-full lg:max-w-xs">
                         <div className="label">
                             <span className="label-text">Order Id</span>
                         </div>
@@ -35,7 +35,7 @@ const page = () => {
                             name='order_id'
                         />
                     </label>
-                    <label className="form-control w-full max-w-xs">
+                    <label className="form-control w-full lg:max-w-xs">
                         <div className="label">
                             <span className="label-text">Billing Email</span>
                         </div>
@@ -70,7 +70,7 @@ const page = () => {
                                     </div>
                                 </div>
                                 <div className='card my-5 shadow-lg max-w-[400px] p-4'>
-                                    <h1 className='font-semibold'>Shipping Address</h1>
+                                    <h2 className='font-semibold'>Shipping Address</h2>
                                     <div className='mt-2'>
                                         <p>{order?.address?.name}</p>
                                         <p>{order?.address?.phone}</p>

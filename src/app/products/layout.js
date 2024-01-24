@@ -3,7 +3,6 @@
  */
 
 import React from 'react'
-import Footer from "@/Components/Shared/Footer/Footer";
 import Newsletter from "@/Components/Pages/Home/Newsletter";
 
 const Layout = ({children}) => {

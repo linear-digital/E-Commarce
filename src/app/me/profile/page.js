@@ -33,7 +33,7 @@ const page = () => {
     }
     return (
         <div>
-            <h1 className={"lg:text-2xl text-xl font-semibold"}>My profile</h1>
+            <h2 className={"lg:text-2xl text-xl font-semibold"}>My profile</h2>
             <form className="lg:grid grid-cols-3 gap-5 lg:mt-5 mt-2" onSubmit={onSubmit}>
                 <label className="form-control w-full">
                     <div className="label">

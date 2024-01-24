@@ -10,7 +10,7 @@ const Bkash = () => {
     }
     return (
         <div className='text-stone-900 p-2 mt-2'>
-            <h1 className='text-primary font-semibold underline'>Nagad personal</h1>
+            <h2 className='text-primary font-semibold underline'>Nagad personal</h2>
             <h2
                 className='mt-2'
                 onClick={copyNumber}>

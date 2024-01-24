@@ -23,9 +23,9 @@ export const PopularSearchCard = ({ data }) => {
         <div className="text-neutral-400 text-base font-normal text-center mt-1">
           <del><Taka /> {data?.price}</del>
         </div>
-        <h1 className="text-center lg:mt-3 mt-2 text-black lg:text-xl text-sm font-semibold ">
+        <h2 className="text-center lg:mt-3 mt-2 text-black lg:text-xl text-sm font-semibold ">
           {data?.name?.slice(0, 30) + " " + "..."}
-        </h1>
+        </h2>
       </div>
     </Link>
   );

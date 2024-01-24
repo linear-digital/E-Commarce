@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { api } from './instance/api';
 import moment from 'moment';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const Notification = () => {
     const { showNotification } = useSelector(state => state.Tools)
@@ -18,8 +19,9 @@ const Notification = () => {
                 setNotifications(res.data)
             })
     }, [])
+
     if (!currentUser) {
-        return
+        dispatch(setShowNotification(false))
     }
     return (
         <div className=''>

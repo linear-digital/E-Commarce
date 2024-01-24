@@ -40,7 +40,9 @@ const ProductSM = async ({ data }) => {
             <StarProvider number={avarage} />
             <span className="ml-2">({reviews?.length})</span>
           </div>
+          
         </div>
+        
       </div>
     </Link>
   );
