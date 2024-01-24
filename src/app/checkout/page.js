@@ -15,6 +15,23 @@ import Link from 'next/link';
 import toast from 'react-hot-toast';
 import { setRepatch } from '@/redux/Tools/action';
 
+// MUI
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
+import Image from 'next/image';
+import Bkash from './Bkash';
+import Nagad from './Nagad';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
+
+
 const Page = () => {
     const router = useRouter()
     const { checkOut } = useSelector(state => state.Cart)
@@ -30,7 +47,11 @@ const Page = () => {
         postcode: "",
         message: ""
     })
+    const [open, setOpen] = React.useState(false);
 
+    const handleClose = () => {
+        setOpen(false);
+    };
     const [allAddress, setAllAddress] = useState([])
     useEffect(() => {
         (
@@ -51,6 +72,7 @@ const Page = () => {
     const [subtotal, setSubtotal] = useState(0)
     const [total, setTotal] = useState(0)
     const [shipping, setShipping] = useState(100)
+    const [advanced, setAdvanced] = useState(0)
     useEffect(() => {
         let sub = 0
         checkOut?.map((item) => {
@@ -62,7 +84,7 @@ const Page = () => {
         setTotal(subtotal + shipping)
     }, [subtotal, shipping])
 
-    const [paymentType, setPaymentType] = useState("cod")
+    const [paymentType, setPaymentType] = useState("")
     function generateRandomCode(length) {
         let result = '';
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -75,49 +97,54 @@ const Page = () => {
 
     const sixDigitRandomText = generateRandomCode(10);
     const dispatch = useDispatch()
+    const [paymentDetails, setPaymentDetails] = useState({
+        number: "",
+        paymentType: "",
+        transection_id: "",
+    })
     const confirmOrder = () => {
-        const submitOrder = async (data) => {
-            try {
-                const res = await api.post('/api/orders', data)
-                if (res.status === 200 || res.status === 201) {
-                    toast.success("Order Placed")
-                    for (let i = 0; i < checkOut.length; i++) {
-                        const id = checkOut[i]._id
-                        try {
-                            await api.delete(`/api/cart/${id}`)
-                            dispatch(setRepatch(res))
-                            router.push('/me/orders')
-                        } catch (error) {
-                            console.log(error);
+        if (paymentDetails.number && paymentDetails.paymentType && paymentDetails.transection_id) {
+            const submitOrder = async (data) => {
+                try {
+                    const res = await api.post('/api/orders', data)
+                    if (res.status === 200 || res.status === 201) {
+                        toast.success("Order Placed")
+                        for (let i = 0; i < checkOut.length; i++) {
+                            const id = checkOut[i]._id
+                            try {
+                                await api.delete(`/api/cart/${id}`)
+                                dispatch(setRepatch(res))
+                                router.push('/me/orders')
+                            } catch (error) {
+                                console.log(error);
+                            }
                         }
                     }
                 }
+                catch (e) {
+                    toast.error(e.response.data.message)
+                }
+                // console.log(data);
             }
-            catch (e) {
-                toast.error(e.response.data.message)
-            }
-            // console.log(data);
-        }
-        const ord = {
-            order_id: sixDigitRandomText,
-            email: currentUser?.email,
-            address: address,
-            order: checkOut,
-            paymentType: paymentType,
-            total: total,
-            subtotal: subtotal,
-            shipping: shipping,
+            const ord = {
+                order_id: sixDigitRandomText,
+                email: currentUser?.email,
+                address: address,
+                order: checkOut,
+                paymentType: paymentType,
+                total: total,
+                subtotal: subtotal,
+                shipping: shipping,
+                advance: advanced,
+                remaining: total - advanced,
+                paymentDetails: paymentDetails
 
-        }
-        if (paymentType === "cod") {
-            const newOrder = { ...ord, advance: 200, remaining: total - 200 }
-            submitOrder(newOrder)
+            }
+            submitOrder(ord)
         }
         else {
-            const newOrder = { ...ord, advance: 0, remaining: total }
-            submitOrder(newOrder)
+            toast.error("Please Complete Your Payment")
         }
-
     }
     const [loading, setLoading] = useState(false)
     const useCurrentAddress = () => {
@@ -179,13 +206,87 @@ const Page = () => {
         }
         setAddress(newAddress)
     }, [myaddress])
-
     return (
-        <section>
-            <div className={"container mx-auto grid grid-cols-11 mt-10 gap-10"}>
+        <section className='px-4 lg:px-0'>
+
+            <Dialog
+                open={open && advanced > 0}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={handleClose}
+                maxWidth="md"
+                fullWidth
+                aria-describedby="alert-dialog-slide-description"
+            >
+                <DialogTitle>Pay <mark>{advanced} <Taka /></mark> to confirm order</DialogTitle>
+
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-slide-description">
+                        <h1 className='lg:text-2xl text-base text-center'>Select Payment Method</h1>
+                        <div className=''>
+                            <button
+                                onClick={() => setPaymentDetails({ ...paymentDetails, paymentType: "bkash" })}
+                                className='btn btn-ghost w-full mt-2 bg-stone-200 flex justify-center items-center'>
+                                <Image src={'/images/bkash.png'} alt="" width={80} height={80} />
+                            </button>
+                            <button
+                                onClick={() => setPaymentDetails({ ...paymentDetails, paymentType: "nagad" })}
+                                className='btn btn-ghost w-full mt-2 bg-stone-200 flex justify-center items-center'>
+                                <Image src={'/images/nagad.png'} alt="" width={80} height={80} />
+                            </button>
+                        </div>
+                    </DialogContentText>
+                    <div className='lg:grid grid-cols-2 items-center mt-3'>
+                        {
+                            paymentDetails.paymentType === "bkash" && <Bkash />
+                        }
+                        {
+                            paymentDetails.paymentType === "nagad" && <Nagad />
+                        }
+                        <div>
+                            {
+                                paymentDetails.paymentType &&
+                                <>
+                                    <label className="form-control w-full max-w-xs">
+                                        <div className="label">
+                                            <span className="label-text">Your Payment Account Number.</span>
+                                        </div>
+                                        <input
+                                            value={paymentDetails.number}
+                                            onChange={(e) => setPaymentDetails({ ...paymentDetails, number: e.target.value })}
+                                            type="number" placeholder="Your Account Number" className="input input-bordered input-sm w-full max-w-xs" />
+                                    </label>
+                                    <label className="form-control w-full max-w-xs">
+                                        <div className="label">
+                                            <span className="label-text">Transection Id</span>
+                                        </div>
+                                        <input
+                                            value={paymentDetails.transection_id.toUpperCase()}
+                                            onChange={(e) => setPaymentDetails({ ...paymentDetails, transection_id: e.target.value.toUpperCase() })}
+                                            type="text" placeholder="Ex: J1D2H3D4K5B" className="input input-bordered input-sm w-full max-w-xs" />
+                                    </label>
+                                </>
+                            }
+                        </div>
+                    </div>
+                </DialogContent>
+                <DialogActions sx={{ display: "flex", justifyContent: "space-between" }}>
+                    <Button variant='outlined' className='btn-danger' onClick={handleClose}>Close</Button>
+                    <Button className='bg-primary' variant='contained'
+                        onClick={() => {
+                            confirmOrder()
+                        }}
+                    >Confirm Order</Button>
+                </DialogActions>
+            </Dialog>
+
+
+
+
+            <div className={"container mx-auto lg:grid lg:grid-cols-11 grid-cols-1 mt-10 gap-10"}>
                 <div className={"col-span-7 "}>
-                    <div className={"flex justify-between items-center"}>
-                        <h2 className="text-black text-3xl font-semibold flex items-center">Shipping Details
+                    <div className={"lg:flex justify-between items-center"}>
+                        <h2 className="text-black lg:text-3xl text-xl font-semibold flex items-center">Shipping Details
                             {
                                 loading && <Spinner />
                             }
@@ -200,7 +301,7 @@ const Page = () => {
                             else {
                                 setAddress({})
                             }
-                        }} className="select select-sm w-full max-w-xs h-[50px]">
+                        }} className="select select-bordered mt-2 lg:mt-0 select-sm w-full lg:max-w-xs h-[50px]">
                             <option value={JSON.stringify({})}>Choose form address book</option>
                             {
                                 allAddress?.map((addr, index) => (
@@ -225,7 +326,7 @@ const Page = () => {
                     </div>
                     {
 
-                        <form onSubmit={(e) => e.preventDefault()} action="" className={"grid grid-cols-2 mt-8 gap-x-10 gap-y-5"}>
+                        <form onSubmit={(e) => e.preventDefault()} action="" className={"lg:grid grid-cols-2 lg:mt-8 mt-3 gap-x-10 gap-y-5"}>
                             <TextInput
                                 onChange={(e) => setAddress({ ...address, name: e.target.value })}
                                 value={address?.name} label={"Full Name"} name={"name"} />
@@ -258,19 +359,19 @@ const Page = () => {
                     }
 
                 </div>
-                <div className={"col-span-4"}>
-                    <div className="w-[100%] h-auto bg-white rounded-xl border border-neutral-300 px-5 py-10">
+                <div className={"col-span-4 mt-7 lg:mt-0"}>
+                    <div className="w-full h-auto bg-white rounded-xl border border-neutral-300 px-5 py-10">
                         <h1 className="text-black text-xl font-semibold mb-8">My Orders</h1>
                         {
                             checkOut?.map((item, index) => <OrderCard key={index} details={item} />)
                         }
-                        <hr className={"mt-7"} />
-                        <div className={"flex items-center mt-8 justify-between"}>
+                        <hr className={"lg:mt-7 mt-3"} />
+                        <div className={"flex items-center lg:mt-8 mt-2 justify-between w-full"}>
                             <h1
                                 className="w-[263px] text-neutral-500 text-[16px] font-normal  leading-relaxed">Subtotal
                             </h1>
-                            <div className="text-right text-stone-900 text-lg font-semibold "> <Taka /> {subtotal}
-                            </div>
+                            <p className="text- text-stone-900 lg:text-lg text-sm font-semibold flex items-center"> {subtotal} &#2547;
+                            </p>
                         </div>
                         <div className={"flex items-center mt-3 justify-between"}>
                             <h1
@@ -279,50 +380,54 @@ const Page = () => {
                             <div className={"flex items-center"}>
                                 <div className="text-right text-neutral-400 text-sm font-normal mr-2">
                                 </div>
-                                <div className="text-right text-stone-900 text-lg font-semibold "><Taka /> {shipping}</div>
+                                <div className="text-right text-stone-900 lg:text-lg text-sm font-semibold "> {shipping} <Taka /></div>
                             </div>
                         </div>
 
-                        <hr className={"mt-7"} />
-                        <div className={"flex justify-between items-center mt-5"}>
-                            <div className="text-black text-lg font-medium ">Order Total</div>
+                        <hr className={"lg:mt-7 mt-3"} />
+                        <div className={"flex justify-between items-center lg:mt-5 mt-3"}>
+                            <div className="text-black lg:text-lg text-base font-medium ">Order Total</div>
                             <h1
-                                className="text-right text-orange-500 text-[28px] font-semibold "> <Taka /> {total}
+                                className="text-right text-orange-500 lg:text-[28px] text-[24px] font-semibold "> <Taka /> {total}
                             </h1>
                         </div>
-                        <hr className={"mt-7"} />
-                        <div className="text-black text-xl font-semibold mt-7 ">Payment</div>
+                        <hr className={"lg:mt-7 mt-3"} />
+                        <div className="text-black lg:text-xl text-base font-semibold lg:mt-7 mt-3">Payment</div>
 
-                        <div className={"mt-10"}>
-                            <div className="flex items-center start">
-                                <input checked={paymentType === "dbt"} type="checkbox" className="checkbox" onChange={(e) => setPaymentType("dbt")} />
-                                <h2 className="text-black text-lg font-normal ml-10">Direct Bank Transfer</h2>
-                            </div>
+                        <div className={"lg:mt-10 mt-4"}>
                             <div className="flex items-center start mt-5">
                                 <input
-                                    checked={paymentType === "mb"}
+                                    checked={paymentType === "full"}
                                     type="checkbox" className="checkbox"
-                                    onChange={(e) => setPaymentType("mb")}
+                                    onChange={(e) => {
+                                        setPaymentType("full")
+                                        setAdvanced(total)
+                                    }}
                                 />
-                                <h2 className="text-black text-lg font-normal ml-10">Mobile Banking</h2>
+                                <h2 className="text-black lg:text-lg text-base font-normal ml-10">
+                                    Mobile Banking (Full Payment)
+                                </h2>
                             </div>
                             <div className="flex items-center start mt-5">
                                 <input
                                     checked={paymentType === "cod"}
-                                    onChange={(e) => setPaymentType("cod")}
+                                    onChange={(e) => {
+                                        setPaymentType("cod")
+                                        setAdvanced(200)
+                                    }}
                                     type="checkbox" className="checkbox" />
-                                <div className="text-black text-lg font-normal ml-10">Cash On Delivery <span className='ml-2 text-sm font-semibold'>(200 Taka Advance Pay)</span></div>
+                                <div className="text-black lg:text-lg text-base font-normal ml-10">Cash On Delivery <span className='ml-2 text-sm font-semibold'>(200 Taka Advance Pay)</span></div>
                             </div>
                         </div>
                         <button
-                            onClick={confirmOrder}
-                            className={"btn btn-primary w-full mt-14"}>
+                            onClick={() => setOpen(true)}
+                            className={"btn btn-primary w-full lg:mt-14 mt-5"}>
                             Place Order
                         </button>
                         <div
-                            className=" text-[15px] text-center font-normal mt-5">Lorem
-                            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore e
+                            className=" text-[15px] text-center font-normal mt-5">
+                            By placing your order, you agree to our
+                            <span className="text-orange-500 font-semibold"> Terms & Conditions</span>
                         </div>
                     </div>
                 </div>
@@ -341,7 +446,7 @@ const TextInput = ({ label, name, value, disabled, required, onChange }) => {
                 <span className="label-text">{label}</span>
             </div>
             <input required={required} onChange={onChange} disabled={disabled} name={name} type="text" value={value}
-                className="input input-bordered w-full" />
+                className="input input-sm lg:input-md input-bordered w-full" />
         </label>
     </div>
 }

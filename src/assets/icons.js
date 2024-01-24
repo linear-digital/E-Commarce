@@ -54,8 +54,8 @@ export const Wallet = () => {
 export const Love = () => {
   return <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={60}
-    height={56}
+    width={50}
+    height={46}
     viewBox="0 0 60 56"
     fill="none"
   >

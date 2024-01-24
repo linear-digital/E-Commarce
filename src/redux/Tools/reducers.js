@@ -1,4 +1,4 @@
-import {CATEGORY, DEVICETYPE, IMAGES, REPATCH} from "./constants";
+import { CATEGORY, DEVICETYPE, IMAGES, NOTIFICATION, REPATCH } from "./constants";
 
 
 const initialState = {
@@ -333,7 +333,8 @@ const initialState = {
         },
       ]
     },
-  ]
+  ],
+  showNotification: false
 };
 
 const Tools = (state = initialState, action) => {
@@ -357,6 +358,11 @@ const Tools = (state = initialState, action) => {
       return {
         ...state,
         images: action.payload
+      }
+    case NOTIFICATION:
+      return {
+        ...state,
+        showNotification: action.payload
       }
     default:
       return { ...state };

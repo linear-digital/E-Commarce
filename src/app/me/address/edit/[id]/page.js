@@ -80,7 +80,7 @@ const page = ({ params }) => {
     return (
         <div>
             <form onSubmit={formHandler} className=''>
-                <div className='grid grid-cols-3 gap-5'>
+                <div className='lg:grid grid-cols-3 gap-5'>
                     <TextInput label={"Full Name"} name={"name"} value={oldAddress?.name} />
                     <TextInput
                         disabled={true}
@@ -99,7 +99,7 @@ const page = ({ params }) => {
                                 name='country'
                                 autoComplete='off'
                                 defaultValue={oldAddress?.country}
-                                className="input input-bordered w-full text-sm"
+                                className="input lg:input-md input-sm input-bordered w-full text-sm"
                             />
                         </label>
                     </div>
@@ -116,7 +116,7 @@ const page = ({ params }) => {
                                 autoComplete='off'
                                 autoCorrect='off'
                                 defaultValue={oldAddress?.district}
-                                className="input input-bordered w-full text-sm"
+                                className="input lg:input-md input-sm input-bordered w-full text-sm"
                             />
                         </label>
                     </div>
@@ -131,7 +131,7 @@ const page = ({ params }) => {
                                     type="text"
                                     autoComplete='off'
                                     defaultValue={oldAddress?.division}
-                                    className="input input-bordered w-full text-sm"
+                                    className="input lg:input-md input-sm input-bordered w-full text-sm"
                                 />
                             </label>
                         </div>
@@ -147,7 +147,7 @@ const page = ({ params }) => {
                                 autoComplete='off'
                                 placeholder='Postcode/ZIP'
                                 defaultValue={oldAddress?.postcode}
-                                className="input input-bordered w-full text-sm"
+                                className="input lg:input-md input-sm input-bordered w-full text-sm"
                             />
                         </label>
                     </div>
@@ -162,13 +162,13 @@ const page = ({ params }) => {
                                 name='home_address'
                                 defaultValue={oldAddress?.address}
                                 placeholder='House No, Building, Street Name, Area'
-                                className="input input-bordered w-full text-sm"
+                                className="input lg:input-md input-sm input-bordered w-full text-sm"
                             />
                         </label>
                     </div>
                 </div>
-                <button className='btn btn-primary w-[200px] mt-5'>Update Address</button> 
-                <div onClick={deleteHandler} className='btn btn-error text-white w-[200px] mt-5 ml-5'>Delete Address</div>
+                <button className='btn lg:btn-md btn-md btn-primary lg:w-[200px] w-full mt-5'>Update Address</button> 
+                <div onClick={deleteHandler} className='btn lg:btn-md btn-md btn-error text-white lg:w-[200px] w-full mt-5 lg:ml-5'>Delete Address</div>
             </form>
 
         </div>
@@ -184,7 +184,7 @@ const TextInput = ({ label, name, value, disabled }) => {
                 <span className="label-text">{label}</span>
             </div>
             <input autoComplete='off' disabled={disabled} name={name} type="text" defaultValue={value}
-                className="input input-bordered w-full text-sm"
+                className="input lg:input-md input-sm input-bordered w-full text-sm"
             />
         </label>
     </div>

@@ -33,13 +33,14 @@ const Social = () => {
             <GoogleOAuthProvider  clientId={clientId}>
                 <GoogleLogin
                     size={"large"}
-                    width={400}
+                    width={"100%"}
                     onSuccess={credentialResponse => {
                         googleLogin(credentialResponse)
                     }}
                     onError={() => {
                         toast.error("Login Error")
                     }}
+                    useOneTap
                 />
             </GoogleOAuthProvider>
         </div>

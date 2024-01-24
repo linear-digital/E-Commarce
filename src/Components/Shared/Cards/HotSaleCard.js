@@ -1,15 +1,16 @@
+import { localURL } from "@/Components/instance/api";
+import { Taka } from "@/assets/icons";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
-const HotSaleCard = () => {
+const HotSaleCard = ({ data }) => {
   return (
-    <div className="lg:max-w-[273px] max-w-[170px] max-h-[600px]  lg:min-w-[273px] lg:min-h-[600px] pb-4  bg-white rounded-[20px] overflow-hidden shadow-xl shadow-stone-100">
+    <Link href={`/products/${data?._id}`} className="lg:max-w-[273px] max-w-[170px] max-h-[600px]  lg:min-w-[273px] lg:min-h-[600px] pb-4  bg-white rounded-[20px] overflow-hidden shadow-xl shadow-stone-100">
       <div className="lg:max-h-[266px] max-h-[160px] w-full rounded-[20px]  shadow-xl shadow-stone-50 overflow-hidden flex justify-center items-center">
         <Image
           className="lg:max-w-[273px] max-w-[130px] w-full lg:h-[266px] h-[150px]"
-          src={
-            "https://www.newsshooter.com/wp-content/uploads/2021/08/Image-4-740x555.jpg"
-          }
+          src={localURL + data?.cover}
           width={348}
           height={314}
           alt={""}
@@ -18,13 +19,13 @@ const HotSaleCard = () => {
 
       <div className="flex flex-col items-center lg:p-7 p-2">
         <div className="text-orange-500 lg:text-2xl text-base font-semibold text-center">
-          $1,245.33
+          <Taka /> {data?.price - (data?.discount_percentage / 100 * data?.price)}
         </div>
         <div className="text-neutral-400 text-base font-normal text-center mt-1">
-          <del>$1,300</del>
+          <del><Taka /> {data?.price}</del>
         </div>
         <div className="lg:mt-5 mt-2 text-center text-black text-sm lg:text-xl font-semibold ">
-          Digital Camera <br /> XF-21
+          {data?.name?.slice(0, 30) + " " + "..."}
         </div>
         <progress
           title={`Avaiable 24 From 100`}
@@ -39,7 +40,7 @@ const HotSaleCard = () => {
           Add To Cart
         </button>
       </div>
-    </div>
+    </Link>
   );
 };
 

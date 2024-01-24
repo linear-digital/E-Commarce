@@ -2,8 +2,9 @@
 
 import HotSaleCard from "@/Components/Shared/Cards/HotSaleCard";
 import { hotSale, topProducts } from "@/Components/Shared/breackpoints";
+import { api } from "@/Components/instance/api";
 import { ChevronLeft, ChevronRight, Fire } from "@/assets/icons";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -24,6 +25,11 @@ const HotSale = () => {
       },
     },
   };
+  const [products, setProducts] = useState([])
+  useEffect(() => {
+    api.get('/api/products/quary/hotSale')
+      .then(res => setProducts(res.data))
+  }, [])
   return (
     <div className="container mx-auto lg:mt-32 mt-10 lg:px-0 px-4 ">
       <div className="flex justify-between">
@@ -58,39 +64,11 @@ const HotSale = () => {
           modules={[Navigation, Autoplay, FreeMode]}
           className="w-full lg:min-h-[650px]"
         >
-          <SwiperSlide>
-            <HotSaleCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <HotSaleCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <HotSaleCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <HotSaleCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <HotSaleCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <HotSaleCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <HotSaleCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <HotSaleCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <HotSaleCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <HotSaleCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <HotSaleCard />
-          </SwiperSlide>
+          {
+            products.map((data) => <SwiperSlide key={data._id}>
+              <HotSaleCard data={data} />
+            </SwiperSlide>)
+          }
         </Swiper>
       </div>
     </div>

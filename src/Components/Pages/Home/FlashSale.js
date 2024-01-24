@@ -2,10 +2,11 @@
 
 import FlashSaleCard from "@/Components/Shared/Cards/FlashSaleCard";
 import { flashSale } from "@/Components/Shared/breackpoints";
+import { api } from "@/Components/instance/api";
 import { ChevronLeft, ChevronRight } from "@/assets/icons";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Autoplay, FreeMode, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const FlashSale = () => {
@@ -24,6 +25,11 @@ const FlashSale = () => {
       },
     },
   };
+  const [products, setProducts] = useState([])
+  useEffect(() => {
+    api.get('/api/products/quary/flashSale')
+      .then(res => setProducts(res.data))
+  }, [])
   return (
     <div className="lg:mt-32 mt-10 ">
       <div
@@ -50,10 +56,10 @@ const FlashSale = () => {
           <section className="lg:ml-10 mt-5 lg:mt-0 w-full">
             <div>
               <Swiper
-                breackPoint={flashSale}
+                breackpoint={flashSale}
                 freeMode={true}
                 spaceBetween={30}
-                
+          
                 loop={true}
                 {...swiperParams}
                 centeredSlides={deviceType === "mobile" ? false : false}
@@ -61,24 +67,16 @@ const FlashSale = () => {
                   delay: 7500,
                   disableOnInteraction: false,
                 }}
-                modules={[Navigation,  Pagination]}
+                modules={[Navigation, Pagination , Autoplay]}
                 className="w-full"
               >
-                <SwiperSlide className="max-w-[450px] lg:min-w-[448px]">
-                  <FlashSaleCard />
-                </SwiperSlide>
-                <SwiperSlide className="max-w-[450px] lg:min-w-[448px]">
-                  <FlashSaleCard />
-                </SwiperSlide>
-                <SwiperSlide className="max-w-[450px] lg:min-w-[448px]">
-                  <FlashSaleCard />
-                </SwiperSlide>
-                <SwiperSlide className="max-w-[450px] lg:min-w-[448px]">
-                  <FlashSaleCard />
-                </SwiperSlide>
-                <SwiperSlide className="max-w-[450px] lg:min-w-[448px]">
-                  <FlashSaleCard />
-                </SwiperSlide>
+                {
+                  products?.map(product => (
+                    <SwiperSlide key={product?._id} className="max-w-[450px] lg:min-w-[448px]">
+                      <FlashSaleCard data={product} />
+                    </SwiperSlide>
+                  ))
+                }
               </Swiper>
             </div>
             <div className="flex lg:mt-10 mt-6 items-center">

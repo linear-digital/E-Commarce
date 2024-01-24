@@ -24,44 +24,42 @@ const Banner = () => {
   return (
     <section className="relative lg:px-0 px-4">
       <div className="flex max-h-[634px] items-center w-full relative mt-[30px]">
-       
-        <div className="absolute left-0 top-0 h-full opacity-70 hover:opacity-90 w-[50px] lg:flex hidden items-center">
-          <div className="h-[500px] custom-prev-button-banner  bar-left-banner w-full bg-[#BFBEFF]"></div>
-        </div>
+
         <section className="container mx-auto rounded-xl">
           <Swiper
             {...swiperParams}
             spaceBetween={30}
             centeredSlides={true}
             effect={"fade"}
+            loop={true}
             autoplay={{
-              delay: 7500,
+              delay: 3000,
               disableOnInteraction: false,
             }}
             modules={[Navigation, EffectFade, Pagination, Autoplay]}
-            className="h-full w-full rounded-lg"
+            className="h-full w-full rounded-lg overflow-hidden"
           >
             <SwiperSlide className="cursor-pointer">
               <Image
                 src={"/images/banner/18899194.png"}
-                width={1920}
-                height={634}
+                width={1350}
+                height={500}
                 alt=""
               />
             </SwiperSlide>
             <SwiperSlide>
               <Image
                 src={"/images/banner/banner-2.jpeg"}
-                width={1920}
-                height={634}
+                width={1350}
+                height={500}
                 alt=""
               />
             </SwiperSlide>
             <SwiperSlide>
               <Image
                 src={"/images/banner/banner-1.jpeg"}
-                width={1920}
-                height={634}
+                width={1350}
+                height={500}
                 alt=""
               />
             </SwiperSlide>
@@ -76,9 +74,6 @@ const Banner = () => {
           </Swiper>
         </section>
 
-        <div className="absolute right-0 top-0 opacity-70 hover:opacity-90 h-full w-[50px] lg:flex hidden items-center">
-          <div className="h-[500px] custom-next-button-banner bar-right-banner w-full bg-[#FFD6BE]"></div>
-        </div>
       </div>
       <div className={`swiper-pagination`} />
     </section>

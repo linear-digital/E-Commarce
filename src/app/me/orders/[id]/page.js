@@ -8,11 +8,10 @@ import Link from 'next/link';
 
 const getOrder = async (id) => {
     const res = await api.get(`/api/orders/${id}`)
-
     return res.data
 }
 const getReview = async (id) => {
-    const res = await api.get(`/api/reviews/id/${id}`)
+    const res = await api.get(`/api/reviews/single/${id}`)
     return res.data
 }
 
@@ -20,40 +19,41 @@ const page = async ({ params, data }) => {
     const initOrder = getOrder(params.id)
     const initReview = getReview(params.id)
     const [order, review] = await Promise.all([initOrder, initReview])
+    console.log(review)
     return (
         <div className='w-full'>
             <div className="card w-full bg-base-100 shadow-xl">
-                <div className="card-body">
+                <div className="card-body px-3 py-5">
                     <div className='flex items-center justify-between'>
-                        <h2 className="text-base">Order ID: {order?.order_id}</h2>
-                        <h2 className="text-base">Total Ammount: <Taka /> {order?.total}</h2>
+                        <h2 className="lg:text-base text-sm">Order ID: {order?.order_id}</h2>
+                        <h2 className="lg:text-base text-sm">Total Ammount: <Taka /> {order?.total}</h2>
                     </div>
                     <hr />
-                    <div className='py-5 w-full'>
+                    <div className='lg:py-5 py-2 w-full'>
                         <StepProvider status={order?.status} />
                     </div>
-                    <div className='flex items-start justify-between mt-10'>
+                    <div className='lg:flex items-start justify-between mt-10'>
                         <div className='flex items-center'>
                             <Image src={localURL + order?.order[0]?.image} width={100} height={200} alt='' />
                             <div className='ml-5 flex flex-col justify-start'>
-                                <h2 className="text-xl">{order?.order[0]?.product_name}</h2>
-                                <h2 className="text-xl mt-2">Quantity: {order?.order[0]?.quantity}</h2>
-                                <h2 className="text-xl mt-2">Price: <Taka /> {order?.total}</h2>
+                                <h2 className="lg:text-xl text-base">{order?.order[0]?.product_name}</h2>
+                                <h2 className="lg:text-xl text-base mt-2">Quantity: {order?.order[0]?.quantity}</h2>
+                                <h2 className="lg:text-xl text-base mt-2">Price: <Taka /> {order?.total}</h2>
                             </div>
                         </div>
-                        <div className='flex items-center flex-col'>
+                        <div className='flex items-center flex-col mt-5 lg:mt-0'>
 
                             {
                                 review ?
                                     <>
-                                    <h1 className='text-2xl text-primary'>Thanks For  Your Review</h1>
-                                    <Link href={`/me/review/${params.id}`} className='btn btn-primary mt-5'>View</Link>
+                                    <h1 className='lg:text-2xl text-xl text-primary'>Thanks For  Your Review</h1>
+                                    <Link href={`/me/review/${params.id}`} className='btn btn-primary lg:mt-5 mt-2'>View</Link>
                                     </>
                                     :
                                     order?.status === "delivered" && <>
                                         <h1 className='text-2xl text-primary'>Thanks For Order</h1>
                                         <Link className='btn btn-primary mt-5'
-                                            href={`/me/review/write/${order?._id}`}>Write A Review</Link>
+                                            href={`/me/review/write/${order?.order_id}`}>Write A Review</Link>
                                     </>
                             }
                         </div>

@@ -23,15 +23,15 @@ const Page = () => {
     const [markded, setMarked] = useState([])
     const { checkOut } = useSelector(state => state.Cart)
     const { currentUser } = useSelector(state => state.User)
-    
+
     const [carts, setCarts] = useState([])
-    const [loading , setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
         if (cartItems) {
             setCarts(cartItems)
             setLoading(false)
         }
-    }, [repatch , currentUser , cartItems])
+    }, [repatch, currentUser, cartItems])
 
 
     const [totalPrice, setTotalPrice] = useState(0)
@@ -72,46 +72,47 @@ const Page = () => {
             }
         }
     }
-    console.log(currentUser);
     return (
         <section>
-            <div className={"container mx-auto "}>
-                <div className={"grid grid-cols-10 w-full mt-10 gap-10"}>
+            <div className={"container mx-auto px-5"}>
+                <div className={"lg:grid grid-cols-10 w-full lg:mt-10 mt-2 lg:gap-10"}>
                     <div className={"col-span-6"}>
                         {/*Cart Box */}
-                        <div className="overflow-x-auto">
+                        <div className=" w-full">
                             {
-                                loading ? <CartLoader /> : 
-                                <table className="table">
-                                <tbody>
-                                    {
-                                        carts?.length === 0 ?
-                                        <td className='text-center text-primary font-semibold text-3xl pt-10'>
-                                            <Link  href={'/categories'}>Continue Shopping</Link>
-                                        </td>
-                                        :
-                                        carts?.map((car , index) => (
-                                            <CartCard
-                                                setMarked={setMarked}
-                                                marked={markded}
-                                                cart={car} key={car._id} markAll={markAll}
-                                                setMark={setMark}
-                                                setTotalPrice={setTotalPrice}
-                                                totalPrice={totalPrice}
-                                            />
-                                        ))
-                                    }
-                                </tbody>
-                            </table>
+                                loading ? <CartLoader /> :
+                                    <table className="table">
+                                        <tbody>
+                                            {
+                                                carts?.length === 0 ?
+                                                    <td className='text-center text-primary font-semibold text-3xl pt-10'>
+                                                        <Link href={'/categories'}>Continue Shopping</Link>
+                                                    </td>
+                                                    :
+                                                    carts?.map((car, index) => (
+                                                        <CartCard
+                                                            setMarked={setMarked}
+                                                            marked={markded}
+                                                            cart={car} key={car._id} markAll={markAll}
+                                                            setMark={setMark}
+                                                            setTotalPrice={setTotalPrice}
+                                                            totalPrice={totalPrice}
+                                                        />
+                                                    ))
+                                            }
+                                        </tbody>
+                                    </table>
                             }
                         </div>
                     </div>
-                    <div className={"col-span-4"}>
+                    <div className={"col-span-4 w-full mt-5 lg:mt-0"}>
                         <div
-                            className="w-[100%] relative h-[80px] px-5 bg-red-50 rounded-xl justify-between cursor-pointer border border-orange-500 flex items-center">
-                            <div className={"flex items-center"}>
+                            className="w-[100%] relative lg:h-[80px] h-[70px] px-5 bg-red-50 rounded-xl justify-between cursor-pointer border border-orange-500 hidden lg:flex items-center">
+                            <div className={"flex items-center"}
+                                onClick={() => setShow(!show)}
+                            >
                                 <Wallet />
-                                <div className="text-orange-500 text-lg font-semibold ml-5" onClick={() => setShow(!show)}>I Have promo code
+                                <div className="text-orange-500 text-lg font-semibold ml-5" >I Have promo code
                                 </div>
                             </div>
                             <span onClick={() => setShow(!show)}>
@@ -126,13 +127,14 @@ const Page = () => {
                                         <input type={"text"} className={"w-full h-[40px] border-none outline-none "}
                                             placeholder={"Enter Your Promo Code"} />
                                         <button
+                                            onClick={() => setShow(!show)}
                                             className="bg-orange-600 btn-primary text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none btn btn-sm">Apply
                                         </button>
                                     </div>
                                 </div>
                             }
                         </div>
-                        <div className="w-[100%] mt-10 min-h-[314px] bg-white rounded-xl p-10 border border-neutral-300">
+                        <div className="w-full lg:mt-10 mt-5 min-h-[314px] bg-white rounded-xl lg:p-10 p-5 border border-neutral-300">
                             <h1 className="text-black text-xl font-semibold ">Shopping Summary</h1>
                             <div className={"mt-3"}>
                                 {
@@ -140,34 +142,40 @@ const Page = () => {
                                         <div key={index} className={"flex flex-col  justify-start pb-2"}>
                                             <div className={"flex items-center justify-between"}>
                                                 <h4 className={"text-[15px]"}>
-                                                    {item.product_name} ({item.variant})
+                                                    {item.product_name} <br />
+                                                    <strong>({item.variant})</strong>
                                                 </h4>
-                                                <h3 className={"font-semibold text-primary ml-2"}>
-                                                    <Taka /> {item.price}
-                                                </h3>
-                                                <h3 className={" text-primary ml-2"}>
-                                                    <strong>
-                                                        Total :
-                                                    </strong>  <Taka /> {item.price_total}
-                                                </h3>
+                                                <div className='flex items-start lg:flex-row flex-col'>
+                                                    <h3 className={"lg:font-semibold font-bold text-primary lg:ml-2"}>
+                                                        {item.quantity} x
+                                                    </h3>
+                                                    <h3 className={" text-primary flex items-center w-[120px] lg:ml-3"}>
+                                                        <strong>
+                                                            Total :
+                                                        </strong>  
+                                                        <span className='ml-1'>
+                                                        {item.price_total}  <Taka />
+                                                        </span>
+                                                    </h3>
+                                                </div>
                                             </div>
                                             <div className="text-primary mt-3 flex items-center">
                                                 <h2 className='mr-3 font-medium'> Quantity <span className='font-semibold'>:</span></h2>
                                                 <div className="flex items-center  py-2 px-4 rounded-md shadow justify-center">
-                                                <button
-                                                    onClick={() => updatePlus(item, 'minus')}
-                                                >
-                                                    <Minus />
-                                                </button>
+                                                    <button
+                                                        onClick={() => updatePlus(item, 'minus')}
+                                                    >
+                                                        <Minus />
+                                                    </button>
 
-                                                <h2 className={"mx-3 w-[30px] justify-center text-base font-semibold bg-orange-100 h-[30px] flex items-center rounded"}>
-                                                    {item.quantity}
-                                                </h2>
-                                                <button
-                                                    onClick={() => updatePlus(item, 'plus')}
-                                                    className='text-base'>
-                                                    <Plus />
-                                                </button>
+                                                    <h2 className={"mx-3 w-[30px] justify-center text-base font-semibold bg-orange-100 h-[30px] flex items-center rounded"}>
+                                                        {item.quantity}
+                                                    </h2>
+                                                    <button
+                                                        onClick={() => updatePlus(item, 'plus')}
+                                                        className='text-base'>
+                                                        <Plus />
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>

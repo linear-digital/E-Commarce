@@ -28,10 +28,13 @@ const page = () => {
         }
 
     }
+    if (!currentUser) {
+        return "Loading...."
+    }
     return (
         <div>
-            <h1 className={"text-2xl font-semibold"}>My profile</h1>
-            <form className="grid grid-cols-3 gap-5 mt-5" onSubmit={onSubmit}>
+            <h1 className={"lg:text-2xl text-xl font-semibold"}>My profile</h1>
+            <form className="lg:grid grid-cols-3 gap-5 lg:mt-5 mt-2" onSubmit={onSubmit}>
                 <label className="form-control w-full">
                     <div className="label">
                         <span className="label-text text-xs">Full Name</span>
@@ -93,7 +96,7 @@ const page = () => {
                     </select>
                 </label>
                 <div></div>
-                <button className={"btn btn-primary"}>Update</button>
+                <button className={"btn mt-5 lg:mt-0 btn-primary"}>Update</button>
             </form>
         </div>
     )

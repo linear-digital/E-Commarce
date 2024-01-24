@@ -30,13 +30,16 @@ const page = ({ params }) => {
         }
         try {
             const res = await api.post('/api/reviews', newReview)
-            console.log(res)
+            if (res.status === 200 || res.status === 201) {
+                toast.success("Review Added")
+                window.location.reload()
+            }
         } catch (error) {
             console.log(error)
         }
     }
     const uploadImages = async (e) => {
-        if (e.target.files) {
+        if (e.target.files.length > 0) {
             const files = e.target.files
             const formData = new FormData()
             for (let i = 0; i < files.length; i++) {
@@ -57,7 +60,7 @@ const page = ({ params }) => {
     const [alrady, setAlrady] = useState(false)
     const [review, setReview] = useState(null)
     useEffect(() => {
-        api.get(`/api/reviews/id/${order?.order_id}`)
+        api.get(`/api/reviews/single/${order?.order_id}`)
             .then(res => {
                 if (res.data) {
                     setAlrady(true)
@@ -68,6 +71,10 @@ const page = ({ params }) => {
                 }
             })
     }, [order, repatch])
+    if (!order) {
+        return <h1>Loading...</h1>
+
+    }
     return (
         <div>
             {

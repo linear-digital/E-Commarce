@@ -17,7 +17,7 @@ const page = () => {
     return (
         <div >
             <h1 className='text-2xl font-semibold mb-5'>My Reviews</h1>
-            <div className='grid grid-cols-3 mt-5'>
+            <div className='lg:grid grid-cols-3 mt-5'>
                 {
                     reviews.map((r, index) => <ReviewCard key={index} review={r} />)
                 }

@@ -2,9 +2,11 @@
 
 import StarProvider from "@/Components/Shared/StarProvider";
 import { topProducts } from "@/Components/Shared/breackpoints";
-import { ChevronLeft, ChevronRight } from "@/assets/icons";
+import { api, localURL } from "@/Components/instance/api";
+import { ChevronLeft, ChevronRight, Taka } from "@/assets/icons";
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -23,6 +25,13 @@ const TopProducts = () => {
       },
     },
   };
+  const [products, setProducts] = useState([])
+  useEffect(() => {
+    api.get('/api/products/quary/topTen')
+      .then((res) => {
+        setProducts(res.data)
+      })
+  }, [])
   return (
     <div className="bg-[#F6F6F6] w-full h-auto lg:py-0 py-5 lg:h-[630px] flex items-center lg:mt-32 mt-10">
       <section className="container mx-auto flex flex-col lg:flex-row items-center overflow-hidden">
@@ -60,36 +69,13 @@ const TopProducts = () => {
             modules={[Navigation, Autoplay, FreeMode]}
             className="lg:h-[500px]"
           >
-            <SwiperSlide>
-              <TopProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TopProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TopProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TopProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TopProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TopProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TopProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TopProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TopProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TopProductCard />
-            </SwiperSlide>
+            {
+              products.slice(0, 10).map((product) => (
+                <SwiperSlide key={product._id} >
+                  <TopProductCard data={product} />
+                </SwiperSlide>
+              ))
+            }
           </Swiper>
         </div>
       </section>
@@ -99,16 +85,16 @@ const TopProducts = () => {
 
 export default TopProducts;
 
-export const TopProductCard = () => {
+export const TopProductCard = ({ data }) => {
   return (
-    <div className="w-full h-full lg:max-h-[520px] max-h-[340px] lg:max-w-[348px] bg-white rounded-[30px] overflow-hidden shadow-xl shadow-stone-100">
+    <Link href={`/products/${data?._id}`} className="w-full h-full lg:max-h-[520px] max-h-[340px] lg:max-w-[330px] bg-white rounded-[30px] overflow-hidden shadow-xl shadow-stone-100">
       <div className="max-h-[314px] w-full rounded-[30px] bg-stone-300 shadow-md shadow-stone-100 overflow-hidden">
         <Image
-          className="lg:w-[348px] w-[200px] lg:h-[314px] bg-stone-300"
+          className="lg:w-[348px] w-[250px] lg:h-[364px] bg-stone-300"
           src={
-            "https://www.bdshop.com/pub/media/catalog/product/cache/eaf695a7c2edd83636a0242f7ce59484/7/1/baseus-3-in-1-universal-multi-usb-cable-camlt-su01.jpg"
+            localURL + data?.cover
           }
-          width={348}
+          width={340}
           height={314}
           alt=""
         />
@@ -116,7 +102,7 @@ export const TopProductCard = () => {
 
       <div className="flex lg:flex-col flex-col-reverse lg:p-7 p-4">
         <h1 className="text-black text-sm lg:text-2xl font-semibold">
-          {"Baseus 3 In 1 Universal Multi USB Cable (CAMLT-SU01)".slice(0, 30) +
+          {data?.name?.slice(0, 30) +
             " " +
             "..."}
         </h1>
@@ -126,10 +112,13 @@ export const TopProductCard = () => {
         <div className="flex lg:flex-row flex-col-reverse lg:items-center items-start mt-3 lg:mt-4 justify-between">
           <div className="flex items-center">
             <div className="text-orange-500 text-sm lg:text-xl font-semibold">
-              $ 300.98
+              <Taka />
+              {data?.price - (data?.discount_percentage / 100 * data?.price)}
             </div>
             <div className="text-neutral-400 ml-3 lg:text-base text-xs font-normal">
-              $350.99
+              <del>
+                <Taka /> {data?.price}
+              </del>
             </div>
           </div>
           <div className="lg:ml-2 ml-0 lg:mb-0 mb-2">
@@ -137,6 +126,6 @@ export const TopProductCard = () => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

@@ -26,7 +26,7 @@ const page = () => {
             <h1 className="text-2xl font-semibold">Address</h1>
             <Link href={`/me/address/add`} className='btn btn-sm btn-primary text-sm'>Add</Link>
             </div>
-            <div className="grid grid-cols-2 gap-10 mt-5">
+            <div className="grid lg:grid-cols-2 grid-cols-1 lg:gap-10 gap-5 mt-5">
             {
                 address?.map((a, index) => <AddressCard index={index} address={a} key={index}/>)
             }

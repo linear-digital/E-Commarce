@@ -10,7 +10,6 @@ import {useSelector} from "react-redux";
 
 const Page = () => {
     const {currentUser} = useSelector(state => state.User)
-    console.log(currentUser)
 
     const router = useRouter()
     const token = Cookies.get("auth_token")

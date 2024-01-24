@@ -80,12 +80,11 @@ const page = () => {
     }
   }
 
-  console.log(address);
   return (
     <div>
       <button className='btn btn-primary' onClick={useCurrentAddress}>Use Your Current Location</button>
-      <form onSubmit={formHandler} className=''>
-        <div className='grid grid-cols-3 gap-5'>
+      <form onSubmit={formHandler} className='w-auto mt-2'>
+        <div className='grid lg:grid-cols-3 grid-cols-1 gap-5'>
           <TextInput label={"Full Name"} name={"name"} value={currentUser?.name} />
           <TextInput
             disabled={true}
@@ -104,7 +103,7 @@ const page = () => {
                 name='country'
                 autoComplete='off'
                 defaultValue={"Bangladesh"}
-                className="input input-bordered w-full text-sm"
+                className="input lg:input-md input-sm input-bordered w-full text-sm"
               />
             </label>
           </div>
@@ -113,7 +112,7 @@ const page = () => {
               <div className="label">
                 <span className="label-text">Division</span>
               </div>
-              <select name='division' value={address?.address_components[4]?.long_name} className='select select-bordered'>
+              <select name='division' value={address?.address_components[4]?.long_name} className='select lg:select-md input-sm select-bordered'>
                 <option value=''>Select</option>
                 {
                   [
@@ -142,7 +141,7 @@ const page = () => {
                 type="text"
                 autoComplete='off'
                 autoCorrect='off'
-                className="input input-bordered w-full text-sm"
+                className="input lg:input-md input-sm input-bordered w-full text-sm"
               />
             </label>
           </div>
@@ -157,7 +156,7 @@ const page = () => {
                 name='postcode'
                 autoComplete='off'
                 placeholder='Postcode/ZIP'
-                className="input input-bordered w-full text-sm"
+                className="input lg:input-md input-sm input-bordered w-full text-sm"
               />
             </label>
           </div>
@@ -172,7 +171,7 @@ const page = () => {
                 autoComplete='off'
                 name='home_address'
                 placeholder='House No, Building, Street Name, Area'
-                className="input input-bordered w-full text-sm"
+                className="input lg:input-md input-sm input-bordered w-full text-sm"
               />
             </label>
           </div>
@@ -193,7 +192,7 @@ const TextInput = ({ label, name, value, disabled }) => {
         <span className="label-text">{label}</span>
       </div>
       <input autoComplete='off' disabled={disabled} name={name} type="text" defaultValue={value}
-        className="input input-bordered w-full text-sm"
+        className="input lg:input-md input-sm input-bordered w-full text-sm"
       />
     </label>
   </div>

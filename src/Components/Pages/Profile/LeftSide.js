@@ -5,6 +5,7 @@
 import React from 'react'
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Cookies from 'js-cookie';
 
 const LeftSide = ({ user }) => {
     const router = useRouter()
@@ -21,7 +22,7 @@ const LeftSide = ({ user }) => {
                         "Not Verifyed"
                 }
             </button>
-            <div className={"mt-5"}>
+            <div className={"lg:mt-5 mt-2"}>
                 <h1
                     className=" text-neutral-700 text-base font-normal leading-normal">Manage
                     My Account
@@ -42,19 +43,24 @@ const LeftSide = ({ user }) => {
                     <li>
                         <Link href={'/me/orders'}>
                             <h1
-                                className=" text-neutral-700 text-base font-normal leading-normal mt-3">My Orders
+                                className=" text-neutral-700 text-base font-normal leading-normal lg:mt-3 mt-1">My Orders
                             </h1>
                         </Link>
                     </li>
                     <li>
                         <Link href={'/me/review'}>
                             <h1
-                                className=" text-neutral-700 text-base font-normal leading-normal mt-3">Reviews
+                                className=" text-neutral-700 text-base font-normal leading-normal lg:mt-3 mt-1">Reviews
                             </h1>
                         </Link>
                     </li>
                 </ul>
-
+                <button 
+                onClick={()=> {
+                    Cookies.remove('auth_token')
+                    window.location.reload()
+                }}
+                className='btn btn-sm btn-primary mt-5'>SignOut</button>
             </div>
         </div>
     )

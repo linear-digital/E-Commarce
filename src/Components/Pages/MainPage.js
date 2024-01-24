@@ -16,11 +16,11 @@ const MainPage = () => {
       <BestDeals />
       <TopProducts />
       <PopolarSearch />
-       <Features />
+      <Features />
       <FlashSale />
       <HotSale />
       <RecentViewed />
-     <Newsletter />
+      <Newsletter />
     </div>
   );
 };

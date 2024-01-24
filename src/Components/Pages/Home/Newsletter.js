@@ -29,8 +29,7 @@ const Newsletter = () => {
             Sign Up for Newsletter
           </h1>
           <p className="lg:w-[603px] lg:mt-4 mt-2 text-white text-sm text-center lg:text-start lg:text-lg font-normal leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Join our community and be the first to receive exciting updates, exclusive offers, and valuable insights directly to your inbox. By subscribing to our newsletter, you'll get:
           </p>
         </div>
         <div>

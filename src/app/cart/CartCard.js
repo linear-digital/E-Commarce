@@ -53,7 +53,9 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
   }, [checkOut])
 
   return (
-    <tr className={"flex items-center py-5 w-full"}>
+    <tr className={"flex items-center py-5 w-full"}
+      onClick={() => setCheckOutHandler(!checked)}
+    >
       <th>
         <label>
           <input
@@ -62,12 +64,12 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
               setCheckOutHandler(e.target.checked)
             }}
             checked={checked}
-            className="checkbox"
+            className="checkbox lg:checkbox-md checkbox-sm"
           />
         </label>
       </th>
-      <td className={"flex items-center w-full"} >
-        <Link href={`/products/${cart?.product_id}`} className="min-w-[132px] max-w-[142px] max-h-[153px] border bg-stone-300 rounded-[14px] bordered overflow-hidden">
+      <td className={"lg:flex items-center w-full hidden"} >
+        <Link href={`/products/${cart?.product_id}`} className="lg:min-w-[132px] lg:max-w-[142px] lg:max-h-[153px] w-[] border bg-stone-300 rounded-[14px] bordered overflow-hidden">
           <Image
             src={localURL + cart?.image}
             alt={"product Image"}
@@ -97,13 +99,62 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
             <div className={"flex items-center mt-5"}>
 
               <div className={"flex ml-3"}>
-                <button
+              <button
                   onClick={deleteCart}
-                  className={"btn bg-red-500 text-white min-h-[56px] mr-3"}
+                  className={"btn bg-red-500 text-white min-h-[46px] max-h-[46px] hover:bg-red-500 mr-3"}
                 >
                   Delete
                 </button>
                 <button className={"text-red-500 "}>
+                  <Love />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td className={"lg:hidden items-center w-full p-0"} >
+        <div className="flex items-center justify-start">
+          <Link href={`/products/${cart?.product_id}`} className="max-w-[80px] border bg-stone-300 rounded-[14px] bordered overflow-hidden">
+            <Image
+              className="max-w-[80px] min-w-[70px] "
+              src={localURL + cart?.image}
+              alt={"product Image"}
+              width={480}
+              height={320}
+            />
+          </Link>
+          <div className={"flex flex-col h-full ml-3"}>
+            <h1 className="text-black text-sm font-semibold ">
+              {cart?.product_name.slice(0, 30)}...
+            </h1>
+            <div className="flex items-center mt-3 justify-between">
+              <h5 className="text-neutral-600 text-xs font-normal ">
+                SKU {cart?.product_code}
+              </h5>
+              <h2 className={"text-sm font-bold mr-3"}>{cart?.variant}</h2>
+            </div>
+          </div>
+        </div>
+        <div className={"w-full"}>
+          <div className={"flex justify-between items-center"}>
+            <div>
+              <h2 className="text-orange-500 text-base mt-3 font-semibold ">
+                <Taka /> {cart.price}
+              </h2>
+              <div className="text-zinc-400 mt-2 text-xs font-semibold ">
+                +Add note
+              </div>
+            </div>
+            <div className={"flex items-center justify-between mt-5"}>
+              <div className={"flex ml-3"}>
+                <button
+                  onClick={deleteCart}
+                  className={"btn bg-red-500 text-white min-h-[46px] max-h-[46px] hover:bg-red-500 mr-3"}
+                >
+                  Delete
+                </button>
+                <button  className={"text-red-500 "}>
                   <Love />
                 </button>
               </div>

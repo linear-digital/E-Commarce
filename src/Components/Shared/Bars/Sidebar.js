@@ -33,8 +33,11 @@ const Sidebar = ({ setShow, show }) => {
                 <li
                   className="px-5 font-normal capitalize py-2 mb-2"
                   key={index}
+                  onClick={() => setShow(false)}
                 >
-                  <Link href={navigation.href}>{navigation.name}</Link>
+                  <Link href={navigation.href}>
+                    {navigation.name}
+                  </Link>
                 </li>
               );
             })}

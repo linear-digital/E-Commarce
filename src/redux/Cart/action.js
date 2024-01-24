@@ -1,4 +1,4 @@
-import {CARTITEMS, CHECKOUT, CONFIRM, TOTAL_PRICE} from "./constants";
+import { CARTITEMS, CHECKOUT, CONFIRM, PAYMENT, TOTAL_PRICE } from "./constants";
 
 export const setCartItems = (type) => ({
   type: CARTITEMS,
@@ -14,5 +14,9 @@ export const setToatalPrice = (price) => ({
 });
 export const setConfirmOrder = (data) => ({
   type: CONFIRM,
+  payload: data,
+});
+export const setPaymentInfo = (data) => ({
+  type: PAYMENT,
   payload: data,
 });

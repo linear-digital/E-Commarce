@@ -8,7 +8,7 @@ const Categoryes = () => {
   const { category } = useSelector((state) => state.Tools);
 
   return (
-    <div className="py-10 px-7">
+    <div className="py-10 px-7 hidden lg:block">
       <h3 className="text-black text-xl font-semibold ">
         Show all categories
       </h3>

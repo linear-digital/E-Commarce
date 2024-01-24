@@ -1,4 +1,4 @@
-import {DEVICETYPE, REPATCH} from "./constants";
+import { DEVICETYPE, NOTIFICATION, REPATCH } from "./constants";
 
 export const setDeviceType = (type) => ({
   type: DEVICETYPE,
@@ -6,5 +6,9 @@ export const setDeviceType = (type) => ({
 });
 export const setRepatch = (data) => ({
   type: REPATCH,
+  payload: data,
+});
+export const setShowNotification = (data) => ({
+  type: NOTIFICATION,
   payload: data,
 });
