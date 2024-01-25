@@ -7,10 +7,12 @@ import { ChevronLeft, ChevronRight, Taka } from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useSelector } from "react-redux";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const TopProducts = ({ products }) => {
+  const { allProducts } = useSelector((state) => state.Tools);
   const swiperParams = {
     navigation: {
       nextEl: ".custom-next-button-top",
@@ -64,7 +66,7 @@ const TopProducts = ({ products }) => {
             className="lg:h-[500px]"
           >
             {
-              products.slice(0, 10).map((product) => (
+              allProducts?.topTen?.slice(0, 10).map((product) => (
                 <SwiperSlide key={product._id} >
                   <TopProductCard data={product} />
                 </SwiperSlide>

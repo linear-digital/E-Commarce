@@ -1,4 +1,4 @@
-import { CATEGORY, DEVICETYPE, IMAGES, NOTIFICATION, REPATCH } from "./constants";
+import { CATEGORY, DEVICETYPE, IMAGES, NOTIFICATION, PRODUCTS, REPATCH } from "./constants";
 
 
 const initialState = {
@@ -334,7 +334,16 @@ const initialState = {
       ]
     },
   ],
-  showNotification: false
+  showNotification: false,
+  allProducts: {
+    banners: [],
+    deals: [],
+    topTen: [],
+    popular: [],
+    hotSales: [],
+    flashSale: [],
+    newArrival: []
+  },
 };
 
 const Tools = (state = initialState, action) => {
@@ -363,6 +372,11 @@ const Tools = (state = initialState, action) => {
       return {
         ...state,
         showNotification: action.payload
+      }
+    case PRODUCTS:
+      return {
+        ...state,
+        allProducts: action.payload
       }
     default:
       return { ...state };

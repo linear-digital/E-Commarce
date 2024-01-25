@@ -11,7 +11,6 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { setCheckOut } from "@/redux/Cart/action";
 import Skeleton from 'react-loading-skeleton';
-import Head from 'next/head';
 import MetaTags from '@/Components/MetaTags';
 
 const Page = () => {

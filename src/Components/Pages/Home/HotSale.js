@@ -1,16 +1,15 @@
 "use client";
 
 import HotSaleCard from "@/Components/Shared/Cards/HotSaleCard";
-import { hotSale, topProducts } from "@/Components/Shared/breackpoints";
-import { api } from "@/Components/instance/api";
+import { hotSale } from "@/Components/Shared/breackpoints";
 import { ChevronLeft, ChevronRight, Fire } from "@/assets/icons";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const HotSale = ({products}) => {
-  const { deviceType } = useSelector((state) => state.Tools);
+const HotSale = ({ products }) => {
+  const { deviceType, allProducts } = useSelector((state) => state.Tools);
   const swiperParams = {
     navigation: {
       nextEl: ".custom-next-button-hot",
@@ -60,7 +59,7 @@ const HotSale = ({products}) => {
           className="w-full lg:min-h-[500px]"
         >
           {
-            products?.map((data) => <SwiperSlide key={data._id}>
+            allProducts?.hotSales?.map((data) => <SwiperSlide key={data._id}>
               <HotSaleCard data={data} />
             </SwiperSlide>)
           }

@@ -1,6 +1,6 @@
 "use client";
 
-import { setDeviceType } from "@/redux/Tools/action";
+import { setAllProducts, setDeviceType } from "@/redux/Tools/action";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
@@ -59,6 +59,21 @@ const DefaultFatch = () => {
     )()
   }, [token, repatch]);
 
+  useEffect(() => {
+    (
+      async () => {
+        const quary = (await api.get('/api/products/quary/bestDeals')).data
+        dispatch(setAllProducts({
+          deals: quary.bestDeals,
+          topTen: quary.topTen,
+          popular: quary.popular,
+          hotSales: quary.hotSales,
+          flashSale: quary.flashSale,
+          newArrival: quary.newArrival
+        }))
+      }
+    )()
+  }, [repatch]);
 
   useEffect(() => {
     const apiKey = "AIzaSyBUDmkMGZD5mIPpiGRVQov8aPztKKB5B2c"

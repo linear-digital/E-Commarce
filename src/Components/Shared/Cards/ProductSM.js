@@ -1,18 +1,23 @@
 import { Star, Taka } from "@/assets/icons";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import StarProvider from "../StarProvider";
 import { api, localURL } from "@/Components/instance/api";
 import Link from "next/link";
 // import { useRouter } from "next/navigation";
-const getReview = async (id) => {
-  const res = await api.get(`/api/reviews/id/${id}`)
-  return res.data
-}
 
-const ProductSM = async ({ data }) => {
-  const initReview = getReview(data._id)
-  const [reviews] = await Promise.all([initReview])
+
+const ProductSM = ({ data }) => {
+
+  const [reviews, setReviews] = useState([])
+  useEffect(() => {
+    (
+      async () => {
+        const res = await api.get(`/api/reviews/id/${data._id}`)
+        setReviews(res.data)
+      }
+    )()
+  }, [data])
   const avarage = reviews?.reduce((acc, review) => acc + review?.rating, 0) / reviews?.length
   return (
     <Link href={`/products/${data?._id}`} className="flex flex-col lg:flex-row lg:h-[139px] h-auto cursor-pointer">
@@ -40,9 +45,9 @@ const ProductSM = async ({ data }) => {
             <StarProvider number={avarage} />
             <span className="ml-2">({reviews?.length})</span>
           </div>
-          
+
         </div>
-        
+
       </div>
     </Link>
   );

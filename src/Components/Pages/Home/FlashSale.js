@@ -2,15 +2,14 @@
 
 import FlashSaleCard from "@/Components/Shared/Cards/FlashSaleCard";
 import { flashSale } from "@/Components/Shared/breackpoints";
-import { api } from "@/Components/instance/api";
 import { ChevronLeft, ChevronRight } from "@/assets/icons";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const FlashSale = ({products}) => {
-  const { deviceType } = useSelector((state) => state.Tools);
+const FlashSale = () => {
+  const { deviceType, allProducts } = useSelector((state) => state.Tools);
   const swiperParams = {
     navigation: {
       nextEl: ".custom-next-button-flash",
@@ -32,24 +31,25 @@ const FlashSale = ({products}) => {
     seconds: 30
   });
 
-  // const timer = () => {
-  //   if (time.seconds > 0) {
-  //     setTimeout(() => {
-  //       setTime({
-  //         ...time,
-  //         seconds: time.seconds - 1
-  //       });
-  //     }, 1000);
-  //   }
-  //   else if (time.seconds === 0) {
-  //     setTime({
-  //       ...time,
-  //       minutes: time.minutes - 1,
-  //       seconds: 59
-  //     });
-  //   }
-  // }
+  const timer = () => {
+    if (time.seconds > 0) {
+      setTimeout(() => {
+        setTime({
+          ...time,
+          seconds: time.seconds - 1
+        });
+      }, 1000);
+    }
+    else if (time.seconds === 0) {
+      setTime({
+        ...time,
+        minutes: time.minutes - 1,
+        seconds: 59
+      });
+    }
+  }
   // timer()
+
   return (
     <div className="lg:mt-32 mt-10 ">
       <div
@@ -65,7 +65,7 @@ const FlashSale = ({products}) => {
           <div className="flex flex-col justify-center lg:ml-16">
             <div className="text-white lg:text-5xl text-3xl font-semibold ">Flash Sale</div>
             <div className="lg:w-[369px] text-white text-base font-normal  leading-7 mt-2">
-            Brace yourself for surprise flash deals that add an element of thrill to your shopping experience. Uncover unbeatable prices on your favorite gadgets but be quick, these deals won't wait!
+              Brace yourself for surprise flash deals that add an element of thrill to your shopping experience. Uncover unbeatable prices on your favorite gadgets but be quick, these deals won't wait!
             </div>
             <div className="text-white lg:mt-10 mt-5 lg:text-[40px] text-[30px] font-bold  leading-7">
               0{time?.days} : {time?.hours} : {time?.minutes} : {time?.seconds}
@@ -90,7 +90,7 @@ const FlashSale = ({products}) => {
                 className="w-full"
               >
                 {
-                  products?.map(product => (
+                  allProducts?.flashSale?.map(product => (
                     <SwiperSlide key={product?._id} className="">
                       <FlashSaleCard data={product} />
                     </SwiperSlide>

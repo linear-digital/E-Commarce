@@ -16,6 +16,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { setRepatch } from "@/redux/Tools/action";
 import RelatedProduct from "@/Components/Pages/Home/RelatedProduct";
+import LoginForm from "@/app/login/LoginForm";
+import LoginForm2 from "@/app/login/LoginForm2";
 
 const Details = ({ product }) => {
     const { currentUser } = useSelector((state) => state.User);
@@ -61,7 +63,7 @@ const Details = ({ product }) => {
             }
         }
         else {
-            router.push('/login')
+            setShow("login")
         }
     };
     const [related, setRelated] = useState([]);
@@ -106,9 +108,17 @@ const Details = ({ product }) => {
 
     const [currentImage, setCurrentImage] = React.useState({});
     const [activeTab, setActiveTab] = useState("specification");
-
+    const [show, setShow] = useState("")
     return (
         <div>
+            {
+                show === "login" &&
+                <div className="w-full h-screen fixed top-0 left-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
+
+                    <LoginForm2 setShow={setShow} />
+
+                </div>
+            }
             <section className="container mx-auto lg:mt-10 mt-4 shadow-lg pb-5 lg:px-0 px-4">
                 <div className="grid lg:grid-cols-2 grid-cols-1">
                     <div className="w-full lg:hidden">
@@ -158,7 +168,7 @@ const Details = ({ product }) => {
                     </div>
                     <div className="lg:flex hidden items-center flex-col w-full justify-center">
                         <div
-                            className={`image-container relative max-w-[564px] overflow-hidden w-full h-full  bg-stone-100 rounded-md ${zoom ? "zoomed" : ""
+                            className={`image-container relative max-w-[564px] overflow-hidden w-full bg-stone-100 rounded-md ${zoom ? "zoomed" : ""
                                 }`}
                         >
                             {
@@ -353,7 +363,7 @@ const Details = ({ product }) => {
             </section>
             {
                 related &&
-                <RelatedProduct products={related} mt={"lg:mt-16"}/>
+                <RelatedProduct products={related} mt={"lg:mt-16"} />
             }
         </div>
     );

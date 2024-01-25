@@ -7,7 +7,6 @@ import Features from "./Home/Features";
 import FlashSale from "./Home/FlashSale";
 import HotSale from "./Home/HotSale";
 import RecentViewed from "./Home/RecentViewed";
-import Newsletter from "./Home/Newsletter";
 import { api } from "../instance/api";
 
 const getAllProducts = async () => {
@@ -33,20 +32,16 @@ const MainPage = async () => {
   return (
     <div>
       <Banner
-        banners={data.banners}
       />
       <BestDeals
-        deals={data.deals}
       />
       <TopProducts
-        products={data.topTen}
       />
       <PopolarSearch
-        popular={data.popular}
       />
       <Features />
-      <FlashSale products={data.flashSale} />
-      <HotSale products={data.hotSales} />
+      <FlashSale />
+      <HotSale />
       <RecentViewed mt={"lg:mt-20"} />
       {/* <Newsletter /> */}
     </div>
