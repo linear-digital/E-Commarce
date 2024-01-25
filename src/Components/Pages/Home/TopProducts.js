@@ -2,15 +2,15 @@
 
 import StarProvider from "@/Components/Shared/StarProvider";
 import { topProducts } from "@/Components/Shared/breackpoints";
-import { api, localURL } from "@/Components/instance/api";
+import { localURL } from "@/Components/instance/api";
 import { ChevronLeft, ChevronRight, Taka } from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const TopProducts = () => {
+const TopProducts = ({ products }) => {
   const swiperParams = {
     navigation: {
       nextEl: ".custom-next-button-top",
@@ -25,13 +25,7 @@ const TopProducts = () => {
       },
     },
   };
-  const [products, setProducts] = useState([])
-  useEffect(() => {
-    api.get('/api/products/quary/topTen')
-      .then((res) => {
-        setProducts(res.data)
-      })
-  }, [])
+
   return (
     <div className="bg-[#F6F6F6] w-full h-auto lg:py-0 py-5 lg:h-[630px] flex items-center lg:mt-32 mt-10">
       <section className="container mx-auto flex flex-col lg:flex-row items-center overflow-hidden">

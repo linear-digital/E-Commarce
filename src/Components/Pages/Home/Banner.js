@@ -1,13 +1,13 @@
 "use client";
 
-import { api, localURL } from "@/Components/instance/api";
+import { localURL } from "@/Components/instance/api";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const Banner = () => {
+const Banner = ({ banners }) => {
   const swiperParams = {
     navigation: {
       nextEl: ".custom-next-button-banner",
@@ -22,12 +22,6 @@ const Banner = () => {
       },
     },
   };
-  const [banners, setBanners] = useState([])
-
-  useEffect(() => {
-    api.get('/api/banners')
-      .then(res => setBanners(res.data))
-  }, [])
 
   return (
     <section className="relative lg:px-0 px-4">

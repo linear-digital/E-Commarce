@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const HotSale = () => {
+const HotSale = ({products}) => {
   const { deviceType } = useSelector((state) => state.Tools);
   const swiperParams = {
     navigation: {
@@ -25,11 +25,6 @@ const HotSale = () => {
       },
     },
   };
-  const [products, setProducts] = useState([])
-  useEffect(() => {
-    api.get('/api/products/quary/hotSale')
-      .then(res => setProducts(res.data))
-  }, [])
   return (
     <div className="container mx-auto lg:mt-32 mt-10 lg:px-0 px-4 ">
       <div className="flex justify-between">
@@ -65,7 +60,7 @@ const HotSale = () => {
           className="w-full lg:min-h-[500px]"
         >
           {
-            products.map((data) => <SwiperSlide key={data._id}>
+            products?.map((data) => <SwiperSlide key={data._id}>
               <HotSaleCard data={data} />
             </SwiperSlide>)
           }

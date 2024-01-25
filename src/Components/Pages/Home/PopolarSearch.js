@@ -1,15 +1,10 @@
 
 
 import { PopularSearchCard } from "@/Components/Shared/Cards/PopularSearchCard";
-import { api } from "@/Components/instance/api";
 import React from "react";
-const getPopular = async () => {
-  const res = await api.get('/api/products/quary/popular')
-  return res.data
-}
-const PopolarSearch = async () => {
-  const initialData = getPopular()
-  const [popular] = await Promise.all([initialData])
+
+const PopolarSearch = async ({popular}) => {
+
   return (
     <div className="lg:mt-32 mt-10 p-4 lg:p-0">
       <section className="container mx-auto">

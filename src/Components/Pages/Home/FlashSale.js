@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const FlashSale = () => {
+const FlashSale = ({products}) => {
   const { deviceType } = useSelector((state) => state.Tools);
   const swiperParams = {
     navigation: {
@@ -25,11 +25,6 @@ const FlashSale = () => {
       },
     },
   };
-  const [products, setProducts] = useState([])
-  useEffect(() => {
-    api.get('/api/products/quary/flashSale')
-      .then(res => setProducts(res.data))
-  }, [])
   const [time, setTime] = useState({
     days: 7,
     hours: 10,
@@ -37,24 +32,24 @@ const FlashSale = () => {
     seconds: 30
   });
 
-  const timer = () => {
-    if (time.seconds > 0) {
-      setTimeout(() => {
-        setTime({
-          ...time,
-          seconds: time.seconds - 1
-        });
-      }, 1000);
-    }
-    else if (time.seconds === 0) {
-      setTime({
-        ...time,
-        minutes: time.minutes - 1,
-        seconds: 59
-      });
-    }
-  }
-  timer()
+  // const timer = () => {
+  //   if (time.seconds > 0) {
+  //     setTimeout(() => {
+  //       setTime({
+  //         ...time,
+  //         seconds: time.seconds - 1
+  //       });
+  //     }, 1000);
+  //   }
+  //   else if (time.seconds === 0) {
+  //     setTime({
+  //       ...time,
+  //       minutes: time.minutes - 1,
+  //       seconds: 59
+  //     });
+  //   }
+  // }
+  // timer()
   return (
     <div className="lg:mt-32 mt-10 ">
       <div

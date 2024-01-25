@@ -22,7 +22,7 @@ const RecentViewed = ({ mt }) => {
       clickable: true, // Enable clickable pagination bullets
       renderBullet: function (index, className) {
         // Custom pagination bullet content
-        return `<span class="${className}"></span>`;
+        return `<span key="${index}" class="${className}"></span>`;
       },
     },
   };
@@ -32,7 +32,9 @@ const RecentViewed = ({ mt }) => {
       async () => {
         const ipfrom = await axios.get('https://api64.ipify.org/?format=json')
         if (ipfrom.data.ip !== "") {
-          api.get(`/api/products/quary/recentView?ip=${ipfrom.data.ip}`)
+          api.post(`/api/products/get/ip`, {
+            address: ipfrom.data.ip
+          })
             .then(res => setProducts(res.data))
         }
       }

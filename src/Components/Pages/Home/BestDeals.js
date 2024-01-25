@@ -1,14 +1,7 @@
 
 import ProductSM from "@/Components/Shared/Cards/ProductSM";
-import { api } from "@/Components/instance/api";
-const getDeals = async () => {
-  const res = await api.get('/api/products/quary/bestDeals')
-  return res.data
-}
 
-const BestDeals = async () => {
-  const dealsGet = getDeals()
-  const [deals] = await Promise.all([dealsGet])
+const BestDeals = async ({ deals }) => {
 
   return (
     <main className="container mx-auto lg:mt-32 mt-10 px-4 lg:px-0">
