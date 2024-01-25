@@ -46,7 +46,7 @@ const Page = () => {
             <div className={"lg:w-[450px] lg:h-[480px] w-full h-auto  border rounded lg:p-5 "}>
                 <form className={"w-full"} onSubmit={formHandler}>
                     <div className="flex items-center justify-between mb-5">
-                        <h2 className={"text-2xl font-semibold  text-primary"}>Welcome Back</h2>
+                        <h1 className={"text-2xl font-semibold  text-primary"}>Welcome Back</h1>
                         <div
                             onClick={() => {
                                 router.push('/signup')

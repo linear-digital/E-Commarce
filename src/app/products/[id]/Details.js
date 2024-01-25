@@ -211,9 +211,9 @@ const Details = ({ product }) => {
                     </div>
 
                     <div className="lg:p-5 w-full mt-3">
-                        <h2 className="text-black lg:text-[26px] text-[20px] font-semibold ">
+                        <h1 className="text-black lg:text-[26px] text-[20px] font-semibold ">
                             {product?.name}
-                        </h2>
+                        </h1>
                         <div className="mt-4 flex item-center">
                             <h5 className="text-orange-500 text-lg font-extrabold">4.0</h5>
                             <span className="ml-3 mt-[5px]">

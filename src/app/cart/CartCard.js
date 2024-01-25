@@ -72,7 +72,7 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
         <Link href={`/products/${cart?.product_id}`} className="lg:min-w-[132px] lg:max-w-[142px] lg:max-h-[153px] w-[] border bg-stone-300 rounded-[14px] bordered overflow-hidden">
           <Image
             src={localURL + cart?.image}
-            alt={"product Image"}
+            alt={cart?.product_name}
             width={480}
             height={320}
           />
@@ -99,7 +99,7 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
             <div className={"flex items-center mt-5"}>
 
               <div className={"flex ml-3"}>
-              <button
+                <button
                   onClick={deleteCart}
                   className={"btn bg-red-500 text-white min-h-[46px] max-h-[46px] hover:bg-red-500 mr-3"}
                 >
@@ -119,7 +119,7 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
             <Image
               className="max-w-[80px] min-w-[70px] "
               src={localURL + cart?.image}
-              alt={"product Image"}
+              alt={cart?.product_name}
               width={480}
               height={320}
             />
@@ -154,7 +154,7 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
                 >
                   Delete
                 </button>
-                <button  className={"text-red-500 "}>
+                <button className={"text-red-500 "}>
                   <Love />
                 </button>
               </div>

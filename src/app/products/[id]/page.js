@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
   const res = await api.get(`/api/products/pr/${params.id}`);
   const product = res.data;
   return {
-    title: `Linear Hub | ${product?.name}`,
+    title: `Linear Hub | ${product?.name.slice(0, 30)}...`,
   }
 }
 

@@ -18,7 +18,7 @@ const Bkash = () => {
             </h2>
             <Image 
             className=' mt-2'
-            src={'/images/qr-bkash.png'} width={150} height={150} alt={""}/>
+            src={'/images/qr-bkash.png'} width={150} height={150} alt={"Bkash Logo"}/>
         </div>
     );
 };

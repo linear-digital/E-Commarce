@@ -286,11 +286,11 @@ const Page = () => {
             <div className={"container mx-auto lg:grid lg:grid-cols-11 grid-cols-1 mt-10 gap-10"}>
                 <div className={"col-span-7 "}>
                     <div className={"lg:flex justify-between items-center"}>
-                        <h2 className="text-black lg:text-3xl text-xl font-semibold flex items-center">Shipping Details
+                        <h1 className="text-black lg:text-3xl text-xl font-semibold flex items-center">Shipping Details
                             {
                                 loading && <Spinner />
                             }
-                        </h2>
+                        </h1>
                         <select onChange={(e) => {
                             if (e.target.value === "add-address") {
                                 router.push('/me/address/add')

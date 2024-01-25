@@ -11,7 +11,7 @@ const LeftSide = ({ user }) => {
     const router = useRouter()
     return (
         <div className={"w-full border px-3 py-5"}>
-            <h3 className={"text-sm"}>Hello <span className={"text-orange-700"}>{user.name}</span></h3>
+            <h1 className={"text-sm"}>Hello <span className={"text-orange-700"}>{user.name}</span></h1>
             <button
                 onClick={() => router.push('/me/verify')}
                 disabled={user.emailVerifyed} className={`${user.emailVerifyed ? "bg-green-600 w-[150px]" : "bg-red-600 w-[120px]"}  text-xs py-1 px-2  text-white rounded mt-2`}>

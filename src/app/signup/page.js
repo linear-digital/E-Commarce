@@ -38,7 +38,7 @@ const Page = () => {
             <div className={"w-[450px] h-[530px] border rounded p-5"}>
                 <form className={"w-full"} onSubmit={formEventHandler}>
                     <div className="flex items-center justify-between mb-5">
-                        <h2 className={"text-2xl font-semibold  text-primary"}>Create a account</h2>
+                        <h1 className={"text-2xl font-semibold  text-primary"}>Create a account</h1>
                         <div
                             onClick={() => {
                                 router.push('/login')

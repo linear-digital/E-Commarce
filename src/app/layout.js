@@ -18,7 +18,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 export const metadata = {
   title: 'Linear Hub | Online Shopping BD',
-  description: "Linear Hub is the Best Electronics Accessories, and Gadgets &amp; Online shop in Bangladesh. Star Tech offers the Latest Tech products with the most competitive price in BD.",
+  description: "Linear Hub is the Best Electronics Accessories, and Gadgets &amp; Online shop in Bangladesh. We the Latest Tech products with the most competitive price in BD.",
   metadataBase: new URL('https://linearhub.com'),
   alternates: {
     canonical: '/',
@@ -38,7 +38,6 @@ export default function RootLayout({ children }) {
         <meta name="keywords" content="Electric Gadgets in Bangladesh, Gadget shop in bd, PC accessories shop in Bangladesh, best computer shop in Bangladesh, Gadget shop in bd, Gadget Shop in Bangladesh, Online Shop in BD, online computer shop in bd, computer accessories online shop in Bangladesh, computer, gaming, desktop, monitor, Star Tech, computer accessories, Desktop accessories, Laptop accessories, Laptop Online Store in BD, adata, apacer, apple, asus, bangladesh, baseus, belkin, benq, best, boya, brother, cable, camera, canon, GPU, graphics card, Star Tech &amp; Engineering Ltd, Mouse , Keyboard, Headphone, Powerbank, Speaker, Juicer, Rice Cooker, Washing Machine, Vaccum Cleaner," />
         <meta property="og:type" content="og:product" />
         <meta property="og:title" content="Linear Hub | Online Shopping BD | YouTube Gadget &amp; Electric Gadgets Shop" />
-        {/* <meta property="og:image" content="https://www.bdshop.com/pub/media/bss/logo/" /> */}
         <meta property="og:description" content="Online Shopping BD" />
         <meta property="og:url" content="https://www.linearhub.com/" />
         <meta name="twitter:card" content="summary" />
