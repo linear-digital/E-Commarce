@@ -12,7 +12,7 @@ export default async function Home() {
   const [products] = await Promise.all([initialProducts])
   return (
     <>
-      <MainPage />
+      {/* <MainPage /> */}
       <div className="hidden">
         {
           products.map((product, index) => {

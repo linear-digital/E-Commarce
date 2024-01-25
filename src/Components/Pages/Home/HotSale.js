@@ -62,7 +62,7 @@ const HotSale = () => {
             disableOnInteraction: false,
           }}
           modules={[Navigation, Autoplay, FreeMode]}
-          className="w-full lg:min-h-[650px]"
+          className="w-full lg:min-h-[500px]"
         >
           {
             products.map((data) => <SwiperSlide key={data._id}>

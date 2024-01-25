@@ -15,6 +15,7 @@ import { api, localURL } from "@/Components/instance/api";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { setRepatch } from "@/redux/Tools/action";
+import RelatedProduct from "@/Components/Pages/Home/RelatedProduct";
 
 const Details = ({ product }) => {
     const { currentUser } = useSelector((state) => state.User);
@@ -63,10 +64,14 @@ const Details = ({ product }) => {
             router.push('/login')
         }
     };
+    const [related, setRelated] = useState([]);
+
     useEffect(() => {
         (async () => {
             // const ipfrom = await axios.get('https://api64.ipify.org/?format=json')
             // const res = await api.get(`/api/products/${id}?ip=${ipfrom.data.ip}`);
+            const rels = await api.post(`/api/products/search/any`, { search: product?.category })
+            setRelated(rels.data)
             setPrice(
                 product?.price -
                 (product?.price * product?.discount_percentage) / 100
@@ -101,6 +106,7 @@ const Details = ({ product }) => {
 
     const [currentImage, setCurrentImage] = React.useState({});
     const [activeTab, setActiveTab] = useState("specification");
+
     return (
         <div>
             <section className="container mx-auto lg:mt-10 mt-4 shadow-lg pb-5 lg:px-0 px-4">
@@ -345,6 +351,10 @@ const Details = ({ product }) => {
                     </section>
                 </div>
             </section>
+            {
+                related &&
+                <RelatedProduct products={related} mt={"lg:mt-16"}/>
+            }
         </div>
     );
 };

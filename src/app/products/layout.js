@@ -4,6 +4,7 @@
 
 import React from 'react'
 import Newsletter from "@/Components/Pages/Home/Newsletter";
+import RecentViewed from '@/Components/Pages/Home/RecentViewed';
 
 const Layout = ({children}) => {
     return (
@@ -11,7 +12,7 @@ const Layout = ({children}) => {
             <section>
                 {children}
             </section>
-            <Newsletter />
+            <RecentViewed mt={"lg:mt-10"}/>
         </div>
     )
 }

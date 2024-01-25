@@ -4,6 +4,7 @@ import React from "react";
 import { api } from "@/Components/instance/api";
 import Details from "./Details";
 import axios from "axios";
+import RelatedProduct from "@/Components/Pages/Home/RelatedProduct";
 
 export async function generateMetadata({ params }) {
   const res = await api.get(`/api/products/pr/${params.id}`);
@@ -16,6 +17,7 @@ export async function generateMetadata({ params }) {
 const getProduct = async (id) => {
   const ipfrom = await axios.get('https://api64.ipify.org/?format=json')
   const res = await api.get(`/api/products/${id}?ip=${ipfrom.data.ip}`);
+
   return res.data;
 }
 

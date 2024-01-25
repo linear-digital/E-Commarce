@@ -16,8 +16,9 @@ import DefaultFatch from '@/Components/Shared/DefaultFatch';
 import { Toaster } from "react-hot-toast";
 import 'react-loading-skeleton/dist/skeleton.css'
 
+
 export const metadata = {
-  title: 'Linear Hub | Online Shopping BD',
+  title: 'Linear Hub | Online Shopping BD | Home Page',
   description: "Linear Hub is the Best Electronics Accessories, and Gadgets &amp; Online shop in Bangladesh. We the Latest Tech products with the most competitive price in BD.",
   metadataBase: new URL('https://linearhub.com'),
   alternates: {

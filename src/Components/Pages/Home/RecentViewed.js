@@ -11,7 +11,7 @@ import React, { useEffect, useState } from "react";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const RecentViewed = () => {
+const RecentViewed = ({ mt }) => {
   const swiperParams = {
     navigation: {
       nextEl: ".custom-next-button-history",
@@ -31,13 +31,15 @@ const RecentViewed = () => {
     (
       async () => {
         const ipfrom = await axios.get('https://api64.ipify.org/?format=json')
-        api.get(`/api/products/quary/recentView?ip=${ipfrom.data.ip}`)
-          .then(res => setProducts(res.data))
+        if (ipfrom.data.ip !== "") {
+          api.get(`/api/products/quary/recentView?ip=${ipfrom.data.ip}`)
+            .then(res => setProducts(res.data))
+        }
       }
     )()
   }, [])
   return (
-    <div className="container mx-auto lg:mt-32 mt-14 p-4 lg:p-0">
+    <div className={`container mx-auto ${mt ? mt : "lg:mt-32"} mt-1 p-4 lg:p-0`}>
       <div className="flex justify-between">
         <div className="flex items-center">
           <div className="ml-2 text-black lg:text-3xl text-2xl font-semibold ">

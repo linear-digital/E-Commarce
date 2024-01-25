@@ -32,11 +32,11 @@ export const hotSale = {
 
 export const flashSale = {
   320: {
-    slidesPerView: 2,
+    slidesPerView: 1,
     spaceBetween: 20,
   },
   480: {
-    slidesPerView: 2,
+    slidesPerView: 1,
     spaceBetween: 20,
   },
   768: {
@@ -44,7 +44,7 @@ export const flashSale = {
     spaceBetween: 20,
   },
   1024: {
-    slidesPerView: 4,
+    slidesPerView: 3,
     spaceBetween: 20,
   },
 };

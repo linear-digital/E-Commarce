@@ -19,7 +19,7 @@ const MainPage = () => {
       <Features />
       <FlashSale />
       <HotSale />
-      <RecentViewed />
+      <RecentViewed mt={"lg:mt-20"}/>
       <Newsletter />
     </div>
   );
