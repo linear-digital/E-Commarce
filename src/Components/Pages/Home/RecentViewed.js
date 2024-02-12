@@ -11,7 +11,7 @@ import React, { useEffect, useState } from "react";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const RecentViewed = ({ mt }) => {
+const RecentViewed = ({ mt, count, title, data, text }) => {
   const swiperParams = {
     navigation: {
       nextEl: ".custom-next-button-history",
@@ -41,11 +41,13 @@ const RecentViewed = ({ mt }) => {
     )()
   }, [])
   return (
-    <div className={`container mx-auto ${mt ? mt : "lg:mt-32"} mt-1 p-4 lg:p-0`}>
+    <div className={`container mx-auto ${mt ? mt : "lg:mt-32"}  ${text === "sm" ? "mt-5" : "p-4 mt-1"} lg:p-0`}>
       <div className="flex justify-between">
         <div className="flex items-center">
           <div className="ml-2 text-black lg:text-3xl text-2xl font-semibold ">
-            Recently viewed
+            {
+              title ? title : "Recently viewed"
+            }
           </div>
         </div>
         <div className="flex items-center">
@@ -61,9 +63,9 @@ const RecentViewed = ({ mt }) => {
       <div className="mt-10 w-full">
         <Swiper
           breakpoints={topProducts}
-          slidesPerView={5}
+          slidesPerView={count ? count : 5}
           loop={true}
-          spaceBetween={30}
+          spaceBetween={20}
           {...swiperParams}
           centeredSlides={false}
           autoplay={{
@@ -74,9 +76,9 @@ const RecentViewed = ({ mt }) => {
           className="w-full"
         >
           {
-            products?.map((data) => {
+            (data ? data : products)?.map((data) => {
               return <SwiperSlide key={data?._id}>
-                <RecentCard data={data} />
+                <RecentCard data={data} text={text} />
               </SwiperSlide>
             })
           }
@@ -88,21 +90,21 @@ const RecentViewed = ({ mt }) => {
 
 export default RecentViewed;
 
-const RecentCard = ({ data }) => {
+const RecentCard = ({ data, text }) => {
   return <Link href={`/products/${data?._id}`} className="flex flex-col lg:flex-row lg:h-[139px] h-auto cursor-pointer">
     <div className="h-full lg:max-h-[139px] min-h-[139px] max-h-[80px] min-w-[60px] lg:min-w-[120px] bg-gray-300 rounded-xl"
     >
       <Image
-        className="rounded-xl w-full h-full"
+        className="rounded-xl w-full h-full max-h-[150px] lg:max-h-auto"
         src={localURL + data?.cover} alt={""} width={200} height={200} />
     </div>
     <div className="p-2 ml-3 flex flex-col lg:justify-between ">
       <div className="text-orange-500 text-center mb-2 block lg:hidden text-xl mt-1 font-semibold">
         <Taka /> {data?.price - (data?.discount_percentage / 100 * data?.price)}
       </div>
-      <h2 className=" text-black text-sm lg:text-base font-medium">
+      <h2 className={`text-black text-sm lg:text-${text ? text : "base"} font-medium`}>
         {
-          data?.name?.slice(0, 60)
+          text === "sm" ? data?.name?.slice(0, 35) + " ...." : data?.name?.slice(0, 60)
         }
       </h2>
       <div className="pb-2">

@@ -30,9 +30,17 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
     }
   };
   const [checked, setChecked] = useState(false);
+
   const setCheckOutHandler = (type) => {
     const order = cart
-    dispatch(setCheckOut([order]))
+    const isExist = checkOut?.filter(item => item._id === cart?._id).length > 0
+    if (isExist) {
+      const newCheckOut = checkOut?.filter(item => item._id !== cart?._id)
+      dispatch(setCheckOut([...newCheckOut]))
+    }
+    else {
+      dispatch(setCheckOut([...checkOut, order]))
+    }
   };
   const deleteCart = async () => {
     try {

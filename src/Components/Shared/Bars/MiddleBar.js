@@ -6,10 +6,14 @@ import { Avater, Cart, Cross, MenuIcon } from "@/assets/icons";
 import Manubar from "./Manubar";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { setShowNotification } from "@/redux/Tools/action";
+import { setRepatch, setShowNotification } from "@/redux/Tools/action";
 import Notification from "@/Components/Notification";
 import { api, localURL } from "@/Components/instance/api";
 import Image from "next/image";
+import Cookies from "js-cookie";
+import toast from "react-hot-toast";
+import { setCurrentUser } from "@/redux/User/action";
+import LoginForm2 from "@/app/login/LoginForm2";
 
 const MiddleBar = ({ isSticky, setShow, active }) => {
   const [show, setShow1] = useState(false);
@@ -20,6 +24,7 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
   const [searchResult, setSearchResult] = useState([])
   const [showResult, setShowResult] = useState(false)
   const [search, setSearch] = useState('')
+  const [showModal, setShowModal] = useState(false)
   const SearchProduct = async (e) => {
     e.preventDefault()
     const res = await api.post('/api/products/search', { search: e.target.product_name.value })
@@ -27,12 +32,14 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
     setSearchResult(res.data)
   }
 
+
   return (
     <main className="shadow  shadow-gray-100 bg-white lg:px-0 px-2 pb-2 lg:pb-0">
       <section className="container mx-auto lg:h-[90px] h-[50px] flex items-center justify-between pt-2">
         <span className="lg:block hidden">
           <Logo />
         </span>
+
         <div className="flex lg:hidden justify-between items-center w-full px-5">
           <button
             onClick={() => setShow(true)}
@@ -104,6 +111,13 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
             </form>
           </div>
         )}
+        {
+          showModal && <div className="w-full h-screen fixed top-0 left-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
+
+            <LoginForm2 setShow={setShowModal} />
+
+          </div>
+        }
 
         {/* Searchbar  */}
         <form onSubmit={SearchProduct} className="max-w-[796px] w-full lg:h-[55px] h-[40px] overflow-hidden rounded-lg relative mx-2 lg:block hidden">
@@ -154,17 +168,53 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
               {cartItems?.length}
             </div>
           </Link>
-          <Link href={'/me'} className="btn btn-primary shadow-md  shadow-orange-500 ml-14">
-            <Avater />
-            <span>
-              {
-                currentUser ?
-                  currentUser?.name
-                  :
-                  " My Account"
-              }
-            </span>
-          </Link>
+          <details className="dropdown">
+            <summary
+              onClick={() => {
+                !currentUser && setShowModal("login")
+              }}
+              className="btn btn-primary shadow-md  shadow-orange-500 ml-14">
+              <Avater />
+              <span>
+                {
+                  currentUser ?
+                    currentUser?.name
+                    :
+                    "Account"
+                }
+              </span>
+            </summary>
+            {
+              currentUser && <ul className="p-2 shadow menu dropdown-content z-[103] bg-base-100 rounded-box w-52 right-0 ">
+                <li>
+                  <Link href={'/me/profile'}>
+                    Profile
+                  </Link>
+                </li>
+                <li className="mt-1">
+                  <Link href={'/me/orders'}>
+                    Orders
+                  </Link>
+                </li>
+                <li className="mt-1">
+                  <Link href={'/me/orders'}>
+                    Address Book
+                  </Link>
+                </li>
+                <li>
+                  <button className="btn btn-sm btn-danger mt-2"
+                    onClick={() => {
+                      Cookies.remove("auth_token")
+                      toast.success("Logout Success")
+                      dispatch(setRepatch({}))
+                      dispatch(setCurrentUser({}))
+                    }}
+                  >Sign Out</button>
+                </li>
+              </ul>
+            }
+          </details>
+
         </div>
       </section>
       {!isSticky && <Manubar />}
@@ -194,7 +244,8 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
                   onClick={() => {
                     setShow1(false)
                     setShowResult(false)
-                    setSearchResult([])}}
+                    setSearchResult([])
+                  }}
                   href={`/products/${data?._id}`} key={index} className="w-full border h-[60px] shadow-md mb-2 rounded-lg flex items-center p-5 hover:bg-gray-100">
                   <Image
                     className="max-h-[50px] max-w-[50px] rounded"

@@ -46,20 +46,20 @@ const Footer = () => {
           </header>
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Products</a>
-          <a className="link link-hover">Login</a>
-          <a className="link link-hover">Sign Up</a>
+          <Link href={'/categories'} className="link link-hover">Products</Link>
+          <Link href={'/login'} className="link link-hover">Login</Link>
+          <Link href={'/signup'} className="link link-hover">Sign Up</Link>
         </nav>
         <nav>
           <header className="footer-title">
             <h2 className="text-black text-xl font-bold">CUSTOMER AREA</h2>
           </header>
-          <a className="link link-hover">My Account</a>
-          <a className="link link-hover">Orders</a>
-          <a className="link link-hover">Tracking List</a>
-          <a className="link link-hover">Terms</a>
-          <a className="link link-hover">Privacy Policy</a>
-          <a className="link link-hover">My Cart</a>
+          <Link href={'/me/profile'} className="link link-hover" >My Account</Link>
+          <Link href={'/me/orders'} className="link link-hover">Orders</Link>
+          <Link href={'//track-order'} className="link link-hover">Tracking List</Link>
+          <Link className="link link-hover" href="/terms-condition">Terms & Condition</Link>
+          <Link href={'/privacy-policy'} className="link link-hover">Privacy Policy</Link>
+          <Link href={'/cart'} className="link link-hover">My Cart</Link>
         </nav>
         <nav>
           <header className="footer-title">

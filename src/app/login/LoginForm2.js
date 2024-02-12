@@ -46,6 +46,7 @@ const LoginForm2 = ({ setShow }) => {
                     <div
                         onClick={() => {
                             router.push('/signup')
+                            setShow(false)
                         }}
                         className={"flex items-center btn-link text-primary cursor-pointer"}>
                         Signup <span className={"ml-2"}>

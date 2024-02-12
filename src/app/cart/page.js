@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCheckOut } from "@/redux/Cart/action";
 import Skeleton from 'react-loading-skeleton';
 import MetaTags from '@/Components/MetaTags';
+import { useRouter } from 'next/navigation';
 
 const Page = () => {
     const dispatch = useDispatch()
@@ -35,7 +36,12 @@ const Page = () => {
 
 
     const [totalPrice, setTotalPrice] = useState(0)
-
+    const router = useRouter()
+    useEffect(() => {
+        if (!currentUser?.email) {
+            router.push('/login')
+        }
+    }, [currentUser])
     useEffect(() => {
         let pr = 0
         checkOut.map((item) => {

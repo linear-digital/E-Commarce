@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const HotSale = ({ products }) => {
+const HotSale = ({ products, count }) => {
   const { deviceType, allProducts } = useSelector((state) => state.Tools);
   const swiperParams = {
     navigation: {
@@ -46,7 +46,7 @@ const HotSale = ({ products }) => {
       <div className="mt-10 w-full">
         <Swiper
           breakpoints={hotSale}
-          slidesPerView={5}
+          slidesPerView={count ? count : 5}
           loop={true}
           spaceBetween={deviceType === "mobile" ? 10 : 30}
           {...swiperParams}

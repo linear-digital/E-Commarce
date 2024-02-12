@@ -2,7 +2,7 @@
 "use client";
 
 import StarProvider from "@/Components/Shared/StarProvider";
-import { Eye, Taka } from "@/assets/icons";
+import { Eye, Minus, Plus, Taka } from "@/assets/icons";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
@@ -18,6 +18,11 @@ import { setRepatch } from "@/redux/Tools/action";
 import RelatedProduct from "@/Components/Pages/Home/RelatedProduct";
 import LoginForm from "@/app/login/LoginForm";
 import LoginForm2 from "@/app/login/LoginForm2";
+import toast from "react-hot-toast";
+import { setCheckOut } from "@/redux/Cart/action";
+import Link from "next/link";
+import HotSale from "@/Components/Pages/Home/HotSale";
+import RecentViewed from "@/Components/Pages/Home/RecentViewed";
 
 const Details = ({ product }) => {
     const { currentUser } = useSelector((state) => state.User);
@@ -43,29 +48,47 @@ const Details = ({ product }) => {
     //states for cart
     const [variant, setVariant] = useState("black");
     const dispatch = useDispatch()
+    const [quantity, setQuantity] = useState(1);
     const addToCart = async () => {
         if (currentUser) {
             const cartItem = {
                 email: currentUser?.email,
                 product_id: product._id,
-                variant: variant || product?.variant[0],
+                variant: product?.variant[0].length ? product?.variant[0] : variant,
                 price,
-                price_total: price,
+                price_total: price * quantity,
                 image: product?.cover,
                 product_name: product?.name,
-                quantity: 1,
+                quantity: quantity,
                 product_code: product?.code
             };
             const res = await api.post('/api/cart', cartItem)
             if (res.status === 200) {
-                router.push('/cart')
                 dispatch(setRepatch(res))
+                toast.success("Your Product Added To Cart")
+                document.getElementById('my_modal_4').showModal()
             }
         }
         else {
             setShow("login")
+            toast.error("Please Login First")
         }
     };
+    const buyNow = async () => {
+        const cartItem = {
+            email: currentUser?.email,
+            product_id: product._id,
+            variant: product?.variant[0].length ? product?.variant[0] : variant,
+            price,
+            price_total: price * quantity,
+            image: product?.cover,
+            product_name: product?.name,
+            quantity: quantity,
+            product_code: product?.code
+        };
+        dispatch(setCheckOut([cartItem]))
+        router.push('/checkout')
+    }
     const [related, setRelated] = useState([]);
 
     useEffect(() => {
@@ -91,6 +114,8 @@ const Details = ({ product }) => {
             }
         })();
     }, [product])
+    const { allProducts } = useSelector((state) => state.Tools);
+
     const handleMouseMove = (e) => {
         const { left, top, width, height } = e.target.getBoundingClientRect();
         const x = ((e.clientX - left) / width) * 100;
@@ -119,6 +144,39 @@ const Details = ({ product }) => {
 
                 </div>
             }
+            {/* You can open the modal using document.getElementById('ID').showModal() method */}
+            <dialog id="my_modal_4" className="modal">
+                <div className="modal-box w-11/12 max-w-5xl">
+                    <div className="flex justify-between">
+                        <div>
+                            <h3 className="font-bold text-lg">Thank you</h3>
+                            <p className="text-green-600 mt-3">
+                                Your 1 product has been added to your cart
+                            </p>
+                        </div>
+                        <div>
+                            <Link href={"/cart"} className="btn btn-primary">
+                                Go to cart
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="h-auto">
+                        <RecentViewed
+                            text={"sm"}
+                            count={3}
+                            mt={'lg:mt-8'}
+                            title={"Populer Products"}
+                            data={allProducts?.popular}
+                        />
+                    </div>
+                    <div className="modal-action">
+                        <form method="dialog">
+                            {/* if there is a button, it will close the modal */}
+                            <button className="btn">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
             <section className="container mx-auto lg:mt-10 mt-4 shadow-lg pb-5 lg:px-0 px-4">
                 <div className="grid lg:grid-cols-2 grid-cols-1">
                     <div className="w-full lg:hidden">
@@ -231,26 +289,12 @@ const Details = ({ product }) => {
                             {product?.name}
                         </h1>
                         <div className="mt-4 flex item-center">
-                            <h5 className="text-orange-500 text-lg font-extrabold">4.0</h5>
                             <span className="ml-3 mt-[5px]">
                                 <StarProvider number={5} />
                             </span>
                             <span className="text-zinc-400 lg:text-lg text-sm font-normal">(
                                 {reviews.length}
                                 )</span>
-
-                            <div className="w-0.5 h-[31px] bg-zinc-100 rounded-[22px] mx-3" />
-                            <span className="mt-[5px]">
-                                <Eye />
-                            </span>
-                            <div className="ml-4">
-                                <span className="text-neutral-900 lg:text-lg text-sm font-bold">
-                                    {product?.visit}{" "}
-                                </span>
-                                <span className="text-neutral-900 lg:text-lg text-sm font-normal ">
-                                    Visit
-                                </span>
-                            </div>
                         </div>
                         <div className="flex justify-between lg:mt-10 mt-4">
                             <div className=" flex item-center">
@@ -294,7 +338,7 @@ const Details = ({ product }) => {
                                         <button
                                             key={key}
                                             onClick={() => setVariant(vari.text)}
-                                            className={`btn bg-white ${variant === vari.text && "shadow-xl shadow-orange-200 border-orange-400 border-2"} text-black uppercase mr-2`}
+                                            className={`btn btn-sm bg-white ${variant === vari.text && "shadow-md shadow-orange-200 border-orange-400 border-2"} text-black uppercase mr-2`}
                                         >
                                             {vari.text}
                                         </button>
@@ -304,14 +348,37 @@ const Details = ({ product }) => {
                             {
                                 !product?.inStock && <button className="text-red-500 text-xl font-semibold mt-3">Stock Out</button>
                             }
+                            <div className="text-primary mt-3 flex items-center">
+                                <h2 className='mr-3 font-medium text-sm'> Quantity <span className='font-semibold'>:</span></h2>
+                                <div className="flex items-center  py-2 px-4 rounded-md shadow justify-center">
+                                    <button
+                                        onClick={() => {
+                                            setQuantity(quantity - 1)
+                                        }}
+                                    >
+                                        <Minus />
+                                    </button>
+
+                                    <h2 className={"mx-3 w-[30px] justify-center text-base font-semibold bg-orange-100 h-[30px] flex items-center rounded"}>
+                                        {quantity}
+                                    </h2>
+                                    <button
+                                        onClick={() => {
+                                            setQuantity(quantity + 1)
+                                        }}
+                                        className='text-base'>
+                                        <Plus />
+                                    </button>
+                                </div>
+                            </div>
                             <div className={"mt-5 flex items-center"}>
-                                <button onClick={addToCart} disabled={!product?.inStock} className={"btn btn-primary lg:w-[200px] w-[150px] lg:text-base text-sm"}>
+                                <button onClick={buyNow} disabled={!product?.inStock} className={"btn btn-primary lg:w-[200px] w-[150px] lg:text-base text-sm"}>
                                     Buy Now
                                 </button>
                                 <button
                                     disabled={!product?.inStock}
                                     onClick={addToCart}
-                                    className={"btn btn-primary ml-10 lg:w-[200px] w-[150px] lg:text-base text-sm"}
+                                    className={"btn btn-outline ml-10 lg:w-[200px] w-[150px] lg:text-base text-sm"}
                                 >
                                     Add To Cart
                                 </button>
