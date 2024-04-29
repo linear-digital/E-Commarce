@@ -13,7 +13,7 @@ export const navigations = [
   },
   {
     name: "Home Appliances",
-    href: "/home-appliances/home-appliances",
+    href: "/categories/home-appliances",
   },
   {
     name: "Gaming Equipments",
