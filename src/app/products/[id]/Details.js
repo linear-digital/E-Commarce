@@ -54,7 +54,7 @@ const Details = ({ product }) => {
             const cartItem = {
                 email: currentUser?.email,
                 product_id: product._id,
-                variant: product?.variant[0].length ? product?.variant[0] : variant,
+                variant: product?.variant?.length ? product?.variant[0].text : variant,
                 price,
                 price_total: price * quantity,
                 image: product?.cover,
@@ -78,7 +78,7 @@ const Details = ({ product }) => {
         const cartItem = {
             email: currentUser?.email,
             product_id: product._id,
-            variant: product?.variant[0].length ? product?.variant[0] : variant,
+            variant: product?.variant?.length ? product?.variant[0].text : variant,
             price,
             price_total: price * quantity,
             image: product?.cover,
