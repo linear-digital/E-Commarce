@@ -12,8 +12,8 @@ export const navigations = [
     href: "/categories/smartphone",
   },
   {
-    name: "Computers",
-    href: "/categories/computers",
+    name: "Home Appliances",
+    href: "/home-appliances/home-appliances",
   },
   {
     name: "Gaming Equipments",
