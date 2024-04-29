@@ -10,30 +10,24 @@ const initialState = {
     },
     {
       id: 1,
-      name: "Laptop & Computer",
-      param: "computer",
+      name: "Home Appliances",
+      param: "home-appliances",
       children: [
         {
           id: 4545,
           name: "All",
-          param: "computer",
+          param: "home-appliances",
         },
         {
           id: 4545,
-          name: "Hardware",
+          name: "Cooling && Heating",
           children: [
-            { id: 2, name: "Laptop", param: "leptop" },
-            { id: 3, name: "Computer", param: "computer" },
-            { id: 4, name: "Memory", param: "memory" },
-            { id: 5, name: "Storage", param: "storage" },
+            { id: 2, name: "Ceiling Fan", param: "ceiling-fan" },
+            { id: 3, name: "Exhaust Fan", param: "exhaust-fan" },
+            { id: 4, name: "Air Conditioner  && Cooler", param: "air-conditioner-cooler" },
+            { id: 5, name: "Rechargable Fan", param: "rechargable-fan" },
           ],
         },
-        {
-          id: 45453,
-          name: "Software",
-          param: "software",
-        }
-
       ]
     },
     {

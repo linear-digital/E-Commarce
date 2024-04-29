@@ -22,7 +22,7 @@ const Section_1 = ({ name }) => {
   const [activePage, setActivePage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [viewType, setViewType] = useState("grid");
-
+console.log(products);
   const handlePageClick = (pageNumber) => {
     setActivePage(pageNumber);
   };
@@ -39,22 +39,33 @@ const Section_1 = ({ name }) => {
 
     return links;
   };
-  console.log(totalPages)
   const [loading, setLoading] = useState(true)
   const [repeat, setRepeat] = useState(0)
   useEffect(() => {
     (
       async () => {
+
         setLoading(true)
-        const res = await api.get('/api/products?limit=12&page=' + activePage)
+        if (name === "all") {
+          const res = await api.get('/api/products?limit=12&page=' + activePage)
+          setProducts(res.data)
+          setProductsAll(res.data)
+        }
+        else {
+         const res = await api.post('/api/products/search/any', {
+           search: name
+         })
+          setProducts(res.data)
+
+        }
         const allProduct = await api.get('/api/products/all')
+        setProductsAll(allProduct.data)
         setTotalDocument(allProduct.data.length)
-        setProducts(res.data)
-        setProductsAll(res.data)
+
         setLoading(false)
       }
     )()
-  }, [repeat , activePage]);
+  }, [repeat, activePage]);
   const [shortBy, setShortBy] = useState("default");
   const [priceRange, setPriceRange] = useState({ min: 0, max: 0 })
   useEffect(() => {

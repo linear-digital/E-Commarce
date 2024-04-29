@@ -95,7 +95,7 @@ const DefaultFatch = () => {
                 visitor: address,
                 place_id: address?.place_id,
               }
-              api.post('/api/visitors', newVisitor)
+              // api.post('/api/visitors', newVisitor)
             })
             .catch(error => console.error('Error fetching location data:', error));
           // You can use the latitude and longitude values as needed
