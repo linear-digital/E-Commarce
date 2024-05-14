@@ -59,6 +59,10 @@ const initialState = {
           id: 4,
           name: "Keyboard",
           param: "keyboard",
+        },{
+          id: 4,
+          name: "Wifi Router",
+          param: "router",
         },
         {
           id: 3,

@@ -30,7 +30,7 @@ const ProductCard = ({ type, data }) => {
                         <div onClick={handleClick} className="min-w-[150px] max-w-[200px] h-full shadow-xl shadow-stone-50 overflow-hidden flex justify-center items-center p-5 relative"
                         >
                             <Image
-                                className="w-full h-[160px] rounded-md"
+                                className="w-full h-[160px] rounded-md object-cover"
                                 src={localURL + data?.cover}
                                 width={548}
                                 height={314}
@@ -62,7 +62,7 @@ const ProductCard = ({ type, data }) => {
                         <div onClick={handleClick} className="lg:max-h-[260px] lg:min-w-[243px] max-w-[273px] w-full min-h-[10px]  max-h-[170px] shadow-xl shadow-stone-50 rounded-md overflow-hidden flex justify-center items-center p-5 "
                         >
                             <Image
-                                className="lg:max-w-[273px] w-full  lg:min-w-[243px]  max-h-[200px] lg:max-h-[100%] rounded-md"
+                                className="lg:max-w-[273px] w-full  lg:min-w-[243px]  max-h-[200px] lg:max-h-[100%] rounded-md object-cover"
                                 src={localURL + data?.cover}
                                 width={428}
                                 height={240}

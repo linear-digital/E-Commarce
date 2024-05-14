@@ -24,7 +24,7 @@ const ProductSM = ({ data }) => {
       <div className="h-full lg:max-h-[139px] min-h-[139px] max-h-[80px] min-w-[60px] lg:min-w-[120px] bg-gray-300 rounded-xl"
       >
         <Image
-          className="rounded-xl w-full h-full"
+          className="rounded-xl w-full h-full object-cover"
           src={localURL + data?.cover} alt={""} width={200} height={200} />
       </div>
       <div className="p-2 ml-3 flex flex-col lg:justify-between ">
