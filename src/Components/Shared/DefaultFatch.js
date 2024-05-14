@@ -92,10 +92,16 @@ const DefaultFatch = () => {
               // Extract the relevant location information from the response
               const address = data.results[0]
               const newVisitor = {
-                visitor: address,
-                place_id: address?.place_id,
+                visitor: address ? address : {
+                  place: "Unknown",
+                },
+                place_id: address?.place_id || "Unknown",
               }
-              // api.post('/api/visitors', newVisitor)
+              try {
+                api.post('/api/visitors', newVisitor)
+              } catch (error) {
+                console.log(error)
+              }
             })
             .catch(error => console.error('Error fetching location data:', error));
           // You can use the latitude and longitude values as needed
