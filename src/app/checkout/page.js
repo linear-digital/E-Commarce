@@ -330,7 +330,7 @@ const Page = () => {
                             <TextInput
                                 onChange={(e) => setAddress({ ...address, name: e.target.value })}
                                 value={address?.name} label={"Full Name"} name={"name"} />
-                            <TextInput disabled={true} value={currentUser?.email} label={"Email Address"} name={"email"} />
+                            <TextInput disabled={currentUser?.email} value={currentUser?.email} label={"Email Address"} name={"email"} />
 
                             <TextInput onChange={(e) => setAddress({ ...address, phone: e.target.value })} value={address?.phone} label={"Mobile Number"} name={"phone"} />
 
