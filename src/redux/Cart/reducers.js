@@ -3,7 +3,7 @@ import { CARTITEMS, CHECKOUT, CONFIRM, PAYMENT, TOTAL_PRICE, } from "./constants
 
 const initialState = {
   checkOut: [],
-  cartItems: [],
+  cartItems: null,
   total_price: 0,
 };
 

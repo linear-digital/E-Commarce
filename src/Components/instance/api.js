@@ -8,7 +8,7 @@ export const locals = 'https://server.linearhub.com/'
 export const localURL = locals
 
 export const api = axios.create({
-    baseURL: locals,
+    baseURL: local,
     headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${Cookies.get("auth_token")}`,

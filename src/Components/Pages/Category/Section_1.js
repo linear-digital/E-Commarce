@@ -22,7 +22,6 @@ const Section_1 = ({ name }) => {
   const [activePage, setActivePage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [viewType, setViewType] = useState("grid");
-console.log(products);
   const handlePageClick = (pageNumber) => {
     setActivePage(pageNumber);
   };

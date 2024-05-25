@@ -49,6 +49,7 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
         const res = await api.delete(`/api/cart/${cart._id}`)
         toast.success("Item Delete Success")
         dispatch(setRepatch(res))
+        dispatch(setCheckOut([]))
       }
     }
     catch (e) {

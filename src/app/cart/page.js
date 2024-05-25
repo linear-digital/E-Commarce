@@ -12,19 +12,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCheckOut } from "@/redux/Cart/action";
 import Skeleton from 'react-loading-skeleton';
 import MetaTags from '@/Components/MetaTags';
-import { useRouter } from 'next/navigation';
 
 const Page = () => {
     const dispatch = useDispatch()
     const { repatch } = useSelector(state => state.Tools)
     const { cartItems } = useSelector(state => state.Cart)
-
     const [show, setShow] = useState(false)
     const [markAll, setMark] = useState(false)
     const [markded, setMarked] = useState([])
     const { checkOut } = useSelector(state => state.Cart)
     const { currentUser } = useSelector(state => state.User)
-
     const [carts, setCarts] = useState([])
     const [loading, setLoading] = useState(true)
     useEffect(() => {
@@ -36,18 +33,17 @@ const Page = () => {
 
 
     const [totalPrice, setTotalPrice] = useState(0)
-    const router = useRouter()
     useEffect(() => {
-        if (!currentUser?.email) {
-            router.push('/login')
+        if (checkOut?.length === 0) {
+            setTotalPrice(0)
         }
-    }, [currentUser])
-    useEffect(() => {
-        let pr = 0
-        checkOut.map((item) => {
-            pr = pr + item.price_total
-            setTotalPrice(pr)
-        })
+        else {
+            let pr = 0
+            checkOut.map((item) => {
+                pr = pr + item.price_total
+                setTotalPrice(pr)
+            })
+        }
     }, [checkOut]);
 
     const updatePlus = (item, type) => {
@@ -93,23 +89,26 @@ const Page = () => {
                                 loading ? <CartLoader /> :
                                     <table className="table">
                                         <tbody>
-                                            {
-                                                carts?.length === 0 ?
-                                                    <td className='text-center text-primary font-semibold text-3xl pt-10'>
-                                                        <Link href={'/categories'}>Continue Shopping</Link>
-                                                    </td>
-                                                    :
-                                                    carts?.map((car, index) => (
-                                                        <CartCard
-                                                            setMarked={setMarked}
-                                                            marked={markded}
-                                                            cart={car} key={car._id} markAll={markAll}
-                                                            setMark={setMark}
-                                                            setTotalPrice={setTotalPrice}
-                                                            totalPrice={totalPrice}
-                                                        />
-                                                    ))
-                                            }
+                                            <tr>
+                                                {
+                                                    carts?.length === 0 ?
+                                                        <td className='text-center text-primary font-semibold text-3xl pt-10'>
+                                                            <Link href={'/categories'}>Continue Shopping</Link>
+                                                        </td>
+                                                        :
+                                                        carts?.map((car, index) => (
+                                                            <CartCard
+                                                                setMarked={setMarked}
+                                                                marked={markded}
+                                                                cart={car} key={car._id} markAll={markAll}
+                                                                setMark={setMark}
+                                                                setTotalPrice={setTotalPrice}
+                                                                totalPrice={totalPrice}
+                                                            />
+                                                        ))
+                                                }
+                                            </tr>
+
                                         </tbody>
                                     </table>
                             }
@@ -221,3 +220,4 @@ const CartLoader = () => {
         </div>
     )
 }
+

@@ -10,10 +10,10 @@ import { setCurrentUser } from "@/redux/User/action";
 import { setCartItems } from "@/redux/Cart/action";
 
 const DefaultFatch = () => {
-  const { repatch } = useSelector(state => state.Tools
+  const { repatch, device } = useSelector(state => state.Tools
   )
+  const { currentUser } = useSelector(state => state.User)
   const dispatch = useDispatch();
-  const [user, setUser] = useState(null);
   useEffect(() => {
     // Update device width on window resize
     const handleResize = () => {
@@ -34,9 +34,8 @@ const DefaultFatch = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
   const token = Cookies.get('auth_token')
-
+  const [user, setUser] = useState(null)
   useEffect(() => {
     (
       async () => {
@@ -46,8 +45,8 @@ const DefaultFatch = () => {
             try {
               const user = await api.get(`/api/users/${decoded.email}`)
               dispatch(setCurrentUser(user.data))
-              const res = await api.get(`/api/cart/email/${user?.data?.email}`)
-              dispatch(setCartItems(res.data))
+              setUser(user.data)
+
             }
             catch (error) {
               dispatch(setCurrentUser(null))
@@ -62,6 +61,7 @@ const DefaultFatch = () => {
   useEffect(() => {
     (
       async () => {
+
         const quary = (await api.get('/api/products/quary/bestDeals')).data
         dispatch(setAllProducts({
           deals: quary.bestDeals,
@@ -71,9 +71,25 @@ const DefaultFatch = () => {
           flashSale: quary.flashSale,
           newArrival: quary.newArrival
         }))
+
+        if (device || currentUser) {
+          const deviceCart = await api.get(`/api/cart/device/${device}`)
+
+          if (currentUser) {
+            const res = await api.get(`/api/cart/email/${currentUser?.email}`)
+            dispatch(setCartItems(res.data))
+            api.put(`/api/cart/transfer/${device}`, {
+              email: user?.email
+            })
+          }
+          else {
+            dispatch(setCartItems(deviceCart.data))
+          }
+        }
+
       }
     )()
-  }, [repatch]);
+  }, [repatch, device, currentUser]);
 
   useEffect(() => {
     const apiKey = "AIzaSyBUDmkMGZD5mIPpiGRVQov8aPztKKB5B2c"

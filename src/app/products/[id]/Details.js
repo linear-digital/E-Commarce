@@ -26,6 +26,7 @@ import RecentViewed from "@/Components/Pages/Home/RecentViewed";
 
 const Details = ({ product }) => {
     const { currentUser } = useSelector((state) => state.User);
+    const { device } = useSelector((state) => state.Tools);
     const swiperParams = {
         navigation: {
             nextEl: ".custom-next-button-details",
@@ -40,33 +41,36 @@ const Details = ({ product }) => {
             },
         },
     };
-
     const [zoom, setZoom] = useState(false);
     const [reviews, setReviews] = useState([]);
     const [price, setPrice] = useState(0);
     const router = useRouter()
     //states for cart
-    const [variant, setVariant] = useState("black");
+    const [variant, setVariant] = useState("default");
     const dispatch = useDispatch()
     const [quantity, setQuantity] = useState(1);
     const addToCart = async () => {
-        if (currentUser) {
-            const cartItem = {
-                email: currentUser?.email,
-                product_id: product._id,
-                variant: product?.variant?.length ? product?.variant[0].text : variant,
-                price,
-                price_total: price * quantity,
-                image: product?.cover,
-                product_name: product?.name,
-                quantity: quantity,
-                product_code: product?.code
-            };
-            const res = await api.post('/api/cart', cartItem)
-            if (res.status === 200) {
+        if (currentUser || device) {
+            try {
+                const cartItem = {
+                    email: currentUser?.email || "Guest",
+                    device_id: currentUser?.email ? "user" : device,
+                    product_id: product._id,
+                    variant: product?.variant[0]?.text || variant,
+                    price,
+                    price_total: price * quantity,
+                    image: product?.cover,
+                    product_name: product?.name,
+                    quantity: quantity,
+                    product_code: product?.code
+                };
+                const res = await api.post('/api/cart', cartItem)
                 dispatch(setRepatch(res))
                 toast.success("Your Product Added To Cart")
                 document.getElementById('my_modal_4').showModal()
+            } catch (error) {
+                console.log(error);
+                toast.error(error?.response?.data?.message || "Something went wrong")
             }
         }
         else {
@@ -101,7 +105,6 @@ const Details = ({ product }) => {
                 product?.price -
                 (product?.price * product?.discount_percentage) / 100
             );
-            setVariant(product?.variant[0]?.text);
         })();
     }, [product]);
     useEffect(() => {

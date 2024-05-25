@@ -1,4 +1,4 @@
-import { CATEGORY, DEVICETYPE, IMAGES, NOTIFICATION, PRODUCTS, REPATCH } from "./constants";
+import { CATEGORY, DEVICE, DEVICETYPE, IMAGES, NOTIFICATION, PRODUCTS, REPATCH } from "./constants";
 
 
 const initialState = {
@@ -342,6 +342,7 @@ const initialState = {
     flashSale: [],
     newArrival: []
   },
+  device: null,
 };
 
 const Tools = (state = initialState, action) => {
@@ -350,6 +351,11 @@ const Tools = (state = initialState, action) => {
       return {
         ...state,
         deviceType: action.payload,
+      };
+      case DEVICE:
+      return {
+        ...state,
+        device: action.payload,
       };
     case CATEGORY:
       return {

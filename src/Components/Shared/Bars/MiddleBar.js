@@ -206,8 +206,7 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
                     onClick={() => {
                       Cookies.remove("auth_token")
                       toast.success("Logout Success")
-                      dispatch(setRepatch({}))
-                      dispatch(setCurrentUser({}))
+                      window.location.reload()
                     }}
                   >Sign Out</button>
                 </li>

@@ -15,6 +15,7 @@ import BottomNavigation from '@/Components/Shared/Bars/BottomNavigation';
 import DefaultFatch from '@/Components/Shared/DefaultFatch';
 import { Toaster } from "react-hot-toast";
 import 'react-loading-skeleton/dist/skeleton.css'
+import DeviceIdentifire from '@/Components/Shared/DeviceIdentifire';
 
 
 export const metadata = {
@@ -53,13 +54,10 @@ export default function RootLayout({ children }) {
 
           <SpeedInsights />
           <DefaultFatch />
+          <DeviceIdentifire />
           {children}
           <Footer />
           <BottomNavigation />
-          <script
-            type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUDmkMGZD5mIPpiGRVQov8aPztKKB5B2c&libraries=places"
-          />
           <script
             src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js" />
         </body>
