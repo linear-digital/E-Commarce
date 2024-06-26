@@ -48,7 +48,7 @@ const Page = () => {
         postcode: "",
         message: ""
     })
-    console.log(address);
+
     const [open, setOpen] = React.useState(false);
 
     const handleClose = () => {
@@ -117,12 +117,12 @@ const Page = () => {
                         try {
                             await api.delete(`/api/cart/${id}`)
                             dispatch(setRepatch(res))
-                            router.push(`/track-order?order_id=${data?.order_id}&email=${data?.email}`)
                         } catch (error) {
                             console.log(error);
                             toast.error(error.response.data.message || "Something went wrong")
                         }
                     }
+                    router.push(`/track-order?order_id=${data?.order_id}&email=${data?.email}`)
                 }
                 catch (e) {
                     toast.error(e.response.data.message)
@@ -131,7 +131,7 @@ const Page = () => {
             }
             const ord = {
                 order_id: sixDigitRandomText,
-                email: address.email,
+                email: address.email || currentUser?.email,
                 address: address,
                 order: checkOut,
                 paymentType: paymentType,
