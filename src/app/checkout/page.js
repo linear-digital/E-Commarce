@@ -120,6 +120,7 @@ const Page = () => {
                             router.push(`/track-order?order_id=${data?.order_id}&email=${data?.email}`)
                         } catch (error) {
                             console.log(error);
+                            toast.error(error.response.data.message || "Something went wrong")
                         }
                     }
                 }
