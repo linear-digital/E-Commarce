@@ -39,6 +39,7 @@ const Page = () => {
     const [myaddress, setMyAddress] = useState(null)
     const [address, setAddress] = useState({
         name: "",
+        email: "",
         phone: "",
         country: "",
         district: "",
@@ -47,6 +48,7 @@ const Page = () => {
         postcode: "",
         message: ""
     })
+    console.log(address);
     const [open, setOpen] = React.useState(false);
 
     const handleClose = () => {
@@ -54,13 +56,15 @@ const Page = () => {
     };
     const [allAddress, setAllAddress] = useState([])
     useEffect(() => {
-        (
-            async () => {
-                const res = await api.get(`/api/address/by/${currentUser?.email}`)
+        if (currentUser?.email) {
+            (
+                async () => {
+                    const res = await api.get(`/api/address/by/${currentUser?.email}`)
 
-                setAllAddress(res.data)
-            }
-        )()
+                    setAllAddress(res.data)
+                }
+            )()
+        }
     }, [currentUser])
 
     useEffect(() => {
@@ -107,17 +111,15 @@ const Page = () => {
             const submitOrder = async (data) => {
                 try {
                     const res = await api.post('/api/orders', data)
-                    if (res.status === 200 || res.status === 201) {
-                        toast.success("Order Placed")
-                        for (let i = 0; i < checkOut.length; i++) {
-                            const id = checkOut[i]._id
-                            try {
-                                await api.delete(`/api/cart/${id}`)
-                                dispatch(setRepatch(res))
-                                router.push('/me/orders')
-                            } catch (error) {
-                                console.log(error);
-                            }
+                    toast.success("Order Placed")
+                    for (let i = 0; i < checkOut.length; i++) {
+                        const id = checkOut[i]._id
+                        try {
+                            await api.delete(`/api/cart/${id}`)
+                            dispatch(setRepatch(res))
+                            router.push(`/track-order?order_id=${data?.order_id}&email=${data?.email}`)
+                        } catch (error) {
+                            console.log(error);
                         }
                     }
                 }
@@ -128,7 +130,7 @@ const Page = () => {
             }
             const ord = {
                 order_id: sixDigitRandomText,
-                email: currentUser?.email,
+                email: address.email,
                 address: address,
                 order: checkOut,
                 paymentType: paymentType,
@@ -183,7 +185,7 @@ const Page = () => {
         }
     }
     useEffect(() => {
-        useCurrentAddress()
+        // useCurrentAddress()
     }, [])
     useEffect(() => {
         if (address.division === "Dhaka Division") {
@@ -193,6 +195,7 @@ const Page = () => {
             setShipping(120)
         }
     }, [address])
+
     useEffect(() => {
         const newAddress = {
             name: currentUser?.name,
@@ -330,14 +333,19 @@ const Page = () => {
                             <TextInput
                                 onChange={(e) => setAddress({ ...address, name: e.target.value })}
                                 value={address?.name} label={"Full Name"} name={"name"} />
-                            <TextInput disabled={currentUser?.email} value={currentUser?.email} label={"Email Address"} name={"email"} />
+                            <TextInput disabled={currentUser?.email} value={currentUser?.email} label={"Email Address"} name={"email"}
+                                onChange={(e) => setAddress({ ...address, email: e.target.value })}
+                            />
 
-                            <TextInput onChange={(e) => setAddress({ ...address, phone: e.target.value })} value={address?.phone} label={"Mobile Number"} name={"phone"} />
+                            <TextInput onChange={(e) => setAddress({ ...address, phone: e.target.value })} value={address?.phone} label={"Mobile Number"} name={"phone"}
+                            />
 
                             <TextInput
                                 onChange={(e) => setAddress({ ...address, address: e.target.value })}
                                 value={address?.address} label={"Address"} name={"address"} />
-                            <TextInput value={address?.division} label={"Division"} name={"division"} />
+                            <TextInput value={address?.division} label={"Division"} name={"division"} 
+                                onChange={(e) => setAddress({ ...address, division: e.target.value })}
+                            />
                             <TextInput
                                 onChange={(e) => setAddress({ ...address, postcode: e.target.value })}
                                 value={address?.postcode} label={"Postcode/ZIP"} name={"postcode"} />

@@ -4,13 +4,20 @@ import { api, localURL } from '@/Components/instance/api';
 import Image from 'next/image';
 import React from 'react';
 import StepProvider from '../me/orders/[id]/StepProvider';
+import { useSearchParams } from 'next/navigation'
+
 
 const page = () => {
     const [order, setOrder] = React.useState({})
+    // get email and order_id from search params
+    const searchParams = useSearchParams()
+    const qEmail = searchParams.get("email") || ""
+    const orderId = searchParams.get("order_id") || ""
+
     const trackOrder = async (e) => {
         e.preventDefault()
-        const order_id = e.target.order_id.value
-        const email = e.target.email.value
+        const order_id = orderId || e.target.order_id.value
+        const email = qEmail || e.target.email.value
         try {
             setOrder({})
             const res = await api.post(`/api/orders/track`, { order_id, email })
@@ -31,7 +38,7 @@ const page = () => {
                         <div className="label">
                             <span className="label-text">Order Id</span>
                         </div>
-                        <input required type="text" placeholder="Check Your dashboard Or Mail for Order id" className="input input-bordered w-full max-w-xs text-sm"
+                        <input defaultValue={orderId} required type="text" placeholder="Check Your dashboard Or Mail for Order id" className="input input-bordered w-full max-w-xs text-sm"
                             name='order_id'
                         />
                     </label>
@@ -39,7 +46,7 @@ const page = () => {
                         <div className="label">
                             <span className="label-text">Billing Email</span>
                         </div>
-                        <input required type="email" placeholder="Email That you used while checking out" className="input input-bordered w-full max-w-xs text-sm"
+                        <input defaultValue={qEmail} required type="email" placeholder="Email That you used while checking out" className="input input-bordered w-full max-w-xs text-sm"
                             name='email'
                         />
                     </label>
