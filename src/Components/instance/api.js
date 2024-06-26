@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 
 // export const local = process.env.NEXT_PUBLIC_LOCAL_URL
 // export const local = 'https://desired-platypus-pleasing.ngrok-free.app/'
-export const local = 'http://localhost:4000/'
+export const local = 'https://server.linearhub.com/'
 export const locals = 'https://server.linearhub.com/'
 export const localURL = locals
 
