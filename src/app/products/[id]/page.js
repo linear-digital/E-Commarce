@@ -15,9 +15,7 @@ export async function generateMetadata({ params }) {
 }
 
 const getProduct = async (id) => {
-  const ipfrom = await axios.get('https://api64.ipify.org/?format=json')
-  const res = await api.get(`/api/products/${id}?ip=${ipfrom.data.ip}`);
-
+  const res = await api.get(`/api/products/${id}`, );
   return res.data;
 }
 
