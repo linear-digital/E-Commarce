@@ -19,7 +19,7 @@ const Footer = () => {
         <nav>
           <Logo />
           <p className="lg:w-[390px]  text-black text-opacity-50 text-lg font-normal  leading-7 mt-5">
-            Stay at the forefront of technology with Linear Hub's exclusive electric gadget launches.
+            Stay at the forefront of technology with Oftech Gadget's exclusive electric gadget launches.
             Get Home Delivery
           </p>
           <div className="flex mt-8 items-center">
@@ -75,7 +75,7 @@ const Footer = () => {
                 <h4 className="text-black text-sm font-normal leading-normal">
                   Have any question?
                 </h4>
-                <a href="tel:+8801867717496" className="text-orange-500 text-lg font-extrabold  leading-normal">+8801867717496</a>
+                <a href="tel:+8801867717496" className="text-[#e30613] text-lg font-extrabold  leading-normal">+8801867717496</a>
               </div>
             </div>
             <a target="_blank" rel="noreferrer" href="https://wa.me/qr/5RUA5LK5ETDFM1"

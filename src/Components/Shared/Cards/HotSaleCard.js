@@ -18,7 +18,7 @@ const HotSaleCard = ({ data }) => {
       </div>
 
       <div className="flex flex-col items-center lg:p-7 p-2">
-        <div className="text-orange-500 lg:text-2xl text-base font-semibold text-center">
+        <div className="text-[#e30613] lg:text-2xl text-base font-semibold text-center">
           <Taka /> {data?.price - (data?.discount_percentage / 100 * data?.price)}
         </div>
         <div className="text-neutral-400 text-base font-normal text-center mt-1">

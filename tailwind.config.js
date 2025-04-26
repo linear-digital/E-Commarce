@@ -10,10 +10,10 @@
       themes: [
         {
           mytheme: {
-            primary: "#FF7020",
+            primary: "#e30613",
             secondary: "#f6d860",
             accent: "#37cdbe",
-            neutral: "#3d4451"
+            neutral: "#3d4451",
           },
         },
         "light"

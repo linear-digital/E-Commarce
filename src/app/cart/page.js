@@ -77,7 +77,7 @@ const Page = () => {
     return (
         <section>
             <MetaTags
-                title={"Linear Hub | Online Shopping BD | Cart Page"}
+                title={"Oftech Gadget | Online Shopping BD | Cart Page"}
                 description={'Cart Page Temp'}
             />
             <div className={"container mx-auto px-5"}>
@@ -121,7 +121,7 @@ const Page = () => {
                                 onClick={() => setShow(!show)}
                             >
                                 <Wallet />
-                                <div className="text-orange-500 text-lg font-semibold ml-5" >I Have promo code
+                                <div className="text-[#e30613] text-lg font-semibold ml-5" >I Have promo code
                                 </div>
                             </div>
                             <span onClick={() => setShow(!show)}>
@@ -194,11 +194,11 @@ const Page = () => {
                             <div className={"mt-10 flex justify-between items-center"}>
                                 <h3 className="text-black text-lg font-medium">Total</h3>
                                 <div
-                                    className="text-right text-orange-500 text-[28px] font-semibold"><Taka /> {totalPrice}
+                                    className="text-right text-[#e30613] text-[28px] font-semibold"><Taka /> {totalPrice}
                                 </div>
                             </div>
                             <Link href={checkOut.length > 0 ? "/checkout" : "/cart"} className={"btn btn-primary w-full mt-10"}>Checkout</Link>
-                            <Link href={"/categories"} className="text-orange-500 text-center flex justify-center w-full mt-5 text-base font-bold">Back to Shopping</Link>
+                            <Link href={"/categories"} className="text-[#e30613] text-center flex justify-center w-full mt-5 text-base font-bold">Back to Shopping</Link>
                         </div>
                     </div>
                 </div>

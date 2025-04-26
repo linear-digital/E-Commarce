@@ -42,7 +42,7 @@ const ProductCard = ({ type, data }) => {
                         </div>
 
                         <div className="flex flex-col items-center lg:p-7 p-2">
-                            <div onClick={handleClick} className="text-orange-500 lg:text-base text-base font-semibold text-center">
+                            <div onClick={handleClick} className="text-[#e30613] lg:text-base text-base font-semibold text-center">
                                 ৳{price}
                             </div>
                             <div onClick={handleClick} className="text-neutral-400 text-sm font-normal text-center mt-1">
@@ -75,7 +75,7 @@ const ProductCard = ({ type, data }) => {
                             {
                                 !data?.inStock && <button className="text-red-500 absolute top-5 left-2 text-sm font-semibold">Stock Out</button>
                             }
-                            <div onClick={handleClick} className="text-orange-500 lg:text-xl text-base font-semibold text-center">
+                            <div onClick={handleClick} className="text-[#e30613] lg:text-xl text-base font-semibold text-center">
                                 ৳{price}
                             </div>
                             <div onClick={handleClick}

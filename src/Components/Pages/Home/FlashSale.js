@@ -61,7 +61,7 @@ const FlashSale = () => {
           backgroundSize: "cover",
         }}
       >
-        <div className=" bg-[#FF7020F0] p-4 lg:p-0 overflow-hidden w-full h-full min-h-[371px] flex lg:flex-row flex-col lg:items-center">
+        <div className=" bg-[#e30613F0] p-4 lg:p-0 overflow-hidden w-full h-full min-h-[371px] flex lg:flex-row flex-col lg:items-center">
           <div className="flex flex-col justify-center lg:ml-16">
             <div className="text-white lg:text-5xl text-3xl font-semibold ">Flash Sale</div>
             <div className="lg:w-[369px] text-white text-base font-normal  leading-7 mt-2">

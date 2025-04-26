@@ -3,9 +3,9 @@ import React from 'react';
 const page = () => {
     return (
         <div className='container mx-auto py-10'>
-            <h1 className='text-4xl'>Privacy Policy of Linear Hub</h1>
+            <h1 className='text-4xl'>Privacy Policy of Oftech Gadget</h1>
 
-            <p className='text-xl mt-3'>Linear Hub operates the linearhub.com website, which provides the SERVICE.</p>
+            <p className='text-xl mt-3'>Oftech Gadget operates the linearhub.com website, which provides the SERVICE.</p>
 
             <p className='mt-5'>This page is used to inform website visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service, the Linearhub website.</p>
 

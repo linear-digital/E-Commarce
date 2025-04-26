@@ -301,7 +301,7 @@ const Details = ({ product }) => {
                         </div>
                         <div className="flex justify-between lg:mt-10 mt-4">
                             <div className=" flex item-center">
-                                <h2 className="text-orange-500 lg:text-4xl text-3xl font-semibold ">
+                                <h2 className="text-[#e30613] lg:text-4xl text-3xl font-semibold ">
                                     <Taka />{price}
                                 </h2>
                                 <div className="text-neutral-400 text-xl font-normal ml-4 mt-3">

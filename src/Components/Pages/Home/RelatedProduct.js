@@ -83,7 +83,7 @@ const RecentCard = ({ data }) => {
                 src={localURL + data?.cover} alt={""} width={200} height={200} />
         </div>
         <div className="p-2 ml-3 flex flex-col lg:justify-between ">
-            <div className="text-orange-500 text-center mb-2 block lg:hidden text-xl mt-1 font-semibold">
+            <div className="text-[#e30613] text-center mb-2 block lg:hidden text-xl mt-1 font-semibold">
                 <Taka /> {data?.price - (data?.discount_percentage / 100 * data?.price)}
             </div>
             <h2 className=" text-black text-sm lg:text-base font-medium">
@@ -92,7 +92,7 @@ const RecentCard = ({ data }) => {
                 }
             </h2>
             <div className="pb-2">
-                <div className="text-orange-500 text-xl mt-1 hidden lg:block font-semibold">
+                <div className="text-[#e30613] text-xl mt-1 hidden lg:block font-semibold">
                     <Taka />
                     {data?.price - (data?.discount_percentage / 100 * data?.price)}
                 </div>

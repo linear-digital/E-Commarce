@@ -98,7 +98,7 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
           <div className={"flex justify-between items-center mt-3"}>
             <div>
               <h2 className={"text-sm font-bold"}>{cart?.variant}</h2>
-              <h2 className="text-orange-500 text-xl mt-3 font-semibold ">
+              <h2 className="text-[#e30613] text-xl mt-3 font-semibold ">
                 <Taka /> {cart.price}
               </h2>
               <div className="text-zinc-400 mt-2 text-sm font-semibold ">
@@ -148,7 +148,7 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
         <div className={"w-full"}>
           <div className={"flex justify-between items-center"}>
             <div>
-              <h2 className="text-orange-500 text-base mt-3 font-semibold ">
+              <h2 className="text-[#e30613] text-base mt-3 font-semibold ">
                 <Taka /> {cart.price}
               </h2>
               <div className="text-zinc-400 mt-2 text-xs font-semibold ">

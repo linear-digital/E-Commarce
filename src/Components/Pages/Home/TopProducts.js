@@ -104,7 +104,7 @@ export const TopProductCard = ({ data }) => {
         </h2>
         <div className="flex lg:flex-row flex-col-reverse lg:items-center items-start mt-3 lg:mt-4 justify-between">
           <div className="flex items-center">
-            <div className="text-orange-500 text-sm lg:text-xl font-semibold">
+            <div className="text-[#e30613] text-sm lg:text-xl font-semibold">
               <Taka />
               {data?.price - (data?.discount_percentage / 100 * data?.price)}
             </div>

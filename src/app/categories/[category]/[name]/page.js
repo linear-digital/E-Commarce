@@ -3,7 +3,7 @@
 import Section_1 from '@/Components/Pages/Category/Section_1'
 
 export const metadata = {
-  title: 'Linear Hub | Online Shopping BD | Categories',
+  title: 'Oftech Gadget | Online Shopping BD | Categories',
 }
 
 const page = ({params}) => {

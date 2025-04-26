@@ -24,7 +24,7 @@ const FlashSaleCard = ({ data }) => {
           )}
         </h2>
         <div className="pb-2 mt-4 flex justify-between items-center">
-          <div className="text-orange-500 text-xl mt-1 font-semibold">
+          <div className="text-[#e30613] text-xl mt-1 font-semibold">
             <Taka />  {data?.price - (data?.discount_percentage / 100 * data?.price)}
           </div>
           <div className="text-neutral-400 text-base font-normal ">24 left</div>

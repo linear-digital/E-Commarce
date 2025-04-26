@@ -397,7 +397,7 @@ const Page = () => {
                         <div className={"flex justify-between items-center lg:mt-5 mt-3"}>
                             <div className="text-black lg:text-lg text-base font-medium ">Order Total</div>
                             <h2
-                                className="text-right text-orange-500 lg:text-[28px] text-[24px] font-semibold "> <Taka /> {total}
+                                className="text-right text-[#e30613] lg:text-[28px] text-[24px] font-semibold "> <Taka /> {total}
                             </h2>
                         </div>
                         <hr className={"lg:mt-7 mt-3"} />
@@ -436,7 +436,7 @@ const Page = () => {
                         <div
                             className=" text-[15px] text-center font-normal mt-5">
                             By placing your order, you agree to our
-                            <span className="text-orange-500 font-semibold"> Terms & Conditions</span>
+                            <span className="text-[#e30613] font-semibold"> Terms & Conditions</span>
                         </div>
                     </div>
                 </div>

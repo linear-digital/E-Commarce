@@ -11,21 +11,21 @@ body {
 
 .btn-primary {
   color: white !important;
-  background-color: #FF7020 !important;
-  background-color: #FF7020 !important;
-  border-color: #FF7020 !important;
+  background-color: #e30613 !important;
+  background-color: #e30613 !important;
+  border-color: #e30613 !important;
 }
 
 .border-primary {
-  border-color: #FF7020 !important;
+  border-color: #e30613 !important;
 }
 
 .bg-primary {
-  background-color: #FF7020 !important;
+  background-color: #e30613 !important;
 }
 
 .text-primary {
-  color: #FF7020 !important;
+  color: #e30613 !important;
 }
 
 .bar-left-banner {
@@ -43,7 +43,7 @@ body {
 }
 
 .swiper-pagination-bullet-active {
-  background-color: #FF7020 !important;
+  background-color: #e30613 !important;
   width: 25px !important;
   border-radius: 4px !important;
 }
@@ -58,12 +58,12 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-  background-color: #FF7020;
+  background-color: #e30613;
   /* Set the color of the filled progress */
 }
 
 progress::-moz-progress-bar {
-  background-color: #FF7020;
+  background-color: #e30613;
 
 }
 
@@ -93,7 +93,7 @@ progress::-moz-progress-bar {
 
 .bg-silver {
   background-color: rgba(192, 192, 192, 0.89);
-  color: #FF7020 !important;
+  color: #e30613 !important;
 }
 
 .bg-green {
@@ -105,7 +105,7 @@ progress::-moz-progress-bar {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #FF7020;
+  background: #e30613;
 }
 
 .image-container img {
@@ -125,7 +125,7 @@ progress::-moz-progress-bar {
 }
 
 .btn-processing {
-  background-color: #FF7020 !important;
+  background-color: #e30613 !important;
   color: white;
 }
 
@@ -141,7 +141,7 @@ progress::-moz-progress-bar {
 
 .steps .step-primary+.step-primary:before,
 .steps .step-primary:after {
-  background-color: #FF7020 !important;
+  background-color: #e30613 !important;
 }
 
 .container {
