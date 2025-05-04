@@ -10,7 +10,7 @@ const Logo = () => {
         alt='Oftech Gadget'
         width={200}
         height={100}
-        className='w-[150px] h-auto'
+        className='w-[150px] h-auto cursor-pointer'
         priority
       />
     </Link>
