@@ -51,7 +51,7 @@ const ReviewCard = ({ review }) => {
                         width={70}
                         height={70}
                         key={index}
-                        src={localURL + img.image}
+                        src={ img.image}
                         alt={""}
                         className=" rounded-lg mr-2" />)
                 }

@@ -10,7 +10,7 @@ const FlashSaleCard = ({ data }) => {
         className="h-full lg:min-w-[117px] min-w-[90px] max-w-[100px] lg:max-w-[120px] max-h-[139px] bg-gray-300 rounded-xl"
         style={{
           backgroundImage:
-            `url('${localURL + data?.cover}')`,
+            `url('${ data?.cover}')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

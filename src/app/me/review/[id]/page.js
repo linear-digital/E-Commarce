@@ -39,7 +39,7 @@ const page = async ({ params }) => {
                                 width={100}
                                 height={100}
                                 key={index}
-                                src={localURL + img.image}
+                                src={ img.image}
                                 alt={""}
                                 className=" rounded-lg mr-2" />)
                         }

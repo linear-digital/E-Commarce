@@ -8,8 +8,8 @@ import { useSelector } from "react-redux";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const FlashSale = () => {
-  const { deviceType, allProducts } = useSelector((state) => state.Tools);
+const FlashSale = ({ products}) => {
+  const { deviceType} = useSelector((state) => state.Tools);
   const swiperParams = {
     navigation: {
       nextEl: ".custom-next-button-flash",
@@ -61,7 +61,7 @@ const FlashSale = () => {
           backgroundSize: "cover",
         }}
       >
-        <div className=" bg-[#e30613F0] p-4 lg:p-0 overflow-hidden w-full h-full min-h-[371px] flex lg:flex-row flex-col lg:items-center">
+        <div className=" bg-[#FF7020F0] p-4 lg:p-0 overflow-hidden w-full h-full min-h-[371px] flex lg:flex-row flex-col lg:items-center">
           <div className="flex flex-col justify-center lg:ml-16">
             <div className="text-white lg:text-5xl text-3xl font-semibold ">Flash Sale</div>
             <div className="lg:w-[369px] text-white text-base font-normal  leading-7 mt-2">
@@ -90,7 +90,7 @@ const FlashSale = () => {
                 className="w-full"
               >
                 {
-                  allProducts?.flashSale?.map(product => (
+                  products?.map(product => (
                     <SwiperSlide key={product?._id} className="">
                       <FlashSaleCard data={product} />
                     </SwiperSlide>

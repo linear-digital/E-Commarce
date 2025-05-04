@@ -62,16 +62,6 @@ const DefaultFatch = () => {
     (
       async () => {
 
-        const quary = (await api.get('/api/products/quary/bestDeals')).data
-        dispatch(setAllProducts({
-          deals: quary.bestDeals,
-          topTen: quary.topTen,
-          popular: quary.popular,
-          hotSales: quary.hotSales,
-          flashSale: quary.flashSale,
-          newArrival: quary.newArrival
-        }))
-
         if (device || currentUser) {
           const deviceCart = await api.get(`/api/cart/device/${device}`)
 

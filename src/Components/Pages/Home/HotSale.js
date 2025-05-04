@@ -9,7 +9,7 @@ import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const HotSale = ({ products, count }) => {
-  const { deviceType, allProducts } = useSelector((state) => state.Tools);
+  const { deviceType } = useSelector((state) => state.Tools);
   const swiperParams = {
     navigation: {
       nextEl: ".custom-next-button-hot",
@@ -59,7 +59,7 @@ const HotSale = ({ products, count }) => {
           className="w-full lg:min-h-[500px]"
         >
           {
-            allProducts?.hotSales?.map((data) => <SwiperSlide key={data._id}>
+           products?.map((data) => <SwiperSlide key={data._id}>
               <HotSaleCard data={data} />
             </SwiperSlide>)
           }

@@ -5,7 +5,10 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "server.linearhub.com",
+        hostname: "res.cloudinary.com",
+      },{
+        protocol: "https",
+        hostname: "img.drz.lazcdn.com",
       },
       {
         protocol: "http",

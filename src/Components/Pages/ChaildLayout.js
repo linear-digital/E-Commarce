@@ -11,7 +11,7 @@ const ChaildLayout = ({ children }) => {
     }, 2000)
     if (loading) {
         return <div className='h-screen w-full flex justify-center items-center'>
-            <BarLoader width={250} color="#e30613" />
+            <BarLoader width={250} color="#FF7020" />
         </div>
     }
     return children

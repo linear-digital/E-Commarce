@@ -61,7 +61,7 @@ const Banner = () => {
                 <SwiperSlide key={index}>
                   <Link href={banner.link}>
                     <Image
-                      src={localURL + banner.image}
+                      src={ banner.image || '/images/default.png'}
                       width={1350}
                       height={500}
                       alt=""

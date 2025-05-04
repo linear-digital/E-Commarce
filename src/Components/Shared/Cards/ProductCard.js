@@ -31,7 +31,7 @@ const ProductCard = ({ type, data }) => {
                         >
                             <Image
                                 className="w-full h-[160px] rounded-md object-cover"
-                                src={localURL + data?.cover}
+                                src={data?.cover}
                                 width={548}
                                 height={314}
                                 alt=""
@@ -63,7 +63,7 @@ const ProductCard = ({ type, data }) => {
                         >
                             <Image
                                 className="lg:max-w-[273px] w-full  lg:min-w-[243px]  max-h-[200px] lg:max-h-[100%] rounded-md object-cover"
-                                src={localURL + data?.cover}
+                                src={ data?.cover}
                                 width={428}
                                 height={240}
                                 alt=""

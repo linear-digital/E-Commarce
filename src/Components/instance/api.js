@@ -14,3 +14,22 @@ export const api = axios.create({
         Authorization: `Bearer ${Cookies.get("auth_token")}`,
     },
 })
+
+export const fetcher = async ({ path, data, method = "GET", headers = {} }) =>
+{
+    try {
+        // if path startwith / remove it
+        const url =  path.startsWith("/") ? path.slice(1) : path
+        const res = await fetch(local + url, {
+            method,
+            headers: {
+                ...headers,
+                Authorization: `Bearer ${Cookies.get("auth_token")}`,
+            },
+            body: JSON.stringify(data),
+        });
+        return await res.json();
+    } catch (error) {
+        throw error
+    }
+};

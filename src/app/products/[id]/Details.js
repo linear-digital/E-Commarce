@@ -24,7 +24,8 @@ import Link from "next/link";
 import HotSale from "@/Components/Pages/Home/HotSale";
 import RecentViewed from "@/Components/Pages/Home/RecentViewed";
 
-const Details = ({ product }) => {
+const Details = ({ product }) =>
+{
     const { currentUser } = useSelector((state) => state.User);
     const { device } = useSelector((state) => state.Tools);
     const swiperParams = {
@@ -35,7 +36,8 @@ const Details = ({ product }) => {
         pagination: {
             el: ".swiper-pagination",
             clickable: true, // Enable clickable pagination bullets
-            renderBullet: function (index, className) {
+            renderBullet: function (index, className)
+            {
                 // Custom pagination bullet content
                 return `<span class="${className}"></span>`;
             },
@@ -49,7 +51,8 @@ const Details = ({ product }) => {
     const [variant, setVariant] = useState("default");
     const dispatch = useDispatch()
     const [quantity, setQuantity] = useState(1);
-    const addToCart = async () => {
+    const addToCart = async () =>
+    {
         if (currentUser || device) {
             try {
                 const cartItem = {
@@ -78,7 +81,8 @@ const Details = ({ product }) => {
             toast.error("Please Login First")
         }
     };
-    const buyNow = async () => {
+    const buyNow = async () =>
+    {
         const cartItem = {
             email: currentUser?.email,
             product_id: product._id,
@@ -95,8 +99,10 @@ const Details = ({ product }) => {
     }
     const [related, setRelated] = useState([]);
 
-    useEffect(() => {
-        (async () => {
+    useEffect(() =>
+    {
+        (async () =>
+        {
             // const ipfrom = await axios.get('https://api64.ipify.org/?format=json')
             // const res = await api.get(`/api/products/${id}?ip=${ipfrom.data.ip}`);
             const rels = await api.post(`/api/products/search/any`, { search: product?.category })
@@ -107,8 +113,10 @@ const Details = ({ product }) => {
             );
         })();
     }, [product]);
-    useEffect(() => {
-        (async () => {
+    useEffect(() =>
+    {
+        (async () =>
+        {
             try {
                 const res = await api.get(`/api/reviews/id/${product._id}`);
                 setReviews(res.data);
@@ -119,7 +127,8 @@ const Details = ({ product }) => {
     }, [product])
     const { allProducts } = useSelector((state) => state.Tools);
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e) =>
+    {
         const { left, top, width, height } = e.target.getBoundingClientRect();
         const x = ((e.clientX - left) / width) * 100;
         const y = ((e.clientY - top) / height) * 100;
@@ -129,7 +138,8 @@ const Details = ({ product }) => {
         e.target.style.transform = transformValue;
     };
 
-    const handleMouseLeave = (e) => {
+    const handleMouseLeave = (e) =>
+    {
         setZoom(false);
         e.target.style.transform = "none";
     };
@@ -203,7 +213,7 @@ const Details = ({ product }) => {
                                             img.video ?
                                                 <>
                                                     <video height={604} style={{ width: "100%", maxHeight: "100%" }} controls >
-                                                        <source src={localURL + img.image} type="video/mp4" />
+                                                        <source src={ img.image} type="video/mp4" />
 
                                                         Your browser does not support the video tag.
                                                     </video>
@@ -213,7 +223,7 @@ const Details = ({ product }) => {
                                                     onMouseMove={handleMouseMove}
                                                     onMouseLeave={handleMouseLeave}
                                                     src={
-                                                        localURL + img.image
+                                                        img.image
                                                     }
                                                     className={"w-full h-full"}
                                                     alt=""
@@ -236,7 +246,7 @@ const Details = ({ product }) => {
                                 currentImage.video ?
                                     <>
                                         <video height={604} style={{ width: "100%" }} controls >
-                                            <source src={localURL + currentImage.image} type="video/mp4" />
+                                            <source src={currentImage.image} type="video/mp4" />
 
                                             Your browser does not support the video tag.
                                         </video>
@@ -247,8 +257,8 @@ const Details = ({ product }) => {
                                         onMouseLeave={handleMouseLeave}
                                         src={
                                             currentImage.image
-                                                ? localURL + currentImage?.image
-                                                : localURL + product.cover
+                                                ?  currentImage?.image
+                                                :  product.cover
                                         }
                                         className={"w-full max-h-[564px]"}
                                         alt=""
@@ -355,7 +365,8 @@ const Details = ({ product }) => {
                                 <h2 className='mr-3 font-medium text-sm'> Quantity <span className='font-semibold'>:</span></h2>
                                 <div className="flex items-center  py-2 px-4 rounded-md shadow justify-center">
                                     <button
-                                        onClick={() => {
+                                        onClick={() =>
+                                        {
                                             setQuantity(quantity - 1)
                                         }}
                                     >
@@ -366,7 +377,8 @@ const Details = ({ product }) => {
                                         {quantity}
                                     </h2>
                                     <button
-                                        onClick={() => {
+                                        onClick={() =>
+                                        {
                                             setQuantity(quantity + 1)
                                         }}
                                         className='text-base'>
@@ -392,7 +404,7 @@ const Details = ({ product }) => {
             </section>
             <section className={"container mx-auto lg:mt-20 mt-10 lg:px-0 px-3"}>
                 <div className={"flex lg:flex-row flex-col-reverse items-start"}>
-                    <div className="lg:max-w-[375px] lg:min-w-[375px] w-full  lg:h-[824px] h-auto bg-orange-500 rounded-xl">
+                    <div className="lg:max-w-[375px] lg:min-w-[375px] w-full  lg:h-[824px] h-auto bg-[#e30613] rounded-xl">
                         <ReviewsStatictic reviews={reviews} />
                     </div>
                     <section className={"lg:ml-10 w-full"}>
@@ -421,10 +433,12 @@ const Details = ({ product }) => {
                         </div>
                         <div>
                             {activeTab === "specification" && (
-                                <Specification data={product?.key_features} />
+                                <Specification data={product?.key_features} 
+                                    features={product?.spacification}
+                                />
                             )}
                             {activeTab === "description" && (
-                                <Description data={product?.descriptions} />
+                                <Description data={product} />
                             )}
                             {activeTab === "review" && <Reviews reviews={reviews} productId={product?._id} />}
                         </div>
@@ -432,8 +446,8 @@ const Details = ({ product }) => {
                 </div>
             </section>
             {
-                related &&
-                <RelatedProduct products={related} mt={"lg:mt-16"} />
+                // related &&
+                // <RelatedProduct products={related} mt={"lg:mt-16"} />
             }
         </div>
     );
@@ -441,7 +455,8 @@ const Details = ({ product }) => {
 
 export default Details;
 
-const Thumb = ({ setCurremtImage, image }) => {
+const Thumb = ({ setCurremtImage, image }) =>
+{
     return (
         <div
             onClick={() => setCurremtImage(image)}
@@ -453,14 +468,15 @@ const Thumb = ({ setCurremtImage, image }) => {
                         <Image src={'/images/video.png'} alt="" width={92} height={92} />
                     </>
                     :
-                    <Image src={localURL + image.image} alt="" width={92} height={92} />
+                    <Image src={image.image} alt="" width={92} height={92} />
             }
         </div>
     );
 };
 
 
-const ArrowRight = () => {
+const ArrowRight = () =>
+{
     return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" className="w-6 h-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
     </svg>

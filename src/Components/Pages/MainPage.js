@@ -7,43 +7,49 @@ import Features from "./Home/Features";
 import FlashSale from "./Home/FlashSale";
 import HotSale from "./Home/HotSale";
 import RecentViewed from "./Home/RecentViewed";
-import { api } from "../instance/api";
+import { api, fetcher } from "../instance/api";
+import Categoires from "./Home/Category";
+import Newsletter from "./Home/Newsletter";
 
-const getAllProducts = async () => {
-  const res = await api.get('/api/products/all')
-  const banners = await api.get('/api/banners')
-  const quary = (await api.get('/api/products/quary/bestDeals')).data
 
-  return {
-    products: res.data,
-    banners: banners.data,
-    deals: quary.bestDeals,
-    topTen: quary.topTen,
-    popular: quary.popular,
-    hotSales: quary.hotSales,
-    flashSale: quary.flashSale,
-    newArrival: quary.newArrival
-  }
-}
 
-const MainPage = async () => {
-  const initialProducts = getAllProducts()
-  const [data] = await Promise.all([initialProducts])
+const MainPage = async () =>
+{
+  const bestDeals = await fetcher({
+    path: "/api/products?public=true"
+  })
+  const topProducts = await fetcher({
+    path: "/api/products?public=true&top_ten=true"
+  })
+  const popular = await fetcher({
+    path: "/api/products?public=true&popular=true"
+  })
+  const flash_sale = await fetcher({
+    path: "/api/products?public=true&flash_sale=true"
+  })
+  const hot_sales = await fetcher({
+    path: "/api/products?public=true&hot_sales=true"
+  })
+
   return (
     <div>
       <Banner
       />
+      <Categoires />
       <BestDeals
+        products={bestDeals}
       />
       <TopProducts
+        products={topProducts}
       />
       <PopolarSearch
+        products={popular}
       />
       <Features />
-      <FlashSale />
-      <HotSale />
+      <FlashSale products={flash_sale} />
+      <HotSale products={hot_sales} />
       <RecentViewed mt={"lg:mt-20"} />
-      {/* <Newsletter /> */}
+      <Newsletter />
     </div>
   );
 };

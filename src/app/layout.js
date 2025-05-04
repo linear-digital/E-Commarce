@@ -55,7 +55,10 @@ export default function RootLayout({ children }) {
           <SpeedInsights />
           <DefaultFatch />
           <DeviceIdentifire />
+          <div className='lg:px-5'>
           {children}
+          </div>
+         
           <Footer />
           <BottomNavigation />
           <script

@@ -34,7 +34,7 @@ const page = async ({ params, data }) => {
                     </div>
                     <div className='lg:flex items-start justify-between mt-10'>
                         <div className='flex items-center'>
-                            <Image src={localURL + order?.order[0]?.image} width={100} height={200} alt='' />
+                            <Image src={ order?.order[0]?.image} width={100} height={200} alt='' />
                             <div className='ml-5 flex flex-col justify-start'>
                                 <h2 className="lg:text-xl text-base">{order?.order[0]?.product_name}</h2>
                                 <h2 className="lg:text-xl text-base mt-2">Quantity: {order?.order[0]?.quantity}</h2>

@@ -1,4 +1,4 @@
-import { localURL } from "@/Components/instance/api";
+'use client';
 import { Taka } from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +9,7 @@ export const PopularSearchCard = ({ data }) => {
       <div className="lg:max-h-[266px] max-h-[150px] w-full rounded-[30px]  shadow-xl shadow-stone-50 overflow-hidden">
         <Image
           className="max-w-[348px] w-full min-h-[314px] object-cover"
-          src={localURL + data?.cover}
+          src={ data?.cover}
           width={348}
           height={314}
           alt=""

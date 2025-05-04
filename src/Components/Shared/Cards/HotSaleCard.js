@@ -10,7 +10,7 @@ const HotSaleCard = ({ data }) => {
       <div className="lg:max-h-[266px] max-h-[160px] w-full rounded-[20px]  shadow-xl shadow-stone-50 overflow-hidden flex justify-center items-center">
         <Image
           className="lg:max-w-[273px] max-w-[130px] w-full lg:h-[266px] h-[150px]"
-          src={localURL + data?.cover}
+          src={ data?.cover}
           width={348}
           height={314}
           alt={""}

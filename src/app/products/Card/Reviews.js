@@ -50,13 +50,13 @@ const Card = ({ data }) => {
                     {
                         data.images.map((img, index) => {
                             return <div key={index} onClick={() => {
-                                handleClick(localURL + img.image)
+                                handleClick( img.image)
                             }}>
                                 <Image
                                     className={"mr-3 max-h-[90px] max-w-[80px] rounded-sm"}
                                     width={80}
                                     height={40}
-                                    src={localURL + img.image}
+                                    src={ img.image}
                                     alt={""}
                                 />
                             </div>

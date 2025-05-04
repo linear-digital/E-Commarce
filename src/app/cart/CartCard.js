@@ -80,7 +80,7 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
       <td className={"lg:flex items-center w-full hidden"} >
         <Link href={`/products/${cart?.product_id}`} className="lg:min-w-[132px] lg:max-w-[142px] lg:max-h-[153px] w-[] border bg-stone-300 rounded-[14px] bordered overflow-hidden">
           <Image
-            src={localURL + cart?.image}
+            src={ cart?.image}
             alt={cart?.product_name}
             width={480}
             height={320}
@@ -127,7 +127,7 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
           <Link href={`/products/${cart?.product_id}`} className="max-w-[80px] border bg-stone-300 rounded-[14px] bordered overflow-hidden">
             <Image
               className="max-w-[80px] min-w-[70px] "
-              src={localURL + cart?.image}
+              src={ cart?.image}
               alt={cart?.product_name}
               width={480}
               height={320}

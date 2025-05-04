@@ -111,7 +111,7 @@ const page = ({ params }) => {
                                         width={100}
                                         height={100}
                                         key={index}
-                                        src={localURL + img.image}
+                                        src={ img.image}
                                         alt={""}
                                         className=" rounded-lg mr-2" />)
                                 }
@@ -124,7 +124,7 @@ const page = ({ params }) => {
                         <div className='mt-4'>
                             <Image
                                 className='rounded-lg'
-                                src={localURL + order?.order[0]?.image} alt={""} width={100} height={100} />
+                                src={ order?.order[0]?.image} alt={""} width={100} height={100} />
                             <h2 className='text-base mt-3 font-bold'>Product Name: {order?.order[0]?.product_name}</h2>
                         </div>
                         <form onSubmit={writeReview} className='max-w-[500px] flex flex-col'>
@@ -157,7 +157,7 @@ const page = ({ params }) => {
                                         width={100}
                                         height={100}
                                         key={index}
-                                        src={localURL + img.image}
+                                        src={ img.image}
                                         alt={""}
                                         className=" rounded-lg mr-2" />)
                                 }

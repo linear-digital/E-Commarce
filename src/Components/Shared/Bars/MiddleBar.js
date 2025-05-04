@@ -34,7 +34,7 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
 
 
   return (
-    <main className="shadow  shadow-gray-100 bg-white lg:px-0 px-2 pb-2 lg:pb-0">
+    <main className="shadow  shadow-gray-100 bg-white  px-2 pb-2 lg:pb-0 lg:px-4">
       <section className="container mx-auto lg:h-[90px] h-[50px] flex items-center justify-between pt-2">
         <span className="lg:block hidden">
           <Logo />
@@ -76,7 +76,7 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
                 >
                   <path
                     d="M23.6736 20.7516L18.9998 16.0781C18.7889 15.8672 18.5029 15.75 18.2029 15.75H17.4388C18.7326 14.0953 19.5014 12.0141 19.5014 9.75C19.5014 4.36406 15.137 0 9.75071 0C4.36438 0 0 4.36406 0 9.75C0 15.1359 4.36438 19.5 9.75071 19.5C12.0149 19.5 14.0963 18.7313 15.7512 17.4375V18.2016C15.7512 18.5016 15.8683 18.7875 16.0793 18.9984L20.7531 23.6719C21.1937 24.1125 21.9063 24.1125 22.3423 23.6719L23.6689 22.3453C24.1096 21.9047 24.1096 21.1922 23.6736 20.7516ZM9.75071 15.75C6.43641 15.75 3.75027 13.0688 3.75027 9.75C3.75027 6.43594 6.43172 3.75 9.75071 3.75C13.065 3.75 15.7512 6.43125 15.7512 9.75C15.7512 13.0641 13.0697 15.75 9.75071 15.75Z"
-                    fill="#e30613"
+                    fill="#FF7020"
                   />
                 </svg>
               )}
@@ -104,7 +104,7 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
                 >
                   <path
                     d="M23.6736 20.7516L18.9998 16.0781C18.7889 15.8672 18.5029 15.75 18.2029 15.75H17.4388C18.7326 14.0953 19.5014 12.0141 19.5014 9.75C19.5014 4.36406 15.137 0 9.75071 0C4.36438 0 0 4.36406 0 9.75C0 15.1359 4.36438 19.5 9.75071 19.5C12.0149 19.5 14.0963 18.7313 15.7512 17.4375V18.2016C15.7512 18.5016 15.8683 18.7875 16.0793 18.9984L20.7531 23.6719C21.1937 24.1125 21.9063 24.1125 22.3423 23.6719L23.6689 22.3453C24.1096 21.9047 24.1096 21.1922 23.6736 20.7516ZM9.75071 15.75C6.43641 15.75 3.75027 13.0688 3.75027 9.75C3.75027 6.43594 6.43172 3.75 9.75071 3.75C13.065 3.75 15.7512 6.43125 15.7512 9.75C15.7512 13.0641 13.0697 15.75 9.75071 15.75Z"
-                    fill="#e30613"
+                    fill="#FF7020"
                   />
                 </svg>
               </button>
@@ -138,7 +138,7 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
             >
               <path
                 d="M23.6736 20.7516L18.9998 16.0781C18.7889 15.8672 18.5029 15.75 18.2029 15.75H17.4388C18.7326 14.0953 19.5014 12.0141 19.5014 9.75C19.5014 4.36406 15.137 0 9.75071 0C4.36438 0 0 4.36406 0 9.75C0 15.1359 4.36438 19.5 9.75071 19.5C12.0149 19.5 14.0963 18.7313 15.7512 17.4375V18.2016C15.7512 18.5016 15.8683 18.7875 16.0793 18.9984L20.7531 23.6719C21.1937 24.1125 21.9063 24.1125 22.3423 23.6719L23.6689 22.3453C24.1096 21.9047 24.1096 21.1922 23.6736 20.7516ZM9.75071 15.75C6.43641 15.75 3.75027 13.0688 3.75027 9.75C3.75027 6.43594 6.43172 3.75 9.75071 3.75C13.065 3.75 15.7512 6.43125 15.7512 9.75C15.7512 13.0641 13.0697 15.75 9.75071 15.75Z"
-                fill="#e30613"
+                fill="#FF7020"
               />
             </svg>
           </div>
@@ -164,7 +164,7 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
           </button>
           <Link href={'/cart'} className="ml-7 relative">
             <Cart />
-            <div className="w-[25px] h-[25px] bg-orange-500 rounded-full border-2 border-white absolute top-[-13px] right-[-10px] flex items-center justify-center text-sm font-semibold text-white" >
+            <div className="w-[25px] h-[25px] bg-[#e30613] rounded-full border-2 border-white absolute top-[-13px] right-[-10px] flex items-center justify-center text-sm font-semibold text-white" >
               {cartItems?.length}
             </div>
           </Link>
@@ -173,7 +173,7 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
               onClick={() => {
                 !currentUser && setShowModal("login")
               }}
-              className="btn btn-primary shadow-md  shadow-orange-500 ml-14">
+              className="btn btn-primary shadow-md  ml-14">
               <Avater />
               <span>
                 {
@@ -248,7 +248,7 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
                   href={`/products/${data?._id}`} key={index} className="w-full border h-[60px] shadow-md mb-2 rounded-lg flex items-center p-5 hover:bg-gray-100">
                   <Image
                     className="max-h-[50px] max-w-[50px] rounded"
-                    width={50} height={50} src={localURL + data?.cover} alt="" />
+                    width={50} height={50} src={ data?.cover} alt="" />
                   <h2 className="ml-5 text-xs"> {data.name}</h2>
                 </Link>
               ))

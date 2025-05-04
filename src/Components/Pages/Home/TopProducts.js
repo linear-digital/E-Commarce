@@ -2,17 +2,15 @@
 
 import StarProvider from "@/Components/Shared/StarProvider";
 import { topProducts } from "@/Components/Shared/breackpoints";
-import { localURL } from "@/Components/instance/api";
 import { ChevronLeft, ChevronRight, Taka } from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useSelector } from "react-redux";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const TopProducts = ({ products }) => {
-  const { allProducts } = useSelector((state) => state.Tools);
+const TopProducts = ({ products }) =>
+{
   const swiperParams = {
     navigation: {
       nextEl: ".custom-next-button-top",
@@ -21,7 +19,8 @@ const TopProducts = ({ products }) => {
     pagination: {
       el: ".swiper-pagination",
       clickable: true, // Enable clickable pagination bullets
-      renderBullet: function (index, className) {
+      renderBullet: function (index, className)
+      {
         // Custom pagination bullet content
         return `<span class="${className}"></span>`;
       },
@@ -63,10 +62,10 @@ const TopProducts = ({ products }) => {
               disableOnInteraction: false,
             }}
             modules={[Navigation, Autoplay, FreeMode]}
-            className="lg:h-[500px]"
+            className="h-auto"
           >
             {
-              allProducts?.topTen?.slice(0, 10).map((product) => (
+              products?.map((product) => (
                 <SwiperSlide key={product._id} >
                   <TopProductCard data={product} />
                 </SwiperSlide>
@@ -81,43 +80,41 @@ const TopProducts = ({ products }) => {
 
 export default TopProducts;
 
-export const TopProductCard = ({ data }) => {
+export const TopProductCard = ({ data }) =>
+{
   return (
-    <Link href={`/products/${data?._id}`} className="w-full h-full lg:max-h-[520px] max-h-[340px] lg:max-w-[330px] bg-white rounded-[30px] overflow-hidden shadow-xl shadow-stone-100">
-      <div className="max-h-[314px] w-full rounded-[30px] bg-stone-300 shadow-md shadow-stone-100 overflow-hidden">
-        <Image
-          className="w-full h-full"
-          src={
-            localURL + data?.cover
-          }
-          width={500}
-          height={400}
-          alt=""
-        />
-      </div>
-
-      <div className="flex lg:flex-col flex-col-reverse lg:p-7 p-4">
-        <h2 className="text-black text-sm lg:text-2xl font-semibold">
+    <Link href={`/products/${data?._id}`} className="">
+      <Image
+        className="h-[270px] rounded-xl"
+        src={
+          data?.cover
+        }
+        width={1000}
+        height={1000}
+        alt=""
+        objectFit="cover"
+      />
+      <div className="flex lg:flex-col flex-col-reverse pt-4">
+        <h2 className="text-black text-sm lg:text-xl font-semibold">
           {data?.name?.slice(0, 30) +
             " " +
             "..."}
         </h2>
-        <div className="flex lg:flex-row flex-col-reverse lg:items-center items-start mt-3 lg:mt-4 justify-between">
-          <div className="flex items-center">
-            <div className="text-[#e30613] text-sm lg:text-xl font-semibold">
-              <Taka />
-              {data?.price - (data?.discount_percentage / 100 * data?.price)}
-            </div>
-            <div className="text-neutral-400 ml-3 lg:text-base text-xs font-normal">
-              <del>
-                <Taka /> {data?.price}
-              </del>
-            </div>
+        <div className="flex items-center mt-2">
+          <div className="text-[#e30613] text-sm lg:text-base font-semibold">
+            <Taka />
+            {data?.price - (data?.discount_percentage / 100 * data?.price)}
           </div>
-          <div className="lg:ml-2 ml-0 lg:mb-0 mb-2">
-            <StarProvider number={5} />
+          <div className="text-neutral-400 ml-2 lg:text-sm text-xs font-normal">
+            <del className="flex items-center">
+              <Taka /> <span>{data?.price}</span>
+            </del>
           </div>
+          <div className="lg:ml-2 ml-0 lg:mb-0 mb-2 flex items-center">
+          <StarProvider number={5} />
         </div>
+        </div>
+       
       </div>
     </Link>
   );

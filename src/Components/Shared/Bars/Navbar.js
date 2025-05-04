@@ -21,7 +21,7 @@ const Navbar = () => {
   }, []);
   return (
     <div
-      className={`z-[237] top-0 left-0 right-0 ${
+      className={`z-[237] top-0 left-0 right-0  ${
         isSticky ? "fixed animate__fadeInDown" : ""
       }`}
     >

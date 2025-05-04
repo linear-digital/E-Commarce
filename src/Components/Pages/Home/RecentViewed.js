@@ -96,7 +96,7 @@ const RecentCard = ({ data, text }) => {
     >
       <Image
         className="rounded-xl w-full h-full max-h-[150px] lg:max-h-auto"
-        src={localURL + data?.cover} alt={""} width={200} height={200} />
+        src={ data?.cover} alt={""} width={200} height={200} />
     </div>
     <div className="p-2 ml-3 flex flex-col lg:justify-between ">
       <div className="text-[#e30613] text-center mb-2 block lg:hidden text-xl mt-1 font-semibold">
