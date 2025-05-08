@@ -1,6 +1,7 @@
 "use client";
 
 import HotSaleCard from "@/Components/Shared/Cards/HotSaleCard";
+import ProductSM from "@/Components/Shared/Cards/ProductSM";
 import { hotSale } from "@/Components/Shared/breackpoints";
 import { ChevronLeft, ChevronRight, Fire } from "@/assets/icons";
 import React from "react";
@@ -56,11 +57,11 @@ const HotSale = ({ products, count }) => {
             disableOnInteraction: false,
           }}
           modules={[Navigation, Autoplay, FreeMode]}
-          className="w-full lg:min-h-[500px]"
+          className="w-full h-auto"
         >
           {
            products?.map((data) => <SwiperSlide key={data._id}>
-              <HotSaleCard data={data} />
+              <ProductSM data={data} />
             </SwiperSlide>)
           }
         </Swiper>

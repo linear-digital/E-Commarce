@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const Banner = () => {
+const Banner = ({banners}) => {
   const swiperParams = {
     navigation: {
       nextEl: ".custom-next-button-banner",
@@ -22,15 +22,15 @@ const Banner = () => {
       },
     },
   };
-  const [banners, setBanners] = useState([])
+  // const [banners, setBanners] = useState([])
 
-  useEffect(() => {
-    api.get('/api/banners')
-      .then(res => setBanners(res.data))
-  }, [])
-
+  // useEffect(() => {
+  //   api.get('/api/banners')
+  //     .then(res => setBanners(res.data))
+  // }, [])
+  
   return (
-    <section className="relative lg:px-0 px-4">
+    <section className="relative lg:px-0 px-4 z-0">
       <div className="flex max-h-[634px] items-center w-full relative mt-[30px]">
 
         <section className="container mx-auto rounded-xl relative">

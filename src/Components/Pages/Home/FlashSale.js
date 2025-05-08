@@ -56,12 +56,12 @@ const FlashSale = ({ products}) => {
         className="container mx-auto lg:max-h-[371px] min-h-[371px] rounded-xl overflow-hidden relative "
         style={{
           backgroundImage:
-            "url('http://localhost:3000/_next/image?url=%2Fimages%2Fbanner%2Fbanner-2.jpeg&w=1920&q=75')",
+            "url('/images/banner/banner-2.jpeg')",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
       >
-        <div className=" bg-[#FF7020F0] p-4 lg:p-0 overflow-hidden w-full h-full min-h-[371px] flex lg:flex-row flex-col lg:items-center">
+        <div className=" bg-primary p-4 lg:p-0 overflow-hidden w-full h-full min-h-[371px] flex lg:flex-row flex-col lg:items-center">
           <div className="flex flex-col justify-center lg:ml-16">
             <div className="text-white lg:text-5xl text-3xl font-semibold ">Flash Sale</div>
             <div className="lg:w-[369px] text-white text-base font-normal  leading-7 mt-2">

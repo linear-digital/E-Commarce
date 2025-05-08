@@ -1,24 +1,28 @@
-'use client'
 
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import Multiple from "./Card/Multiple";
+import { fetcher } from "@/Components/instance/api";
 
-const Categoryes = () => {
-  const { category } = useSelector((state) => state.Tools);
-
+const Categoryes = async () =>
+{
+  const categories = await fetcher({
+    path: "/api/categories?status=true",
+  })
+  const brands = await fetcher({
+    path: "/api/brands",
+  })
   return (
     <div className="py-10 px-7 hidden lg:block">
       <h3 className="text-black text-xl font-semibold ">
-        Show all categories
+        Categoires
       </h3>
-      <div className="w-full max-h-[450px] mt-5 min-h-[450px] overflow-y-auto">
-        <ul className="menu rounded-box">
-          {
-            category.map((item, index) => (
-              <Multiple data={item} key={index} index={index} />
-            ))
-          }
+      <div className="w-full max-h-[450px] mt-5 min-h-[450px] overflow-y-auto "
+      style={{
+        scrollbarWidth: "thin",
+      }}
+      >
+        <ul className="rounded-box flex flex-col gap-y-2">
+          <Multiple data={categories}  name={"Categories"} />
         </ul>
 
       </div>

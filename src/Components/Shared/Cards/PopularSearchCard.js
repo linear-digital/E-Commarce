@@ -6,13 +6,14 @@ import Link from "next/link";
 export const PopularSearchCard = ({ data }) => {
   return (
     <Link href={`/products/${data?._id}`} className="w-full h-full max-h-[463px] max-w-[273px] bg-white rounded-[30px] overflow-hidden shadow-xl shadow-stone-100">
-      <div className="lg:max-h-[266px] max-h-[150px] w-full rounded-[30px]  shadow-xl shadow-stone-50 overflow-hidden">
+      <div className="lg:max-h-[266px] max-h-[150px] w-full rounded-[20px]  shadow-xl shadow-stone-50 overflow-hidden">
         <Image
           className="max-w-[348px] w-full min-h-[314px] object-cover"
           src={ data?.cover}
           width={348}
           height={314}
           alt=""
+          objectFit="cover"
         />
       </div>
 

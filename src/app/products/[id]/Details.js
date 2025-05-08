@@ -239,7 +239,7 @@ const Details = ({ product }) =>
                     </div>
                     <div className="lg:flex hidden items-center flex-col w-full justify-center">
                         <div
-                            className={`image-container relative max-w-[564px] overflow-hidden w-full bg-stone-100 rounded-md ${zoom ? "zoomed" : ""
+                            className={`image-container relative max-w-[454px] overflow-hidden w-full bg-stone-100 rounded-md ${zoom ? "zoomed" : ""
                                 }`}
                         >
                             {
@@ -260,7 +260,8 @@ const Details = ({ product }) =>
                                                 ?  currentImage?.image
                                                 :  product.cover
                                         }
-                                        className={"w-full max-h-[564px]"}
+                                        className={"w-full h-full"}
+                                        objectFit="contain"
                                         alt=""
                                         width={1280}
                                         height={729}

@@ -81,46 +81,46 @@ const DefaultFatch = () => {
     )()
   }, [repatch, device, currentUser]);
 
-  useEffect(() => {
-    const apiKey = "AIzaSyBUDmkMGZD5mIPpiGRVQov8aPztKKB5B2c"
+  // useEffect(() => {
+  //   const apiKey = "AIzaSyBUDmkMGZD5mIPpiGRVQov8aPztKKB5B2c"
 
-    if ("geolocation" in navigator) {
+  //   if ("geolocation" in navigator) {
 
-      // Get the current location
-      navigator.geolocation.getCurrentPosition(
-        function (position) {
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
-          const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
-          fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => {
-              // Extract the relevant location information from the response
-              const address = data.results[0]
-              const newVisitor = {
-                visitor: address ? address : {
-                  place: "Unknown",
-                },
-                place_id: address?.place_id || "Unknown",
-              }
-              try {
-                api.post('/api/visitors', newVisitor)
-              } catch (error) {
-                console.log(error)
-              }
-            })
-            .catch(error => console.error('Error fetching location data:', error));
-          // You can use the latitude and longitude values as needed
-        },
-        function (error) {
-          console.error("Error getting location: ", error.message);
-        }
-      );
-    } else {
-      console.error("Geolocation is not supported by your browser");
-    }
+  //     // Get the current location
+  //     navigator.geolocation.getCurrentPosition(
+  //       function (position) {
+  //         const latitude = position.coords.latitude;
+  //         const longitude = position.coords.longitude;
+  //         const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
+  //         fetch(apiUrl)
+  //           .then(response => response.json())
+  //           .then(data => {
+  //             // Extract the relevant location information from the response
+  //             const address = data.results[0]
+  //             const newVisitor = {
+  //               visitor: address ? address : {
+  //                 place: "Unknown",
+  //               },
+  //               place_id: address?.place_id || "Unknown",
+  //             }
+  //             try {
+  //               api.post('/api/visitors', newVisitor)
+  //             } catch (error) {
+  //               console.log(error)
+  //             }
+  //           })
+  //           .catch(error => console.error('Error fetching location data:', error));
+  //         // You can use the latitude and longitude values as needed
+  //       },
+  //       function (error) {
+  //         console.error("Error getting location: ", error.message);
+  //       }
+  //     );
+  //   } else {
+  //     console.error("Geolocation is not supported by your browser");
+  //   }
 
-  }, [])
+  // }, [])
 
 
   return;

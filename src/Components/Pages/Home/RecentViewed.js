@@ -2,7 +2,7 @@
 
 
 import { topProducts } from "@/Components/Shared/breackpoints";
-import { api, localURL } from "@/Components/instance/api";
+import { api, fetcher, localURL } from "@/Components/instance/api";
 import { ChevronLeft, ChevronRight, Taka } from "@/assets/icons";
 import axios from "axios";
 import Image from "next/image";
@@ -11,7 +11,8 @@ import React, { useEffect, useState } from "react";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const RecentViewed = ({ mt, count, title, data, text }) => {
+const RecentViewed = ({ mt, count, title, data, text }) =>
+{
   const swiperParams = {
     navigation: {
       nextEl: ".custom-next-button-history",
@@ -20,26 +21,15 @@ const RecentViewed = ({ mt, count, title, data, text }) => {
     pagination: {
       el: ".swiper-pagination",
       clickable: true, // Enable clickable pagination bullets
-      renderBullet: function (index, className) {
+      renderBullet: function (index, className)
+      {
         // Custom pagination bullet content
         return `<span key="${index}" class="${className}"></span>`;
       },
     },
   };
   const [products, setProducts] = useState([])
-  useEffect(() => {
-    (
-      async () => {
-        const ipfrom = await axios.get('https://api64.ipify.org/?format=json')
-        if (ipfrom.data.ip !== "") {
-          api.post(`/api/products/get/ip`, {
-            address: ipfrom.data.ip
-          })
-            .then(res => setProducts(res.data))
-        }
-      }
-    )()
-  }, [])
+ 
   return (
     <div className={`container mx-auto ${mt ? mt : "lg:mt-32"}  ${text === "sm" ? "mt-5" : "p-4 mt-1"} lg:p-0`}>
       <div className="flex justify-between">
@@ -76,7 +66,8 @@ const RecentViewed = ({ mt, count, title, data, text }) => {
           className="w-full"
         >
           {
-            (data ? data : products)?.map((data) => {
+            (data ? data : products)?.map((data) =>
+            {
               return <SwiperSlide key={data?._id}>
                 <RecentCard data={data} text={text} />
               </SwiperSlide>
@@ -90,13 +81,14 @@ const RecentViewed = ({ mt, count, title, data, text }) => {
 
 export default RecentViewed;
 
-const RecentCard = ({ data, text }) => {
+const RecentCard = ({ data, text }) =>
+{
   return <Link href={`/products/${data?._id}`} className="flex flex-col lg:flex-row lg:h-[139px] h-auto cursor-pointer">
     <div className="h-full lg:max-h-[139px] min-h-[139px] max-h-[80px] min-w-[60px] lg:min-w-[120px] bg-gray-300 rounded-xl"
     >
       <Image
         className="rounded-xl w-full h-full max-h-[150px] lg:max-h-auto"
-        src={ data?.cover} alt={""} width={200} height={200} />
+        src={'/images/product.png'} alt={""} width={200} height={200} />
     </div>
     <div className="p-2 ml-3 flex flex-col lg:justify-between ">
       <div className="text-[#e30613] text-center mb-2 block lg:hidden text-xl mt-1 font-semibold">

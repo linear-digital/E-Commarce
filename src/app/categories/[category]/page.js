@@ -4,10 +4,13 @@ import React from 'react'
 export const metadata = {
   title: 'Oftech Gadget | Online Shopping BD | All Categories',
 }
-const page = ({params}) => {
+const page = async ({ params }) =>
+{
+  const { category } = await params
+  
   return (
     <div>
-        <Section_1 name={params.category}/>
+      <Section_1 name={decodeURIComponent(category)} />
     </div>
   )
 }

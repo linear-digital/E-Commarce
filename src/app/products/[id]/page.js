@@ -1,27 +1,26 @@
 
 import React from "react";
 
-import { api } from "@/Components/instance/api";
+import { fetcher } from "@/Components/instance/api";
 import Details from "./Details";
-import axios from "axios";
-import RelatedProduct from "@/Components/Pages/Home/RelatedProduct";
 
 export async function generateMetadata({ params }) {
-  const res = await api.get(`/api/products/pr/${params.id}`);
-  const product = res.data;
+  const product = await getProduct()
   return {
-    title: `Oftech Gadget | ${product?.name.slice(0, 30)}...`,
+    title: `Oftech Gadget | ${product?.name?.slice(0, 30) || "Product Details"}...`,
   }
 }
 
 const getProduct = async (id) => {
-  const res = await api.get(`/api/products/${id}`, );
-  return res.data;
+  const res = await fetcher({
+    path: `/api/products/${id}`,
+  });
+  return res;
 }
 
 const page = async ({ params }) => {
-  const initialProduct = getProduct(params.id)
-  const [product] = await Promise.all([initialProduct])
+  const { id } = await params;
+  const product = await getProduct(id);
   return (
     <div>
       <Details product={product} />

@@ -15,40 +15,47 @@ import Newsletter from "./Home/Newsletter";
 
 const MainPage = async () =>
 {
+  const banners = await fetcher({
+    path: "/api/banners"
+  })
   const bestDeals = await fetcher({
-    path: "/api/products?public=true"
+    path: "/api/products?public=true&limit=10"
   })
   const topProducts = await fetcher({
-    path: "/api/products?public=true&top_ten=true"
+    path: "/api/products?top_ten=true&top_ten=true"
   })
   const popular = await fetcher({
-    path: "/api/products?public=true&popular=true"
+    path: "/api/products?popular=true&limit=5"
   })
   const flash_sale = await fetcher({
-    path: "/api/products?public=true&flash_sale=true"
+    path: "/api/products?flash_sale=true&limit=10"
   })
   const hot_sales = await fetcher({
-    path: "/api/products?public=true&hot_sales=true"
+    path: "/api/products?hot_sales=true&limit=20"
   })
-
+  const categories = await fetcher({
+    path: "/api/categories?status=true"
+  })
   return (
     <div>
       <Banner
+        banners={banners}
       />
-      <Categoires />
+      <Categoires category={categories} />
+      {/* New Arrivals */}
       <BestDeals
-        products={bestDeals}
+        products={bestDeals.products}
       />
       <TopProducts
-        products={topProducts}
+        products={topProducts.products}
       />
       <PopolarSearch
-        products={popular}
+        products={popular.products}
       />
       <Features />
-      <FlashSale products={flash_sale} />
-      <HotSale products={hot_sales} />
-      <RecentViewed mt={"lg:mt-20"} />
+      <FlashSale products={flash_sale.products} />
+      <HotSale products={hot_sales.products} />
+      <RecentViewed data={hot_sales.products} mt={"lg:mt-20"} />
       <Newsletter />
     </div>
   );

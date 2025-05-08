@@ -1,24 +1,14 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { categoryBreackpoint } from "@/Components/Shared/breackpoints";
 import { useSelector } from "react-redux";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { api } from "@/Components/instance/api";
-const Categoires = () =>
+import { useRouter } from "next/navigation";
+const Categoires = ({category}) =>
 {
     const { deviceType } = useSelector((state) => state.Tools);
-    const [category, setCategory] = useState([]);
-    useEffect(() =>
-    {
-        const fetchCategory = async () =>
-        {
-            const response = await api.get("/api/categories");
-            const data = response.data
-            setCategory(data);
-        }
-        fetchCategory();
-    }, []);
+    if(!category) return null
     return (
         <main className="container mx-auto lg:mt-32 mt-10 px-4 lg:px-0">
             <h2 className=" text-black lg:text-3xl text-2xl font-semibold">
@@ -54,7 +44,14 @@ export default Categoires;
 
 export const CategoryCard = ({ data }) =>
 {
-    return <div className="bg-slate-100 h-[250px] flex flex-col items-center justify-center rounded">
+    const router = useRouter()
+    const navigateToCategory = () =>
+    {
+        router.push(`/categories/${data?.name}`)
+    }
+    return <div className="bg-slate-100 h-[250px] flex flex-col items-center justify-center rounded cursor-pointer"
+        onClick={navigateToCategory}
+    >
         <div className="h-full flex items-center justify-center">
             <img src={data?.image} width={90} height={90}
                 className="w-[90px] h-[90px] object-contain rounded-full bg-gray-400"

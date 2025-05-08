@@ -16,6 +16,7 @@ import DefaultFatch from '@/Components/Shared/DefaultFatch';
 import { Toaster } from "react-hot-toast";
 import 'react-loading-skeleton/dist/skeleton.css'
 import DeviceIdentifire from '@/Components/Shared/DeviceIdentifire';
+import { ConfigProvider } from 'antd';
 
 
 export const metadata = {
@@ -48,11 +49,17 @@ export default function RootLayout({ children }) {
         <meta name="twitter:description" content="Online Shopping Electric Gadgets" />
 
         <body className='relative bg-white pb-10 w-full overflow-x-hidden'>
+          <ConfigProvider
+            theme={{
+              token: {
+                colorPrimary: '#e30613',
+              },
+            }}
+          >
           <Topbar />
           <Navbar />
           <Toaster />
 
-          <SpeedInsights />
           <DefaultFatch />
           <DeviceIdentifire />
           <div className='lg:px-5'>
@@ -61,6 +68,8 @@ export default function RootLayout({ children }) {
          
           <Footer />
           <BottomNavigation />
+
+          </ConfigProvider>
           <script
             src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js" />
         </body>

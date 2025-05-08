@@ -7,23 +7,23 @@ const FlashSaleCard = ({ data }) => {
   return (
     <Link href={`/products/${data?._id}`} className="lg:max-w-[448px] max-w-[400px]  lg:min-w-[448px] w-full h-[168px] bg-white rounded-[15px] shadow-xl flex items-center px-5">
       <div
-        className="h-full lg:min-w-[117px] min-w-[90px] max-w-[100px] lg:max-w-[120px] max-h-[139px] bg-gray-300 rounded-xl"
+        className="h-full lg:min-w-[117px] min-w-[90px] max-w-[100px] lg:max-w-[120px] max-h-[139px] bg-gray-50 rounded-xl"
         style={{
           backgroundImage:
-            `url('${ data?.cover}')`,
+            `url('/images/product.png')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
       ></div>
-      <div className="p-2 ml-3 flex flex-col justify-between h-full py-5">
+      <div className="p-2 ml-3 flex flex-col justify-between h-full py-5 w-full">
         <h2 className=" text-black text-base font-medium">
           {data?.name?.slice(
             0,
             60
           )}
         </h2>
-        <div className="pb-2 mt-4 flex justify-between items-center">
+        <div className="pb-2 mt-4 flex justify-between items-center w-full">
           <div className="text-[#e30613] text-xl mt-1 font-semibold">
             <Taka />  {data?.price - (data?.discount_percentage / 100 * data?.price)}
           </div>
