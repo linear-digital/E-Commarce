@@ -3,15 +3,15 @@ import React from "react";
 import Multiple from "./Card/Multiple";
 import { fetcher } from "@/Components/instance/api";
 
-const Categoryes = async () =>
+const Brands = async () =>
 {
-  const categories = await fetcher({
-    path: "/api/categories?status=true",
+  const brands = await fetcher({
+    path: "/api/brands",
   })
   return (
     <div className="py-10 px-7 hidden lg:block">
       <h3 className="text-black text-xl font-semibold ">
-        Categoires
+        Brands
       </h3>
       <div className="w-full max-h-[450px] mt-5 min-h-[450px] overflow-y-auto "
       style={{
@@ -19,7 +19,7 @@ const Categoryes = async () =>
       }}
       >
         <ul className="rounded-box flex flex-col gap-y-2">
-          <Multiple data={categories}  name={"categories"} />
+          <Multiple data={brands}  name={"brands"} />
         </ul>
 
       </div>
@@ -27,5 +27,5 @@ const Categoryes = async () =>
   );
 };
 
-export default Categoryes;
+export default Brands;
 

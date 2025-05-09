@@ -17,7 +17,7 @@ const Multiple = ({ data, name }) =>
             {
                 data.map((child, index) => (
                     <li key={index}>
-                        <Link href={`/categories/${child.name}`}>
+                        <Link href={`/${name}/${child.name}`}>
                             <Checkbox
                                 checked={categoryMatcher() === child.name}
                             >{child.name}</Checkbox>

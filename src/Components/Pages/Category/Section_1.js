@@ -8,7 +8,7 @@ import { api } from "@/Components/instance/api";
 import { Grid, List } from "@/assets/icons";
 import { Pagination } from "antd";
 
-const Section_1 = ({ name }) =>
+const Section_1 = ({ name, brand }) =>
 {
   const [showFilter, setShowFilter] = useState(false);
   const [limit, setLimit] = useState(12);
@@ -42,7 +42,7 @@ const Section_1 = ({ name }) =>
           sort: shortBy,
         });
         if (name !== "all") {
-          query.set("category", name);
+          query.set(`${brand ? "brand" : "category"}`, name);
         }
 
         const response = await api.get(`/api/products?${query}`);
@@ -159,20 +159,22 @@ const Section_1 = ({ name }) =>
       {/* Pagination */}
       <div className="flex justify-between items-center mt-10 px-3">
         <div className="text-neutral-400 text-base font-normal">
-       {totalDocument} total results
+          {totalDocument} total results
         </div>
-        <Pagination
-          total={totalDocument}
-          pageSize={limit}
-          current={activePage}
-          pageSizeOptions={[12, 24, 36]}
-          showSizeChanger
-          onChange={(page, pageSize) =>
-          {
-            setActivePage(page);
-            setLimit(pageSize);
-          }}
-        />
+        {
+          totalDocument > 0 && <Pagination
+            total={totalDocument}
+            pageSize={limit}
+            current={activePage}
+            pageSizeOptions={[12, 24, 36]}
+            showSizeChanger
+            onChange={(page, pageSize) =>
+            {
+              setActivePage(page);
+              setLimit(pageSize);
+            }}
+          />
+        }
       </div>
     </div>
   );
