@@ -48,31 +48,41 @@ const TopProducts = ({ products }) =>
           </div>
         </div>
         {/* Slider Side  */}
-        <div className="w-full h-full lg:ml-10 mt-5 lg:p-0 p-4">
-          <Swiper
-            freeMode={true}
-            breakpoints={topProducts}
-            slidesPerView={4}
-            loop={true}
-            spaceBetween={30}
-            {...swiperParams}
-            centeredSlides={false}
-            autoplay={{
-              delay: 7500,
-              disableOnInteraction: false,
-            }}
-            modules={[Navigation, Autoplay, FreeMode]}
-            className="h-auto"
-          >
-            {
-              products?.map((product) => (
-                <SwiperSlide key={product._id} >
-                  <TopProductCard data={product} />
-                </SwiperSlide>
-              ))
-            }
-          </Swiper>
+        {
+          products?.length === 0 ?
+          <div className="flex w-full mt-5 items-center justify-center">
+          <h2 className=" text-primary lg:text-xl text-lg font-semibold">
+            No Product Found
+          </h2>
         </div>
+            :
+
+            <div className="w-full h-full lg:ml-10 mt-5 lg:p-0 p-4">
+              <Swiper
+                freeMode={true}
+                breakpoints={topProducts}
+                slidesPerView={4}
+                loop={true}
+                spaceBetween={30}
+                {...swiperParams}
+                centeredSlides={false}
+                autoplay={{
+                  delay: 7500,
+                  disableOnInteraction: false,
+                }}
+                modules={[Navigation, Autoplay, FreeMode]}
+                className="h-auto"
+              >
+                {
+                  products?.map((product) => (
+                    <SwiperSlide key={product._id} >
+                      <TopProductCard data={product} />
+                    </SwiperSlide>
+                  ))
+                }
+              </Swiper>
+            </div>
+        }
       </section>
     </div>
   );
@@ -111,10 +121,10 @@ export const TopProductCard = ({ data }) =>
             </del>
           </div>
           <div className="lg:ml-2 ml-0 lg:mb-0 mb-2 flex items-center">
-          <StarProvider number={5} />
+            <StarProvider number={5} />
+          </div>
         </div>
-        </div>
-       
+
       </div>
     </Link>
   );

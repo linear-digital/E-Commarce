@@ -210,3 +210,9 @@ progress::-moz-progress-bar {
 .product-sm:hover h2 {
   color: #e30613;
 }
+
+.cb-list .ant-input {
+  height: 32px;
+  border: 1px solid #e30613;
+  border-radius: 5px;
+}

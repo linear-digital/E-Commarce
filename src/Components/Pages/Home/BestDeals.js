@@ -1,5 +1,4 @@
 
-import { api } from "@/Components/instance/api";
 import ProductSM from "@/Components/Shared/Cards/ProductSM";
 import Link from "next/link";
 
@@ -13,7 +12,7 @@ const BestDeals = ({ products }) =>
         <h2 className=" text-black lg:text-3xl text-2xl font-semibold">
           New Arrivals
         </h2>
-        <Link href="/products" className=" text-primary text-lg font-semibold">
+        <Link href="/offer/new_arrival" className=" text-primary text-lg font-semibold">
           See All
         </Link>
       </div>

@@ -9,7 +9,8 @@ import { useSelector } from "react-redux";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const HotSale = ({ products, count }) => {
+const HotSale = ({ products, count }) =>
+{
   const { deviceType } = useSelector((state) => state.Tools);
   const swiperParams = {
     navigation: {
@@ -19,7 +20,8 @@ const HotSale = ({ products, count }) => {
     pagination: {
       el: ".swiper-pagination",
       clickable: true, // Enable clickable pagination bullets
-      renderBullet: function (index, className) {
+      renderBullet: function (index, className)
+      {
         // Custom pagination bullet content
         return `<span class="${className}"></span>`;
       },
@@ -28,7 +30,7 @@ const HotSale = ({ products, count }) => {
   return (
     <div className="container mx-auto lg:mt-32 mt-10 lg:px-0 px-4 ">
       <div className="flex justify-between">
-        <div className="flex items-center">
+        <div className="flex items-center justify-between">
           <Fire w={22} h={23} />
           <div className="ml-2 text-black text-3xl font-semibold ">
             Hot Sale!
@@ -43,7 +45,15 @@ const HotSale = ({ products, count }) => {
           </button>
         </div>
       </div>
-
+      {
+        products?.length === 0 && (
+          <div className="flex mt-5 items-center justify-center">
+            <h2 className=" text-primary lg:text-xl text-lg font-semibold">
+              No Product Found
+            </h2>
+          </div>
+        )
+      }
       <div className="mt-10 w-full">
         <Swiper
           breakpoints={hotSale}
@@ -60,7 +70,7 @@ const HotSale = ({ products, count }) => {
           className="w-full h-auto"
         >
           {
-           products?.map((data) => <SwiperSlide key={data._id}>
+            products?.map((data) => <SwiperSlide key={data._id}>
               <ProductSM data={data} />
             </SwiperSlide>)
           }

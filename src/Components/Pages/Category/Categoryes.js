@@ -2,6 +2,7 @@
 import React from "react";
 import Multiple from "./Card/Multiple";
 import { fetcher } from "@/Components/instance/api";
+import List from "./Card/List";
 
 const Categoryes = async () =>
 {
@@ -9,21 +10,7 @@ const Categoryes = async () =>
     path: "/api/categories?status=true",
   })
   return (
-    <div className="py-10 px-7 hidden lg:block">
-      <h3 className="text-black text-xl font-semibold ">
-        Categoires
-      </h3>
-      <div className="w-full max-h-[450px] mt-5 min-h-[450px] overflow-y-auto "
-      style={{
-        scrollbarWidth: "thin",
-      }}
-      >
-        <ul className="rounded-box flex flex-col gap-y-2">
-          <Multiple data={categories}  name={"categories"} />
-        </ul>
-
-      </div>
-    </div>
+    <List data={categories} name={"Categories"} />
   );
 };
 

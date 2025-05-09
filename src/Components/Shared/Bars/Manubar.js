@@ -55,7 +55,7 @@ const Manubar = () =>
           <Link href={'/categories'}>Categories</Link>
         </li>
         <li className="px-5 font-normal capitalize" >
-          <Link href={'/'}>Brands</Link>
+          <Link href={'/brands'}>Brands</Link>
         </li>
       </ul>
 

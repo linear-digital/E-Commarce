@@ -7,7 +7,7 @@ import Features from "./Home/Features";
 import FlashSale from "./Home/FlashSale";
 import HotSale from "./Home/HotSale";
 import RecentViewed from "./Home/RecentViewed";
-import { api, fetcher } from "../instance/api";
+import { fetcher } from "../instance/api";
 import Categoires from "./Home/Category";
 import Newsletter from "./Home/Newsletter";
 
