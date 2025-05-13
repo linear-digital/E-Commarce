@@ -55,8 +55,8 @@ const FlashSale = ({ products}) => {
       <div
         className="container mx-auto lg:max-h-[371px] min-h-[371px] rounded-xl overflow-hidden relative "
         style={{
-          backgroundImage:
-            "url('/images/banner/banner-2.jpeg')",
+          // backgroundImage:
+          //   "url('/images/banner/banner-2.jpeg')",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}

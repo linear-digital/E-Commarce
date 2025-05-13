@@ -16,7 +16,7 @@ const BestDeals = ({ products }) =>
           See All
         </Link>
       </div>
-      <div className="lg:grid hidden lg:grid-cols-5  grid-cols-2 gap-5 mt-10">
+      <div className="lg:grid hidden lg:grid-cols-4  grid-cols-2 gap-7 mt-10">
         {
           products?.map((deal, index) => (
             <ProductSM key={index} data={deal} />

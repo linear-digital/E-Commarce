@@ -5,7 +5,6 @@ import React from "react";
 
 const PopolarSearch = ({ products }) =>
 {
-
   return (
     <div className="lg:mt-32 mt-10 p-4 lg:p-0">
       <section className="container mx-auto">

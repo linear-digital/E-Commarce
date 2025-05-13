@@ -192,52 +192,7 @@ const Details = ({ product }) =>
             </dialog>
             <section className="container mx-auto lg:mt-10 mt-4 shadow-lg pb-5 lg:px-0 px-4">
                 <div className="grid lg:grid-cols-2 grid-cols-1">
-                    <div className="w-full lg:hidden">
-                        <Swiper
-                            autoplay={{ delay: 7000, disableOnInteraction: true }}
-                            pagination={{
-                                dynamicBullets: true,
-                                clickable: true,
-
-                            }}
-                            modules={[Navigation, Autoplay, Pagination]}
-                            className="w-full max-h-[350px] h-full"
-                        >
-                            {product?.images?.map((img, index) => (
-                                <SwiperSlide key={index} className="w-full">
-                                    <div
-                                        className={`image-container relative overflow-hidden w-full h-full  bg-stone-100 rounded-md ${zoom ? "zoomed" : ""
-                                            }`}
-                                    >
-                                        {
-                                            img.video ?
-                                                <>
-                                                    <video height={604} style={{ width: "100%", maxHeight: "100%" }} controls >
-                                                        <source src={ img.image} type="video/mp4" />
-
-                                                        Your browser does not support the video tag.
-                                                    </video>
-                                                </>
-                                                :
-                                                <Image
-                                                    onMouseMove={handleMouseMove}
-                                                    onMouseLeave={handleMouseLeave}
-                                                    src={
-                                                        img.image
-                                                    }
-                                                    className={"w-full h-full"}
-                                                    alt=""
-                                                    width={1280}
-                                                    height={729}
-                                                />
-                                            // <></>
-                                        }
-                                    </div>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                    </div>
-                    <div className="lg:flex hidden items-center flex-col w-full justify-center">
+                    <div className="flex items-center flex-col w-full justify-center">
                         <div
                             className={`image-container relative max-w-[454px] overflow-hidden w-full bg-stone-100 rounded-md ${zoom ? "zoomed" : ""
                                 }`}
@@ -260,8 +215,7 @@ const Details = ({ product }) =>
                                                 ?  currentImage?.image
                                                 :  product.cover
                                         }
-                                        className={"w-full h-full"}
-                                        objectFit="contain"
+                                        className={"w-full h-full object-contain"}
                                         alt=""
                                         width={1280}
                                         height={729}
@@ -328,7 +282,7 @@ const Details = ({ product }) =>
                         <div className={"lg:mt-5"}>
                             <h2 className={"mt-3 text-xl"}>Key Features</h2>
                             <ul className={"list-disc mt-2 ml-5"}>
-                                {product?.spacification?.map((sp, key) => (
+                                {product?.key_features?.map((sp, key) => (
                                     <li key={key}>
                                         {
                                             sp.key && <span className={"mr-1"}><b>{sp.key}</b> - </span>

@@ -13,7 +13,6 @@ export const PopularSearchCard = ({ data }) => {
           width={348}
           height={314}
           alt=""
-          objectFit="cover"
         />
       </div>
 

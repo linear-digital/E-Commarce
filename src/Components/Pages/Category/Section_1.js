@@ -18,7 +18,7 @@ const Section_1 = ({ name, brand }) =>
   const [viewType, setViewType] = useState("grid");
   const [loading, setLoading] = useState(true);
   const [shortBy, setShortBy] = useState("default");
-  const [priceRange, setPriceRange] = useState({ min: 0, max: 999999 });
+  const [priceRange, setPriceRange] = useState({ min: 0, max: 0 });
 
   const handlePriceRange = (e) =>
   {
@@ -41,6 +41,12 @@ const Section_1 = ({ name, brand }) =>
           page: activePage.toString(),
           sort: shortBy,
         });
+        if (priceRange.min !== 0) {
+          query.set("min_price", priceRange.min);
+        }
+        if (priceRange.max !== 0) {
+          query.set("max_price", priceRange.max);
+        }
         if (name !== "all") {
           query.set(`${brand ? "brand" : "category"}`, name);
         }
@@ -125,7 +131,7 @@ const Section_1 = ({ name, brand }) =>
                 defaultValue={priceRange.max}
                 className="w-[65px] text-sm px-1 rounded border mr-2"
                 type="number"
-                min={1}
+                min={0}
               />
               <button className="bg-primary text-white rounded-lg btn-sm ml-2">
                 Apply
@@ -141,7 +147,7 @@ const Section_1 = ({ name, brand }) =>
       ) : (
         <section className="mt-10">
           {viewType === "list" ? (
-            <section className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+            <section className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               {products?.map((product) => (
                 <ProductCard key={product._id} type={"list"} data={product} />
               ))}

@@ -59,10 +59,10 @@ const Manubar = () =>
         </li>
       </ul>
 
-      <button className="flex items-center ml-10">
+      <Link href={'/offer/hot_sales'} className="flex items-center ml-10">
         <Fire />
         <span className="ml-3 font-semibold">HOT DEALS</span>
-      </button>
+      </Link>
     </nav>
   );
 };

@@ -94,16 +94,17 @@ export const TopProductCard = ({ data }) =>
 {
   return (
     <Link href={`/products/${data?._id}`} className="">
-      <Image
-        className="h-[270px] rounded-xl"
+      <div className="h-[350px] rounded-xl object-cover object-center relative overflow-hidden">
+<Image
+        className="object-cover "
         src={
           data?.cover
         }
-        width={1000}
-        height={1000}
-        alt=""
-        objectFit="cover"
+fill
+        alt={data?.name}
       />
+      </div>
+      
       <div className="flex lg:flex-col flex-col-reverse pt-4">
         <h2 className="text-black text-sm lg:text-xl font-semibold">
           {data?.name?.slice(0, 30) +

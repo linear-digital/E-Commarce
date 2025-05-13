@@ -19,10 +19,10 @@ const MainPage = async () =>
     path: "/api/banners"
   })
   const bestDeals = await fetcher({
-    path: "/api/products?public=true&limit=10"
+    path: "/api/products?public=true&limit=8"
   })
   const topProducts = await fetcher({
-    path: "/api/products?top_ten=true&top_ten=true"
+    path: "/api/products?top_ten=true&top_ten=true&limit=10"
   })
   const popular = await fetcher({
     path: "/api/products?popular=true&limit=5"

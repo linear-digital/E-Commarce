@@ -64,15 +64,15 @@ const ProductSM = ({ data }) =>
       >
         {data?.category}
       </Link>
-      <div className="flex h-[55px] items-start">
-        <h2 className="text-[16px] mt-2 font-medium">
-          {data?.name?.slice(0, 60)}
+      <div className="flex h-[60px] items-start">
+        <h2 className="text-[16px] my-2 font-medium">
+          {data?.name?.slice(0, 50)}
         </h2>
       </div>
-      <div className="w-full h-[230px] border-b border-gray-50  relative rounded-lg overflow-hidden">
+      <div className="w-full h-[300px] border-b border-gray-50  relative rounded-lg overflow-hidden">
         <Image
-          className="rounded-xl w-full h-full object-contain bg-[#fbfcfc] p-2"
-          src={data?.cover || "/images/product.png"}
+          className="rounded-xl w-full h-full object-cover object-center bg-[#fbfcfc] p-2"
+          src={data?.cover || "/images/default.png"}
           alt={""}
           fill
         />
@@ -113,8 +113,7 @@ const ProductSM = ({ data }) =>
         )}
       </div>
       <p className="text-[13px] mt-1 text-black h-[35px]">
-        {data?.description?.slice(0, 60) ||
-          "lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod."}
+        {data?.productDescription?.slice(0, 65)}
       </p>
     </div>
   );
