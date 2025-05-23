@@ -13,7 +13,8 @@ import { setCheckOut } from "@/redux/Cart/action";
 import Skeleton from 'react-loading-skeleton';
 import MetaTags from '@/Components/MetaTags';
 
-const Page = () => {
+const Page = () =>
+{
     const dispatch = useDispatch()
     const { repatch } = useSelector(state => state.Tools)
     const { cartItems } = useSelector(state => state.Cart)
@@ -23,30 +24,34 @@ const Page = () => {
     const { checkOut } = useSelector(state => state.Cart)
     const { currentUser } = useSelector(state => state.User)
     const [carts, setCarts] = useState([])
-    const [loading, setLoading] = useState(true)
-    useEffect(() => {
-        if (cartItems) {
-            setCarts(cartItems)
-            setLoading(false)
-        }
-    }, [repatch, currentUser, cartItems])
+    const [loading, setLoading] = useState(false)
 
+    useEffect(() =>
+    {
+        if (cartItems?.length > 0) {
+            dispatch(setCheckOut(cartItems))
+        }
+    }
+        , [cartItems])
 
     const [totalPrice, setTotalPrice] = useState(0)
-    useEffect(() => {
+    useEffect(() =>
+    {
         if (checkOut?.length === 0) {
             setTotalPrice(0)
         }
         else {
             let pr = 0
-            checkOut.map((item) => {
+            checkOut.map((item) =>
+            {
                 pr = pr + item.price_total
                 setTotalPrice(pr)
             })
         }
     }, [checkOut]);
 
-    const updatePlus = (item, type) => {
+    const updatePlus = (item, type) =>
+    {
         if (type === "plus") {
             if (item.quantity >= 1) {
                 const quan = item.quantity + 1
@@ -91,12 +96,12 @@ const Page = () => {
                                         <tbody>
                                             <tr>
                                                 {
-                                                    carts?.length === 0 ?
+                                                    cartItems?.length === 0 ?
                                                         <td className='text-center text-primary font-semibold text-3xl pt-10'>
                                                             <Link href={'/categories'}>Continue Shopping</Link>
                                                         </td>
                                                         :
-                                                        carts?.map((car, index) => (
+                                                        cartItems?.map((car, index) => (
                                                             <CartCard
                                                                 setMarked={setMarked}
                                                                 marked={markded}
@@ -211,7 +216,8 @@ const Page = () => {
 export default Page
 
 
-const CartLoader = () => {
+const CartLoader = () =>
+{
     return (
         <div className="mt-5">
             <Skeleton height={150} />

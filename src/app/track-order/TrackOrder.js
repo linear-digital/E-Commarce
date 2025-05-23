@@ -7,20 +7,22 @@ import StepProvider from '../me/orders/[id]/StepProvider';
 import { useSearchParams } from 'next/navigation'
 
 
-const TrackOrder = () => {
+const TrackOrder = () =>
+{
     const [order, setOrder] = React.useState({})
     // get email and order_id from search params
     const searchParams = useSearchParams()
     const qEmail = searchParams.get("email") || ""
     const orderId = searchParams.get("order_id") || ""
 
-    const trackOrder = async (e) => {
+    const trackOrder = async (e) =>
+    {
         e.preventDefault()
         const order_id = orderId || e.target.order_id.value
-        const email = qEmail || e.target.email.value
+        const oi = order_id.startsWith("#") ? order_id.slice(1) : order_id
         try {
             setOrder({})
-            const res = await api.post(`/api/orders/track`, { order_id, email })
+            const res = await api.post(`/api/orders/track`, { order_id: oi })
             setOrder(res.data)
         } catch (error) {
             console.log(error)
@@ -42,14 +44,6 @@ const TrackOrder = () => {
                             name='order_id'
                         />
                     </label>
-                    <label className="form-control w-full lg:max-w-xs">
-                        <div className="label">
-                            <span className="label-text">Billing Email</span>
-                        </div>
-                        <input defaultValue={qEmail} required type="email" placeholder="Email That you used while checking out" className="input input-bordered w-full max-w-xs text-sm"
-                            name='email'
-                        />
-                    </label>
                 </div>
                 <button className='btn btn-primary mt-5'>Track Order</button>
             </form>
@@ -67,29 +61,39 @@ const TrackOrder = () => {
                                 <div className='py-5 w-full'>
                                     <StepProvider status={order?.status} />
                                 </div>
-                                <div className='flex items-start justify-between mt-10'>
-                                    <div className='flex items-center'>
-                                        <Image src={ order?.order[0]?.image} width={100} height={200} alt='' />
-                                        <div className='ml-5 flex flex-col justify-start'>
-                                            <h2 className="text-xl">{order?.order[0]?.product_name}</h2>
-                                            <h2 className="text-xl mt-2">Quantity: {order?.order[0]?.quantity}</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='card my-5 shadow-lg max-w-[400px] p-4'>
-                                    <h2 className='font-semibold'>Shipping Address</h2>
-                                    <div className='mt-2'>
-                                        <p>{order?.address?.name}</p>
-                                        <p>{order?.address?.phone}</p>
-                                        <p>{order?.email}</p>
-                                        <p>
-                                            <mark>
-                                                {order?.address?.address}
-                                            </mark>
-                                        </p>
-                                    </div>
-                                </div>
-
+                                <table className="min-w-full table-auto border border-gray-200 rounded-md shadow-sm">
+                                    <thead className="bg-gray-100 text-left">
+                                        <tr>
+                                            <th className="px-4 py-2 border-b">Product</th>
+                                            <th className="px-4 py-2 border-b">Quantity</th>
+                                            <th className="px-4 py-2 border-b">Unit Price</th>
+                                            <th className="px-4 py-2 border-b">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {order?.order?.map((item, index) => (
+                                            <tr key={index} className="hover:bg-gray-50">
+                                                <td className="px-4 py-3 border-b flex items-center space-x-3">
+                                                    <img
+                                                        src={item?.image}
+                                                        alt={item?.product_name}
+                                                        className="w-12 h-12 object-cover rounded"
+                                                    />
+                                                    <span>{item?.product_name}</span>
+                                                </td>
+                                                <td className="px-4 py-3 border-b">{item?.quantity}</td>
+                                                <td className="px-4 py-3 border-b font-medium text-gray-700">৳{item?.price}</td>
+                                                <td className="px-4 py-3 border-b font-semibold text-gray-900">৳{item?.price_total}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colSpan={3} className="px-4 py-3 border-b font-semibold text-gray-900">Total</td>
+                                            <td className="px-4 py-3 border-b font-semibold text-gray-900">৳{order?.total}</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
                             </div>
                         </div>
                     </div>

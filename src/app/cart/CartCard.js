@@ -12,13 +12,16 @@ import { setCheckOut } from "@/redux/Cart/action";
 import { toast } from "react-hot-toast";
 import { setRepatch } from "@/redux/Tools/action";
 import Link from "next/link";
+import { Popconfirm } from "antd";
 
-const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, totalPrice }) => {
+const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, totalPrice }) =>
+{
   const dispatch = useDispatch();
   const { checkOut } = useSelector((state) => state.Cart);
   const [number, setNumber] = useState(1);
   const [price, setPrice] = useState(0);
-  const updateNumber = (type) => {
+  const updateNumber = (type) =>
+  {
     if (type === "plus") {
       if (number >= 1) {
         setNumber(number + 1);
@@ -29,58 +32,28 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
       }
     }
   };
-  const [checked, setChecked] = useState(false);
 
-  const setCheckOutHandler = (type) => {
-    const order = cart
-    const isExist = checkOut?.filter(item => item._id === cart?._id).length > 0
-    if (isExist) {
-      const newCheckOut = checkOut?.filter(item => item._id !== cart?._id)
-      dispatch(setCheckOut([...newCheckOut]))
-    }
-    else {
-      dispatch(setCheckOut([...checkOut, order]))
-    }
-  };
-  const deleteCart = async () => {
+  const deleteCart = async () =>
+  {
     try {
-      const agree = window.confirm("Are you sure?")
-      if (agree) {
-        const res = await api.delete(`/api/cart/${cart._id}`)
-        toast.success("Item Delete Success")
-        dispatch(setRepatch(res))
-        dispatch(setCheckOut([]))
-      }
+      const res = await api.delete(`/api/cart/${cart._id}`)
+      toast.success("Item Delete Success")
+      dispatch(setRepatch(res))
+      dispatch(setCheckOut([]))
     }
     catch (e) {
       toast.error('Something went wrong')
     }
   }
-  useEffect(() => {
-    const exist = checkOut?.filter(item => item.product_id === cart?.product_id && item.variant === cart?.variant).length > 0
-    setChecked(exist)
-  }, [checkOut])
 
   return (
     <tr className={"flex items-center py-5 w-full"}
-      onClick={() => setCheckOutHandler(!checked)}
+
     >
-      <th>
-        <label>
-          <input
-            type="checkbox"
-            onChange={(e) => {
-              setCheckOutHandler(e.target.checked)
-            }}
-            checked={checked}
-            className="checkbox lg:checkbox-md checkbox-sm"
-          />
-        </label>
-      </th>
       <td className={"lg:flex items-center w-full hidden"} >
         <Link href={`/products/${cart?.product_id}`} className="lg:min-w-[132px] lg:max-w-[142px] lg:max-h-[153px] w-[] border bg-stone-300 rounded-[14px] bordered overflow-hidden">
           <Image
-            src={ cart?.image}
+            src={cart?.image}
             alt={cart?.product_name}
             width={480}
             height={320}
@@ -108,12 +81,18 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
             <div className={"flex items-center mt-5"}>
 
               <div className={"flex ml-3"}>
-                <button
-                  onClick={deleteCart}
+                <Popconfirm
+                  title="Are you sure to delete this item?"
+                  onConfirm={deleteCart}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <button
                   className={"btn bg-red-500 text-white min-h-[46px] max-h-[46px] hover:bg-red-500 mr-3"}
                 >
                   Delete
                 </button>
+                </Popconfirm>
                 <button className={"text-red-500 "}>
                   <Love />
                 </button>
@@ -127,7 +106,7 @@ const CartCard = ({ markAll, cart, marked, setMarked, setMark, setTotalPrice, to
           <Link href={`/products/${cart?.product_id}`} className="max-w-[80px] border bg-stone-300 rounded-[14px] bordered overflow-hidden">
             <Image
               className="max-w-[80px] min-w-[70px] "
-              src={ cart?.image}
+              src={cart?.image}
               alt={cart?.product_name}
               width={480}
               height={320}

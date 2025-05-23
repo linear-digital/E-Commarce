@@ -22,16 +22,16 @@ const MainPage = async () =>
     path: "/api/products?public=true&limit=8"
   })
   const topProducts = await fetcher({
-    path: "/api/products?top_ten=true&top_ten=true&limit=10"
+    path: "/api/products?top_ten=true&top_ten=true&limit=10&random=true"
   })
   const popular = await fetcher({
-    path: "/api/products?popular=true&limit=5"
+    path: "/api/products?popular=true&limit=5&random=true"
   })
   const flash_sale = await fetcher({
-    path: "/api/products?flash_sale=true&limit=10"
+    path: "/api/products?flash_sale=true&limit=10&random=true"
   })
   const hot_sales = await fetcher({
-    path: "/api/products?hot_sales=true&limit=20"
+    path: "/api/products?hot_sales=true&limit=20&random=true"
   })
   const categories = await fetcher({
     path: "/api/categories?status=true"
