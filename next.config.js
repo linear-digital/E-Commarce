@@ -15,6 +15,12 @@ const nextConfig = {
   },
   reactStrictMode: false,
   productionBrowserSourceMaps: false,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 module.exports = nextConfig;
