@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useState } from "react";
 import { Button, Input, Image, Select, Form } from "antd";
 import { CloseOutlined } from "@ant-design/icons";

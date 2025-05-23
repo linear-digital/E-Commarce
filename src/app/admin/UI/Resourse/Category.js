@@ -77,8 +77,6 @@ const Category = () =>
         setSelectedBrand(undefined);
         setIsModalOpen(true);
     };
-    const currentSkin = localStorage.getItem("skin-mode") ? "dark" : "";
-    const [skin, setSkin] = useState(currentSkin);
 
     const updateCategory = (id, status) =>
     {
