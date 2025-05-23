@@ -15,7 +15,8 @@ import toast from "react-hot-toast";
 import { setCurrentUser } from "@/redux/User/action";
 import LoginForm2 from "@/app/login/LoginForm2";
 
-const MiddleBar = ({ isSticky, setShow, active }) => {
+const MiddleBar = ({ isSticky, setShow, active }) =>
+{
   const [show, setShow1] = useState(false);
   const { currentUser } = useSelector(state => state.User)
   const { cartItems } = useSelector(state => state.Cart)
@@ -25,7 +26,8 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
   const [showResult, setShowResult] = useState(false)
   const [search, setSearch] = useState('')
   const [showModal, setShowModal] = useState(false)
-  const SearchProduct = async (e) => {
+  const SearchProduct = async (e) =>
+  {
     e.preventDefault()
     const res = await api.post('/api/products/search', { search: e.target.product_name.value })
     setShowResult(true)
@@ -51,7 +53,8 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
           <div className="flex items-center">
             <button
               style={{ display: currentUser ? "block" : "none" }}
-              onClick={() => {
+              onClick={() =>
+              {
                 dispatch(setShowNotification(true))
               }}
               className=" text-primary relative mr-4">
@@ -153,7 +156,8 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
           </button>
           <button
             style={{ display: currentUser ? "block" : "none" }}
-            onClick={() => {
+            onClick={() =>
+            {
               dispatch(setShowNotification(true))
             }}
             className="ml-5 text-primary relative">
@@ -170,7 +174,8 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
           </Link>
           <details className="dropdown">
             <summary
-              onClick={() => {
+              onClick={() =>
+              {
                 !currentUser && setShowModal("login")
               }}
               className="btn btn-primary shadow-md  ml-14">
@@ -186,6 +191,15 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
             </summary>
             {
               currentUser && <ul className="p-2 shadow menu dropdown-content z-[103] bg-base-100 rounded-box w-52 right-0 ">
+                {
+                  currentUser?.role === "admin" &&
+                  <li>
+                    <Link href={'/admin/dashboard'}>
+                      Dashboard
+                    </Link>
+                  </li>
+                }
+
                 <li>
                   <Link href={'/me/profile'}>
                     Profile
@@ -203,7 +217,8 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
                 </li>
                 <li>
                   <button className="btn btn-sm btn-danger mt-2"
-                    onClick={() => {
+                    onClick={() =>
+                    {
                       Cookies.remove("auth_token")
                       toast.success("Logout Success")
                       window.location.reload()
@@ -226,7 +241,8 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
           <div className="lg:w-[800px] w-full flex justify-between items-center px-3">
             <h2 className="text-xl font-semibold">Products</h2>
             <button
-              onClick={() => {
+              onClick={() =>
+              {
                 setShowResult(false)
                 setSearchResult([])
               }}
@@ -240,7 +256,8 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
             {
               searchResult?.map((data, index) => (
                 <Link
-                  onClick={() => {
+                  onClick={() =>
+                  {
                     setShow1(false)
                     setShowResult(false)
                     setSearchResult([])
@@ -248,7 +265,7 @@ const MiddleBar = ({ isSticky, setShow, active }) => {
                   href={`/products/${data?._id}`} key={index} className="w-full border h-[60px] shadow-md mb-2 rounded-lg flex items-center p-5 hover:bg-gray-100">
                   <Image
                     className="max-h-[50px] max-w-[50px] rounded"
-                    width={50} height={50} src={ data?.cover} alt="" />
+                    width={50} height={50} src={data?.cover} alt="" />
                   <h2 className="ml-5 text-xs"> {data.name}</h2>
                 </Link>
               ))
