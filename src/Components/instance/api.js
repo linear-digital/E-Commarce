@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 // export const local = 'https://desired-platypus-pleasing.ngrok-free.app/'
 export const local = 'http://localhost:4000/'
 export const locals = 'https://server.oftechgadget.com/'
-export const localURL = local
+export const localURL = locals
 
 export const api = axios.create({
     baseURL: localURL,
