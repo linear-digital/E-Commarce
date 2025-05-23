@@ -1,3 +1,4 @@
+'use client';
 import Section_1 from "@/Components/Pages/Category/Section_1";
 import React from "react";
 
