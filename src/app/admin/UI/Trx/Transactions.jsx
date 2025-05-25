@@ -173,13 +173,22 @@ const Transactions = () =>
           <div className="text-left">
             Total Transactions: {transactions.length}
             <br />
-            Total Amount: ৳
-            {transactions.reduce((acc, transaction) => acc + transaction.total_amount, 0).toFixed(2)}
-            <br />
             Total Profit: ৳
-            {transactions.reduce((acc, transaction) => acc + transaction.profit, 0).toFixed(2)}
+            {transactions.reduce((acc, transaction) => acc + transaction.profit, 0).toFixed(0)}
             <br />
-            Total Quantity: {transactions.reduce((acc, transaction) => acc + transaction.quantity, 0)}
+            {
+              trxType === "sale" ? (
+                <span className="text-green-600">
+                  Total Sales: ৳
+                  {transactions.reduce((acc, transaction) => acc + transaction.total_amount, 0).toFixed(0)}
+                </span>
+              ) : (
+                <span className="text-red-600">
+                  Total Expenses: ৳
+                  {transactions.reduce((acc, transaction) => acc + transaction.amount, 0).toFixed(2)}
+                </span>
+              )
+            }
           </div>
         )}
       />
