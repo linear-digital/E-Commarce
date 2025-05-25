@@ -6,7 +6,7 @@ const isBrowser = typeof window !== 'undefined';
 // Set the base URL based on environment
 export const local = 'http://localhost:4000/';
 export const production = 'https://server.oftechgadget.com/';
-export const localURL = local; // Change this based on environment
+export const localURL = production; // Change this based on environment
 
 // Create an Axios instance
 export const api = axios.create({
