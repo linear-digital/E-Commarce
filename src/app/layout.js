@@ -1,22 +1,23 @@
 import 'animate.css';
 import "./globals.css";
-import StoreProvider from "@/redux/StoreProvider";
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-flip';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import Footer from "@/Components/Shared/Footer/Footer";
-import Navbar from "@/Components/Shared/Bars/Navbar";
-import Topbar from "@/Components/Shared/Bars/Topbar";
-import BottomNavigation from '@/Components/Shared/Bars/BottomNavigation';
-import DefaultFatch from '@/Components/Shared/DefaultFatch';
+
 import { Toaster } from "react-hot-toast";
 import 'react-loading-skeleton/dist/skeleton.css'
-import DeviceIdentifire from '@/Components/Shared/DeviceIdentifire';
+
 import { ConfigProvider } from 'antd';
+import Topbar from '@/Components/Shared/Bars/Topbar';
+import Navbar from '@/Components/Shared/Bars/Navbar';
+import Footer from '@/Components/Shared/Footer/Footer';
+import BottomNavigation from '@/Components/Shared/Bars/BottomNavigation';
+import DefaultFatch from '@/Components/Shared/DefaultFatch';
+import DeviceIdentifire from '@/Components/Shared/DeviceIdentifire';
+import StoreProvider from '@/redux/StoreProvider';
 
 
 export const metadata = {
@@ -33,7 +34,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
 
   return (
-    <StoreProvider>
+    
       <html lang="en" data-theme="light">
         {/* Meta Tags for SEO */}
 
@@ -49,6 +50,7 @@ export default function RootLayout({ children }) {
         <meta name="twitter:description" content="Online Shopping Electric Gadgets" />
 
         <body className='relative bg-white pb-10 w-full overflow-x-hidden'>
+          <StoreProvider>
           <ConfigProvider
             theme={{
               token: {
@@ -70,10 +72,8 @@ export default function RootLayout({ children }) {
           <BottomNavigation />
 
           </ConfigProvider>
-          <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js" />
+          </StoreProvider>
         </body>
       </html>
-    </StoreProvider>
   );
 }

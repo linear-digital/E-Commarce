@@ -13,12 +13,16 @@ const Manubar = () =>
         <li className="px-5 font-normal capitalize" >
           <Link href={'/admin/dashboard'}>Dashboard</Link>
         </li>
+         <li className="px-5 font-normal capitalize" >
+          <Link href={'/admin/transactions'}>Transactions</Link>
+        </li>
         <li className="px-5 font-normal capitalize" >
           <Link href={'/admin/products'}>Products</Link>
         </li>
         <li className="px-5 font-normal capitalize" >
           <Link href={'/admin/brands'}>Brands</Link>
         </li>
+       
         <li className="px-5 font-normal capitalize" >
           <Link href={'/admin/categories'}>Categories</Link>
         </li>

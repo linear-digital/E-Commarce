@@ -13,6 +13,7 @@ import {
 import Link from "next/link";
 
 const Footer = () => {
+  
   return (
     <div className="w-screen">
       <footer className="footer  lg:p-10 mt-10 p-4 text-base-content container mx-auto">

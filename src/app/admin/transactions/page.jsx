@@ -1,11 +1,11 @@
 'use client';
 import React from 'react';
-import Dashboard from '../UI/Dashboard';
+import Transactions from '../UI/Trx/Transactions';
 
 const page = () => {
     return (
         <div>
-            <Dashboard />
+            <Transactions />
         </div>
     );
 };

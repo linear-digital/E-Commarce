@@ -10,6 +10,8 @@ import Details from "./Product/Details";
 import { Input } from "antd";
 import { Popover } from "antd";
 import Options from "./Product/Options";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRotate } from "@fortawesome/free-solid-svg-icons";
 
 const page = () =>
 {
@@ -65,6 +67,10 @@ const page = () =>
         <Link href={"/admin/products/add"}>
           <Button type="primary">Add Product</Button>
         </Link>
+        {/* Reload Data */}
+        <Button type="primary" className="ml-1" onClick={() => refetch()}>
+          <FontAwesomeIcon icon={faRotate}/>
+        </Button>
       </div>
       <Table
         rowKey={"_id"}
