@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "rm -rf .next && next dev",
     "build": "next build",
-    "start": "next start --port 3003",
+    "start": "rm -rf .next && next start --port 3003",
     "lint": "next lint"
   },
   "dependencies": {
