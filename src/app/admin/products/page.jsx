@@ -12,6 +12,7 @@ import { Popover } from "antd";
 import Options from "./Product/Options";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRotate } from "@fortawesome/free-solid-svg-icons";
+import { Switch } from "antd";
 
 const page = () =>
 {
@@ -21,13 +22,14 @@ const page = () =>
   const [brand, setBrand] = useState("");
   const [page, setPage] = useState(1);
   const [product, setProduct] = useState(null);
+  const [lowStock, setLowStock] = useState(false);
   const [search, setSearch] = useState("")
   const { data, isLoading, refetch } = useQuery({
-    queryKey: ["products"],
+    queryKey: ["products", lowStock],
     queryFn: async () =>
     {
       const res = await fetcher({
-        path: "/api/products/all",
+        path: `/api/products/all${lowStock ? "?lowstock=true" : ""}`,
       });
       return res;
     },
@@ -64,12 +66,24 @@ const page = () =>
           onChange={(e) => setSearch(e.target.value)}
           onSearch={(value) => setSearch(value)}
         />
+        <Switch value={lowStock}
+          checked={lowStock}
+          checkedChildren="Low Stock"
+          unCheckedChildren="All Stock"
+          className="ml-2"
+          onChange={(value) =>
+          {
+            setLowStock(value);
+            setPage(1);
+          }
+          }
+        />
         <Link href={"/admin/products/add"}>
           <Button type="primary">Add Product</Button>
         </Link>
         {/* Reload Data */}
         <Button type="primary" className="ml-1" onClick={() => refetch()}>
-          <FontAwesomeIcon icon={faRotate}/>
+          <FontAwesomeIcon icon={faRotate} />
         </Button>
       </div>
       <Table
