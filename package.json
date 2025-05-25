@@ -4,9 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "rm -rf .next && next dev",
-    "build": "next build",
-    "start": "rm -rf .next && next start --port 3003",
+    "build": "rm -rf .next && next build",
+    "start": "next start --port 3003",
     "lint": "next lint"
+  },
+  "eventName": "NEXT_VERSION",
+  "payload": {
+    "version": "9.0.5-canary.2",
+    "isDevelopment": false
   },
   "dependencies": {
     "@ant-design/icons": "^6.0.0",
