@@ -221,7 +221,7 @@ const TransactionModal = ({ isOpen, onClose, onSuccess, trx, products }) => {
                         min="1"
                         value={formData.quantity}
                         onChange={(e) =>
-                          setFormData({ ...formData, quantity: Math.max(1, parseInt(e.target.value) || 1 })
+                          setFormData({ ...formData, quantity: Math.max(1, parseInt(e.target.value) || 1 )})
                         }
                         required
                       />
