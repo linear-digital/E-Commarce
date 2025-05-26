@@ -6,8 +6,7 @@ import dayjs from "dayjs";
 import { Modal } from "antd";
 import toast from "react-hot-toast";
 
-const TransactionModal = ({ isOpen, onClose, onSuccess, trx, products }) =>
-{
+const TransactionModal = ({ isOpen, onClose, onSuccess, trx, products }) => {
   const [loading, setLoading] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [formData, setFormData] = useState({
@@ -20,10 +19,7 @@ const TransactionModal = ({ isOpen, onClose, onSuccess, trx, products }) =>
     createdAt: new Date().toISOString(),
   });
 
-
-
-  useEffect(() =>
-  {
+  useEffect(() => {
     if (trx) {
       setFormData({
         product_id: trx.product_id?._id,
@@ -41,9 +37,7 @@ const TransactionModal = ({ isOpen, onClose, onSuccess, trx, products }) =>
     }
   }, [trx]);
 
-
-  const handleProductChange = (productId) =>
-  {
+  const handleProductChange = (productId) => {
     if (productId) {
       const product = products.find((p) => p._id === productId);
       setSelectedProduct(product || null);
@@ -61,23 +55,20 @@ const TransactionModal = ({ isOpen, onClose, onSuccess, trx, products }) =>
     }
   };
 
-  const calculateProfit = (quantity, salePrice) =>
-  {
+  const calculateProfit = (quantity, salePrice) => {
     if (!selectedProduct) return 0;
     const totalCost = selectedProduct.price * quantity;
     const totalRevenue = salePrice * quantity;
     return totalRevenue - totalCost;
   };
   console.log(formData);
-  const handleSubmit = async (e) =>
-  {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-
-      const quantity = formData.quantity
-      const sale_price = formData.sale_price
+      const quantity = formData.quantity;
+      const sale_price = formData.sale_price;
 
       const payload = {
         ...formData,
@@ -121,7 +112,6 @@ const TransactionModal = ({ isOpen, onClose, onSuccess, trx, products }) =>
       loading={loading}
     >
       <div className="bg-white rounded-lg w-full">
-
         <div className="p-4">
           <Radio.Group
             options={[
@@ -138,7 +128,9 @@ const TransactionModal = ({ isOpen, onClose, onSuccess, trx, products }) =>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Date</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Date
+            </label>
             <DatePicker
               className="mt-1 block w-full"
               value={dayjs(formData.createdAt)}
@@ -149,10 +141,12 @@ const TransactionModal = ({ isOpen, onClose, onSuccess, trx, products }) =>
             />
           </div>
 
-          {
-            formData.type === "sale" && <>
+          {formData.type === "sale" && (
+            <>
               <div>
-                <label className="block text-sm font-medium text-gray-700">Product</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  Product
+                </label>
                 <Select
                   showSearch
                   placeholder="Select a product"
@@ -162,10 +156,37 @@ const TransactionModal = ({ isOpen, onClose, onSuccess, trx, products }) =>
                     { value: "", label: "Select a product" },
                     ...products.map((product) => ({
                       value: product._id,
-                      label: product.name,
+                      label: product.name, // The default label, but we'll search more broadly
+                      // You can add other product properties to the option object
+                      // to make them accessible within filterOption
+                      code: product.category,
+                      description: product.description,
                     })),
                   ]}
                   className="w-full"
+                  filterOption={(inputValue, option) => {
+                    // Convert both to lowercase for case-insensitive search
+                    const lowerCaseInputValue = inputValue.toLowerCase();
+
+                    // Check if the product name includes the input value
+                    const nameMatches = option.label
+                      .toLowerCase()
+                      .includes(lowerCaseInputValue);
+
+                    // Check if the product category includes the input value (if category exists)
+                    const categoryMatches =
+                      option.code &&
+                      option.code
+                        .toLowerCase()
+                        .includes(lowerCaseInputValue);
+                    const codeMatch =
+                      option.description &&
+                      option.description
+                        .toLowerCase()
+                        .includes(lowerCaseInputValue);
+
+                    return nameMatches || categoryMatches || codeMatch;
+                  }}
                 />
               </div>
 
@@ -208,7 +229,7 @@ const TransactionModal = ({ isOpen, onClose, onSuccess, trx, products }) =>
                 </>
               )}
             </>
-          }
+          )}
 
           {!formData.product_id && (
             <>
@@ -237,29 +258,26 @@ const TransactionModal = ({ isOpen, onClose, onSuccess, trx, products }) =>
             </>
           )}
 
-          {selectedProduct &&
-            formData.quantity &&
-            formData.sale_price && (
-              <div className="p-4 bg-gray-50 rounded-md">
-                <h3 className="text-sm font-medium text-gray-700 mb-2">
-                  Transaction Summary
-                </h3>
-                <p className="text-sm">
-                  Total Amount: ৳
-                  {(
-                    parseFloat(formData.sale_price) *
-                    parseInt(formData.quantity)
-                  ).toFixed(2)}
-                </p>
-                <p className="text-sm">
-                  Profit: ৳
-                  {calculateProfit(
-                    parseInt(formData.quantity),
-                    parseFloat(formData.sale_price)
-                  ).toFixed(2)}
-                </p>
-              </div>
-            )}
+          {selectedProduct && formData.quantity && formData.sale_price && (
+            <div className="p-4 bg-gray-50 rounded-md">
+              <h3 className="text-sm font-medium text-gray-700 mb-2">
+                Transaction Summary
+              </h3>
+              <p className="text-sm">
+                Total Amount: ৳
+                {(
+                  parseFloat(formData.sale_price) * parseInt(formData.quantity)
+                ).toFixed(2)}
+              </p>
+              <p className="text-sm">
+                Profit: ৳
+                {calculateProfit(
+                  parseInt(formData.quantity),
+                  parseFloat(formData.sale_price)
+                ).toFixed(2)}
+              </p>
+            </div>
+          )}
 
           <div className="flex justify-end space-x-3 pt-4">
             <button
@@ -279,8 +297,8 @@ const TransactionModal = ({ isOpen, onClose, onSuccess, trx, products }) =>
                   ? "Updating..."
                   : "Creating..."
                 : trx
-                  ? "Update Transaction"
-                  : "Create Transaction"}
+                ? "Update Transaction"
+                : "Create Transaction"}
             </button>
           </div>
         </form>
