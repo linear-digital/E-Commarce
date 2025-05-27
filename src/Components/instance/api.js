@@ -20,7 +20,8 @@ export const api = axios.create({
 });
 
 // Universal fetcher with method, body, and token support
-export const fetcher = async ({ path, data, method = "GET", headers = {}, token = null }) => {
+export const fetcher = async ({ path, data, method = "GET", headers = {}, token = null }) =>
+{
   try {
     const url = path.startsWith("/") ? path.slice(1) : path;
 
@@ -40,6 +41,8 @@ export const fetcher = async ({ path, data, method = "GET", headers = {}, token 
       method,
       headers: finalHeaders,
       body: method === "GET" ? null : JSON.stringify(data),
+      cache: "no-cache",
+      next: { tags: [url] },
     });
 
     if (!res.ok) {
@@ -49,9 +52,9 @@ export const fetcher = async ({ path, data, method = "GET", headers = {}, token 
     return await res.json();
   } catch (error) {
     console.error("API fetch error:", {
-        message: error.message,
-        path,
-        method,
+      message: error.message,
+      path,
+      method,
     });
     throw error;
   }
