@@ -81,14 +81,15 @@ const Details = ({ product }) =>
             toast.error("Please Login First")
         }
     };
+    const Pprice = product?.sale_price - (product?.discount_percentage / 100) * product?.sale_price;
     const buyNow = async () =>
     {
         const cartItem = {
             email: currentUser?.email,
             product_id: product._id,
             variant: product?.variant?.length ? product?.variant[0].text : variant,
-            price,
-            price_total: price * quantity,
+            price: Pprice,
+            price_total: Pprice * quantity,
             image: product?.cover,
             product_name: product?.name,
             quantity: quantity,
@@ -212,8 +213,8 @@ const Details = ({ product }) =>
                                         onMouseLeave={handleMouseLeave}
                                         src={
                                             currentImage.image
-                                                ?  currentImage?.image
-                                                :  product.cover
+                                                ? currentImage?.image
+                                                : product.cover
                                         }
                                         className={"w-full h-full object-contain"}
                                         alt=""
@@ -267,10 +268,10 @@ const Details = ({ product }) =>
                         <div className="flex justify-between lg:mt-10 mt-4">
                             <div className=" flex item-center">
                                 <h2 className="text-[#e30613] lg:text-4xl text-3xl font-semibold ">
-                                    <Taka />{price}
+                                    <Taka />{Pprice}
                                 </h2>
                                 <div className="text-neutral-400 text-xl font-normal ml-4 mt-3">
-                                    <del><Taka />{product?.price}</del>
+                                    <del><Taka />{product?.sale_price}</del>
                                 </div>
                                 <button className="bg-green-500 text-white mt-2 text-xs w-[45px] rounded-lg h-[26px] font-semibold ml-4">
                                     {product?.discount_percentage}%
@@ -388,7 +389,7 @@ const Details = ({ product }) =>
                         </div>
                         <div>
                             {activeTab === "specification" && (
-                                <Specification data={product?.key_features} 
+                                <Specification data={product?.key_features}
                                     features={product?.spacification}
                                 />
                             )}

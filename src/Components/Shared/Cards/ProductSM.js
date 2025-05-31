@@ -21,7 +21,7 @@ const ProductSM = ({ data }) =>
   const dispatch = useDispatch();
   const [inView, setIsView] = React.useState(false);
   const price =
-    product?.price - (product?.discount_percentage / 100) * product?.price;
+    product?.sale_price - (product?.discount_percentage / 100) * product?.sale_price;
   const quantity = 1;
   const addToCart = async () =>
   {
