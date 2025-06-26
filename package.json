@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "rm -rf .next && next dev",
     "build": "rm -rf .next && next build",
-    "start": "next start --port 3003",
+    "start": "next start",
     "lint": "next lint"
   },
   "eventName": "NEXT_VERSION",
