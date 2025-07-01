@@ -5,13 +5,13 @@ const page = () => {
         <div className='container mx-auto py-10'>
             <h1 className='text-4xl'>Privacy Policy of Oftech Gadget</h1>
 
-            <p className='text-xl mt-3'>Oftech Gadget operates the linearhub.com website, which provides the SERVICE.</p>
+            <p className='text-xl mt-3'>Oftech Gadget operates the oftechgadget.com website, which provides the SERVICE.</p>
 
-            <p className='mt-5'>This page is used to inform website visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service, the Linearhub website.</p>
+            <p className='mt-5'>This page is used to inform website visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service, the oftechgadget website.</p>
 
             <p className='mt-5'>If you choose to use our Service, then you agree to the collection and use of information in relation with this policy. The Personal Information that we collect are used for providing and improving the Service. We will not use or share your information with anyone except as described in this Privacy Policy.</p>
 
-            <p className='mt-5'>The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at linearhub.com, unless otherwise defined in this Privacy Policy.</p>
+            <p className='mt-5'>The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at oftechgadget.com, unless otherwise defined in this Privacy Policy.</p>
 
             <h2 className='mt-5 text-2xl'>Information Collection and Use</h2>
 

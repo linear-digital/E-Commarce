@@ -22,11 +22,11 @@ const Topbar = () =>
             <span className="text-white ml-2 text-[14px]">+8801867717496</span>
           </a>
           <div className="h-[26px] w-[1.2px] bg-gray-300 mx-5" />
-          <a href="https://www.facebook.com/linearhubshop" target="_blank" rel="noreferrer" className="flex items-center">
+          <a href="https://www.facebook.com/oftechgadgetshop" target="_blank" rel="noreferrer" className="flex items-center">
             <span className="text-white ml-2 text-[14px]">FB Page</span>
           </a>
           <div className="h-[26px] w-[1.2px] bg-gray-300 mx-5" />
-          <a href="https://www.facebook.com/linearhubshop" target="_blank" rel="noreferrer" className="flex items-center">
+          <a href="https://www.facebook.com/oftechgadgetshop" target="_blank" rel="noreferrer" className="flex items-center">
             <span className="text-white ml-2 text-[14px]">FB Group</span>
           </a>
           <div className="h-[26px] w-[1.2px] bg-gray-300 mx-5" />

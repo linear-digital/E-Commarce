@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://www.linearhub.com</loc>
+        <loc>https://www.oftechgadget.com</loc>
         <lastmod>2024-02-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
-        <loc>https://www.linearhub.com/login</loc>
+        <loc>https://www.oftechgadget.com/login</loc>
         <lastmod>2024-02-12</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
     </url>
        <url>
-        <loc>https://www.linearhub.com/signup</loc>
+        <loc>https://www.oftechgadget.com/signup</loc>
         <lastmod>2024-02-12</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://www.linearhub.com/categories</loc>
+        <loc>https://www.oftechgadget.com/categories</loc>
         <lastmod>2024-02-12</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://www.linearhub.com/track-order</loc>
+        <loc>https://www.oftechgadget.com/track-order</loc>
         <lastmod>2024-02-12</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.linearhub.com/terms-condition</loc>
+        <loc>https://www.oftechgadget.com/terms-condition</loc>
         <lastmod>2024-02-12</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.linearhub.com/privacy-policy</loc>
+        <loc>https://www.oftechgadget.com/privacy-policy</loc>
         <lastmod>2024-02-12</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>

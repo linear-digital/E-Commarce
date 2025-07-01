@@ -46,7 +46,7 @@ const page = ({ params }) => {
                 formData.append('images', files[i])
             }
             try {
-                const res = await axios.post('https://server.linearhub.com/upload-review', formData)
+                const res = await axios.post('https://server.oftechgadget.com/upload-review', formData)
                 setImages([...images, ...res.data.images])
             } catch (error) {
                 console.log(error)
