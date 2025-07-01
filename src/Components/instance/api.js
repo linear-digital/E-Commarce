@@ -20,8 +20,15 @@ export const api = axios.create({
 });
 
 // Universal fetcher with method, body, and token support
-export const fetcher = async ({ path, data, method = "GET", headers = {}, token = null }) =>
-{
+export const fetcher = async ({
+  path,
+  data,
+  method = "GET",
+  headers = {},
+  token = null,
+  revalidate = 3600, // ✅ default revalidate time in seconds (1 hour)
+  dynamic = false,   // ✅ if true, forces dynamic rendering
+}) => {
   try {
     const url = path.startsWith("/") ? path.slice(1) : path;
 
@@ -33,17 +40,19 @@ export const fetcher = async ({ path, data, method = "GET", headers = {}, token 
     if (isBrowser && Cookies.get("auth_token")) {
       finalHeaders.Authorization = `Bearer ${Cookies.get("auth_token")}`;
     } else if (token) {
-      // for server-side usage like getServerSideProps
       finalHeaders.Authorization = `Bearer ${token}`;
     }
 
-    const res = await fetch(localURL + url, {
+    const fetchOptions = {
       method,
       headers: finalHeaders,
       body: method === "GET" ? null : JSON.stringify(data),
-      cache: "no-cache",
-      next: { tags: [url] },
-    });
+      ...(dynamic
+        ? { cache: "no-store" }
+        : { next: { revalidate } }), // ✅ Conditional cache policy
+    };
+
+    const res = await fetch(localURL + url, fetchOptions);
 
     if (!res.ok) {
       throw new Error(`Fetch failed: ${res.status} ${res.statusText}`);
